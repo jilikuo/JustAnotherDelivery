@@ -21,12 +21,12 @@ public class PrototypeMovementScript : MonoBehaviour
         if (playerObject == null)
         {
             playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject == null)
+            {
+                throw new System.Exception("Placeholder Movement Script needs a player object to move");
+            }
         }
 
-        if (playerObject == null)
-        {
-            throw new System.Exception("Placeholder Movement Script needs a player object to move");
-        }
         #endregion
         playerTransform = playerObject.transform;
     }

@@ -18,22 +18,21 @@ public class MinimapAvatar : MonoBehaviour
         if (playerObject == null)
         {
             playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject == null)
+            {
+                throw new System.Exception("Minimap Avatar needs a player object to represent");
+            }
         }
 
         if (avatarObject == null)
         {
             avatarObject = GameObject.FindGameObjectWithTag("MinimapAvatar");
+            if (avatarObject == null)
+            {
+                avatarObject = GameObject.FindGameObjectWithTag("MinimapAvatar");
+            }
         }
 
-        if (playerObject == null)
-        {
-            throw new System.Exception("Minimap Avatar needs a player object to represent");
-        }
-
-        if (avatarObject == null)
-        {
-            throw new System.Exception("Minimap Avatar needs an Avatar UI Object to represent the player");
-        }
         #endregion
 
         playerTransform = playerObject.transform;
@@ -56,7 +55,7 @@ public class MinimapAvatar : MonoBehaviour
 
     private void MovePlayerAvatar()
     {
-        Vector2 targetPos = new Vector2(playerTransform.position.x * stepSize, playerTransform.position.y * stepSize);
+        Vector2 targetPos = new(playerTransform.position.x * stepSize, playerTransform.position.y * stepSize);
         avatarRectTransform.anchoredPosition = targetPos;
     }
 }
