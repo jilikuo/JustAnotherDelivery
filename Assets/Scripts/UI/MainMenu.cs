@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject continueButton;
     public GameObject loadMenuPanel;
     public GameObject settingsMenuPanel;
+    public GameObject creditsMenuPanel;
 
     private GameObject activePanel;
     private bool hasSaveFile = false;
@@ -33,6 +34,7 @@ public class MainMenu : MonoBehaviour
 
         loadMenuPanel.SetActive(false);
         settingsMenuPanel.SetActive(false);
+        creditsMenuPanel.SetActive(false);
         HandleContinueButtonStatus();
     }
 
@@ -57,6 +59,12 @@ public class MainMenu : MonoBehaviour
     {
         settingsMenuPanel.SetActive(true);
         activePanel = settingsMenuPanel;
+    }
+
+    public void Credits()
+    {
+        creditsMenuPanel.SetActive(true);
+        activePanel = creditsMenuPanel;
     }
 
     public void ExitGame()
