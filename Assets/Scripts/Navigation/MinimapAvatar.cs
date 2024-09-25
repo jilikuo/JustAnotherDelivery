@@ -29,10 +29,9 @@ public class MinimapAvatar : MonoBehaviour
             avatarObject = GameObject.FindGameObjectWithTag("MinimapAvatar");
             if (avatarObject == null)
             {
-                avatarObject = GameObject.FindGameObjectWithTag("MinimapAvatar");
+                throw new System.Exception("Minimap Avatar needs an avatar object to move");
             }
         }
-
         #endregion
 
         playerTransform = playerObject.transform;

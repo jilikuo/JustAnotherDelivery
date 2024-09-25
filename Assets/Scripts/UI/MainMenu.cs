@@ -6,16 +6,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    private readonly string StartingSceneName = "InventorySortingScene";
-    private readonly string ContinueButtonName = "ContinueButton";
-    private readonly string LoadPanelName = "LoadGameMenuPanel";
-    private readonly string SettingsPanelName = "SettingsMenuPanel";
-
+    [SerializeField] private string StartingSceneName = "InventorySortingScene";
     public GameObject continueButton;
-    public GameObject loadPanel;
-    public GameObject settingsPanel;
-    public GameObject activePanel;
+    public GameObject loadMenuPanel;
+    public GameObject settingsMenuPanel;
 
+    private GameObject activePanel;
     private bool hasSaveFile = false;
 
     void Awake()
@@ -23,32 +19,20 @@ public class MainMenu : MonoBehaviour
         #region NotNullChecks
         if (continueButton == null)
         {
-            continueButton = GameObject.Find(ContinueButtonName);
-            if (continueButton == null)
-            {
-                Debug.LogError("Continue Button not found.");
-            }
+            Debug.LogError("Continue Button not found.");
         }
 
-        if (loadPanel == null) {
-            loadPanel = GameObject.Find(LoadPanelName);
-            if (loadPanel == null)
-            {
-                Debug.LogError("Load Panel not found.");
-            }
+        if (loadMenuPanel == null) {
+            Debug.LogError("Load Panel not found.");
         }
 
-        if (settingsPanel == null) {
-            settingsPanel = GameObject.Find(SettingsPanelName);
-            if (settingsPanel == null)
-            {
-                Debug.LogError("Settings Panel not found.");
-            }
+        if (settingsMenuPanel == null) {
+             Debug.LogError("Settings Panel not found.");
         }
         #endregion
 
-        loadPanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        loadMenuPanel.SetActive(false);
+        settingsMenuPanel.SetActive(false);
         HandleContinueButtonStatus();
     }
 
@@ -65,14 +49,14 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        activePanel = loadPanel;
-        loadPanel.SetActive(true);
+        loadMenuPanel.SetActive(true);
+        activePanel = loadMenuPanel;
     }
 
     public void Settings()
     {
-        activePanel = settingsPanel;
-        settingsPanel.SetActive(true);
+        settingsMenuPanel.SetActive(true);
+        activePanel = settingsMenuPanel;
     }
 
     public void ExitGame()

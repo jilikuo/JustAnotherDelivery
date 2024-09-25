@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 663f4069a9600154abee1622e40d7563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueButton: {fileID: 0}
-  loadPanel: {fileID: 0}
-  settingsPanel: {fileID: 0}
-  activePanel: {fileID: 0}
+  StartingSceneName: InventorySortingScene
+  continueButton: {fileID: 2131410909}
+  loadMenuPanel: {fileID: 2020117519}
+  settingsMenuPanel: {fileID: 2044772826}
 --- !u!4 &400281601
 Transform:
   m_ObjectHideFlags: 0
