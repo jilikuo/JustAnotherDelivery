@@ -9,10 +9,12 @@ public class TimeSystem : MonoBehaviour
     public TimeObject currentTime;
     public BoolVariable isGamePaused;
 
-    private float time = 0f;
-    private float stopTime = 0f; // Start in stopped state
+    [SerializeField] private bool isStopped = true; // Start in stopped state
+    [SerializeField] private float time = 0f;
+    [SerializeField] private float stopTime = 0f;
+    [SerializeField] private bool hasTimer = false;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
         currentTime.Set(dayStartHour);
@@ -22,29 +24,36 @@ public class TimeSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((isGamePaused.value) || (time == stopTime)) return;
+        if (isGamePaused.value || isStopped) return;
         time += Time.deltaTime / framesPerHour;
-        if (time > stopTime) time = stopTime;
+        if (hasTimer && (time > stopTime))
+        {
+            time = stopTime;
+            isStopped = true;
+            hasTimer = false;
+        }
         currentTime.Set(time);
     }
 
     void StartTime()
     {
-        stopTime = float.MaxValue;
+        isStopped = false;
     }
 
     void StopTime()
     {
-        stopTime = time;
+        isStopped = true;
     }
 
     void StopTimeAt(float time)
     {
         stopTime = time;
+        hasTimer = true;
     }
 
     void StopTimeAfter(float timeInc)
     {
         stopTime = time + timeInc;
+        hasTimer = true;
     }
 }
