@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1194416448}
   m_Layer: 0
   m_Name: TimeSystem
-  m_TagString: Untagged
+  m_TagString: TimeSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,10 @@ MonoBehaviour:
   framesPerHour: 60
   currentTime: {fileID: 11400000, guid: 50ffc14d05f05f844a239f0735e96a5a, type: 2}
   isGamePaused: {fileID: 11400000, guid: eb2624745f2374f41b95777887ed2b2b, type: 2}
+  isStopped: 1
+  time: 0
+  stopTime: 0
+  hasTimer: 0
 --- !u!4 &1194416449
 Transform:
   m_ObjectHideFlags: 0
