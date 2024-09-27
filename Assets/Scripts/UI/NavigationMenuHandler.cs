@@ -7,9 +7,6 @@ using UnityEngine.UI;
 
 public class NavigationMenuHandler : MonoBehaviour
 {
-    public GameObject debugMenu;
-    public GameObject debugMenuButton;
-
     public GameObject movementBar;
     public GameObject moveAheadButton;
     public GameObject moveBackButton;
@@ -36,9 +33,14 @@ public class NavigationMenuHandler : MonoBehaviour
     private void Awake()
     {
         #region Null Checks
-        if (movementBar == null || interactionBar == null)
+        if (movementBar == null)
         {
-            throw new System.Exception("Either Movement Bar or Interaction bar not set in NavigationMenuHandler");
+            throw new System.Exception("Movement Bar not set in NavigationMenuHandler");
+        }
+
+        if (interactionBar == null)
+        {
+            throw new System.Exception("Interaction Bar not set in NavigationMenuHandler");
         }
 
         if (moveAheadButton == null || moveBackButton == null || moveLeftButton == null || moveRightButton == null)
@@ -46,9 +48,19 @@ public class NavigationMenuHandler : MonoBehaviour
             throw new System.Exception("One or more movement buttons not set in NavigationMenuHandler");
         }
 
-        if (nameLabel == null || titleLabel == null || messageBox == null)
+        if (nameLabel == null)
         {
-            throw new System.Exception("Either labels or message box not set in NavigationMenuHandler");
+            throw new System.Exception("Name label not set in NavigationMenuHandler");
+        }
+
+        if (titleLabel == null)
+        {
+            throw new System.Exception("Title label not set in NavigationMenuHandler");
+        }
+
+        if (messageBox == null)
+        {
+            throw new System.Exception("Message box not set in NavigationMenuHandler");
         }
 
         if (emergencyButton == null || personalAnswerButton == null || professionalAnswerButton == null || doNotSpeakButton == null || fleeButton == null)
@@ -56,10 +68,6 @@ public class NavigationMenuHandler : MonoBehaviour
             throw new System.Exception("One or more interaction buttons not set in NavigationMenuHandler");
         }
         #endregion
-
-#if (UNITY_EDITOR)
-        debugMenuButton.SetActive(true);
-#endif
 
         movementBar.SetActive(true);
         activeBar = movementBar;
@@ -136,48 +144,9 @@ public class NavigationMenuHandler : MonoBehaviour
 
     private void UpdateInteractionButton()
     {
-        if (canCallEmergency)
-        {
-            emergencyButton.SetActive(true);
-        }
-        else
-        {
-            emergencyButton.SetActive(false);
-        }
-        if (canFlee)
-        {
-            fleeButton.SetActive(true);
-        }
-        else
-        {
-            fleeButton.SetActive(false);
-        }
-
+        emergencyButton.SetActive(canCallEmergency);
+        fleeButton.SetActive(canFlee);
+        
         interactionBarIsDirty = false;
-    }
-
-    public void DebugNewName(TMP_InputField name)
-    {
-        SetActiveCharacterName(name.text);
-        Debug.Log(name.text);
-    }
-
-    public void DebugNewTitle(TMP_InputField title)
-    {
-        SetActiveCharacterTitle(title.text);
-        Debug.Log(title.text);
-    }
-
-    public void DebugNewMessage(TMP_InputField message)
-    {
-        SetMessage(message.text);
-        Debug.Log(message.text);
-    }
-
-    public void SwitchDebugMenu()
-    {
-        Debug.Log("Switching Debug Menu");
-            debugMenu.SetActive(true);
-     
     }
 }
