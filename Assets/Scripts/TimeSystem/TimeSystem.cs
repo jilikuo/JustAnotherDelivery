@@ -49,23 +49,23 @@ public class TimeSystem : MonoBehaviour
         currentTime.Set(time);
     }
 
-    void StartTime()
+    public void StartTime()
     {
         isStopped = false;
     }
 
-    void StopTime()
+    public void StopTime()
     {
         isStopped = true;
     }
 
-    void StopTimeAt(float time)
+    public void StopTimeAt(float time)
     {
         stopTime = time;
         hasTimer = true;
     }
 
-    void StopTimeAfter(float timeInc)
+    public void StopTimeAfter(float timeInc)
     {
         stopTime = time + timeInc;
         hasTimer = true;
