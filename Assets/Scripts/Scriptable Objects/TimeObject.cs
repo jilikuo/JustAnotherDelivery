@@ -43,7 +43,8 @@ public class TimeObject : ScriptableObject
 
     public void SetNextDay(float newHour)
     {
-        time = ((day + 1) * 24f) + newHour;
+        time = (day * 24f) + newHour; // +1 day is done in UpdateVars for displaying
+        UpdateVars();
     }
 
     private void UpdateVars()
