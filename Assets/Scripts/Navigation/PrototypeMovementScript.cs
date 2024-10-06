@@ -12,22 +12,20 @@ public enum Direction
 
 public class PrototypeMovementScript : MonoBehaviour
 {
-    public GameObject playerObject;
+    private GameObject playerObject;
     private Transform playerTransform;
 
     void Start()
     {
-        #region NotNullChecks
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null)
         {
-            playerObject = GameObject.FindGameObjectWithTag("Player");
             if (playerObject == null)
             {
-                throw new System.Exception("Placeholder Movement Script needs a player object to move");
+                playerObject = this.gameObject;
             }
         }
 
-        #endregion
         playerTransform = playerObject.transform;
     }
 
