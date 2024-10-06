@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsMenuPanel;
 
     private GameObject activePanel;
+    private GameManager gameManager;
     private bool hasSaveFile = false;
 
     void Awake()
@@ -38,9 +39,14 @@ public class MainMenu : MonoBehaviour
         HandleContinueButtonStatus();
     }
 
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
     public void NewGame()
     {
-        SceneManager.LoadScene(StartingSceneName);
+        gameManager.StartNewGame();
     }
 
     public void ContinueGame()
