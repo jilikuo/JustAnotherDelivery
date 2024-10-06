@@ -9,8 +9,8 @@ public class TimeSystem : MonoBehaviour
     [SerializeField] private float framesPerHour = 60f;
     public TimeObject currentTime;
     public BoolVariable isGamePaused;
+    public BoolVariable isTimeStopped;
 
-    [SerializeField] private bool isStopped = true; // Start in stopped state
     [SerializeField] private float time = 0f;
     [SerializeField] private float stopTime = 0f;
     [SerializeField] private bool hasTimer = false;
@@ -29,22 +29,21 @@ public class TimeSystem : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update 
     void Start()
     {
+        isTimeStopped.value = true; // Start in stopped state
         currentTime.Set(dayStartHour);
         time = currentTime.GetTime();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isGamePaused.value || isStopped) return;
+        if (isGamePaused.value || isTimeStopped.value) return;
         time += Time.deltaTime / framesPerHour;
         if (hasTimer && (time > stopTime))
         {
             time = stopTime;
-            isStopped = true;
+            isTimeStopped.value = true;
             hasTimer = false;
         }
         currentTime.Set(time);
@@ -52,12 +51,12 @@ public class TimeSystem : MonoBehaviour
 
     public void StartTime()
     {
-        isStopped = false;
+        isTimeStopped.value = false;
     }
 
     public void StopTime()
     {
-        isStopped = true;
+        isTimeStopped.value = true;
     }
 
     public void StopTimeAt(float time)
@@ -70,5 +69,17 @@ public class TimeSystem : MonoBehaviour
     {
         stopTime = time + timeInc;
         hasTimer = true;
+    }
+
+    public void SetTime(float newTime)
+    {
+        time = newTime;
+        currentTime.Set(time);
+    }
+
+    public void StartNextDay()
+    {
+        currentTime.SetNextDay(dayStartHour);
+        time = currentTime.GetTime();
     }
 }
