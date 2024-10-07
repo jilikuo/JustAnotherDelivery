@@ -163,7 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 165986862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d75f6deb6c5dfe4db62062cc0096c15, type: 3}
+  m_Script: {fileID: 11500000, guid: 918980cf43b071e43a9ff618bbd8c1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &171849591
@@ -647,7 +647,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 165986864}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: CallNextScene
+        m_MethodName: LoadNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
