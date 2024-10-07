@@ -31,18 +31,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool IsInstance()
-    {
-        return instance == this;
-    }
-
     private void Start()
     {
-        if (!IsInstance())
-        {
-            return;
-        }
-
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
         dayStartHour = timeSystem.dayStartHour;
         dayEndHour = timeSystem.dayEndHour;
@@ -59,11 +49,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!IsInstance())
-        {
-            return;
-        }
-
         if (timeSystem.isTimeStopped.value &&
             timeSystem.currentTime.GetTime() >= dayEndHour && 
             (SceneManager.GetActiveScene().buildIndex != lastSceneIndex))
@@ -75,12 +60,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        if (!IsInstance())
-        {
-            instance.LoadNextScene();
-
-        }
-
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
         //if the scene is the second to last, the day ends earlier, time should be stopped.
@@ -102,34 +81,16 @@ public class GameManager : MonoBehaviour
 
     public void LoadUpgradeMenu()
     {
-        if (!IsInstance())
-        {
-            instance.LoadUpgradeMenu();
-
-        }
-
         SceneManager.LoadScene(upgradeScene);
     }
 
     public void LoadMainMenu()
     {
-        if (!IsInstance())
-        {
-            instance.LoadMainMenu();
-
-        }
-
         SceneManager.LoadScene(mainMenuScene);
     }
 
     public void LoadNewDay()
     {
-        if (!IsInstance())
-        {
-            instance.LoadNewDay();
-
-        }
-
         SceneManager.LoadScene(inventoryScene);
         timeSystem.StartNextDay();
         timeSystem.StopTimeAt(timeSystem.currentTime.GetTime() + (dayEndHour - dayStartHour));
@@ -138,12 +99,6 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        if (!IsInstance())
-        {
-            instance.StartNewGame();
-
-        }
-
         SceneManager.LoadScene(inventoryScene);
         timeSystem.SetTime(dayStartHour);
         timeSystem.StartTime();
