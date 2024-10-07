@@ -48,26 +48,24 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
                 Debug.LogError("Failed to locate inventoryConfig");
             }
         }
-        SetInventoryConfig(inventoryConfig);
+        Reset();
     }
 
-    private bool HasLayout()
+    private bool IsInit()
     {
         return inventoryLayout != null;
     }
 
-    public void SetInventoryConfig(InventoryConfigObject newConfig)
+    public void Reset()
     {
         if (inventoryLayout != null)
         {
             Destroy(inventoryLayout.gameObject);
             inventoryLayout = null;
         }
-        if (newConfig != null)
+        if (inventoryConfig != null)
         {
-            inventoryConfig = newConfig;
-
-            inventoryLayout = Instantiate(newConfig.layoutPrefab, inventoryBackground.transform);
+            inventoryLayout = Instantiate(inventoryConfig.layoutPrefab, inventoryBackground.transform);
             var rect = inventoryLayout.GetComponent<RectTransform>();
             var anchorPoint = new Vector2(0.5f, 0.5f);
             rect.anchorMin = anchorPoint;
@@ -100,11 +98,13 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
             gridObject = null;
             inventorySlots = null;
         }
+
+        inventory.Reset();
     }
 
     public void RemoveDragDropObject(DragDropObject item)
     {
-        if (!HasLayout())
+        if (!IsInit())
         {
             return;
         }
@@ -130,7 +130,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
 
     public bool IsValidDropPosition(DragDropObject item)
     {
-        if (!HasLayout())
+        if (!IsInit())
         {
             return false;
         }
@@ -178,7 +178,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
 
     public void AddDragDropObject(DragDropObject item)
     {
-        if (!HasLayout())
+        if (!IsInit())
         {
             return;
         }

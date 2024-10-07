@@ -12,25 +12,31 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 {
+    [SerializeField] private PackagesListObject initPackagesList;
     [Header("Packages List defaults to Player.inventory.packagesList")]
     [SerializeField] private PackagesListObject packagesList;
 
     private void Start()
     {
-        if (packagesList == null)
+        if (initPackagesList == null)
         {
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (player == null)
             {
                 Debug.LogError("Failed to locate Player");
             }
-            packagesList = player.inventory.packagesList;
-            if (packagesList == null)
+            initPackagesList = player.inventory.packagesList;
+            if (initPackagesList == null)
             {
-                Debug.LogError("Failed to locate packagesList");
+                Debug.LogError("Failed to locate initPackagesList");
             }
         }
-        packagesList = packagesList.Clone();
+        Reset();
+    }
+
+    public void Reset()
+    {
+        packagesList = initPackagesList.Clone();
     }
 
     public DragDropObject CreateDragDrop(GameObject parent)

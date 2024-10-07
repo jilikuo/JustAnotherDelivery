@@ -41,8 +41,17 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
             {
                 // TODO: Report no more items
             }
-            //nextItem.transform.SetParent(null);
         }
+    }
+
+    public void Reset()
+    {
+        if (nextItem != null)
+        {
+            Destroy(nextItem.gameObject);
+            nextItem = null;
+        }
+        packageGenerator.Reset();
     }
 
     public void RemoveDragDropObject(DragDropObject item)

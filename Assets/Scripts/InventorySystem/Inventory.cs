@@ -20,6 +20,11 @@ public class Inventory : ScriptableObject
         Debug.Log("Added item to Inventory: " + address);
     }
 
+    public void Reset()
+    {
+        packages = new List<Package>();
+    }
+
     public void AddItem(GameObject item)
     {
         if (item == null)
