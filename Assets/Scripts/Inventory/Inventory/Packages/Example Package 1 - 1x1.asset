@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d221db266afbab14cb90271d3135c0d5, type: 3}
+  m_Name: Example Package 1 - 1x1
+  m_EditorClassIdentifier: 
+  icon: {fileID: 8032073241508131154, guid: 7358ec63e9db1a246b4c4fc1ba87cb13, type: 3}
+  label: Package 1
+  description: 1x1

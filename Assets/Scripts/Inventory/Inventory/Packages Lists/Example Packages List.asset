@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b82543497abfd4792afe3ad63d91e8, type: 3}
+  m_Name: Example Packages List
+  m_EditorClassIdentifier: 
+  addresses:
+  - add1
+  - add2
+  - Long add 3
+  - Longer add 4
+  - Longest add 5
+  packageItems:
+  - {fileID: 11400000, guid: d7ea587a271429e4ca3054b573dd4717, type: 2}
+  - {fileID: 11400000, guid: 86c7e428023af3a4fbd806e7714fe2e7, type: 2}
+  - {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
