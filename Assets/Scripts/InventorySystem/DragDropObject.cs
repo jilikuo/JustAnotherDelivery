@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public static DragDropObject currentDragDropObject;
-    public Image icon;
 
     [Header("Pre-drag state")]
     protected Vector3 startPosition = Vector3.zero;
@@ -21,7 +20,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public Bounds GetWorldBounds()
     {
-        return icon.GetWorldBounds();
+        return gameObject.GetWorldBounds();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -62,7 +62,6 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         addressBox.text = address;
 
         var dragDrop = icon.AddComponent<DragDropPackage>();
-        dragDrop.icon = icon.GetComponent<Image>();
         dragDrop.data = new Package(packageItem, address);
 
         return dragDrop;

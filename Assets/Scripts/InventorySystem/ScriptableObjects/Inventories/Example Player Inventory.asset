@@ -14,4 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryConfig: {fileID: 11400000, guid: 7e87a4fdda910844e91ad016e8c65d29, type: 2}
   packagesList: {fileID: 11400000, guid: c883ebc711361e74db89911442bbd609, type: 2}
-  packages: []
+  packages:
+  - item: {fileID: 11400000, guid: d7ea587a271429e4ca3054b573dd4717, type: 2}
+    address: 2
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
+  - item: {fileID: 11400000, guid: 0400507b24332a944a767f87a7801b50, type: 2}
+    address: 3
