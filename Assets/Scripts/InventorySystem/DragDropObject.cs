@@ -26,6 +26,10 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("OnBeginDrag: From: " + transform.position + " To: " + eventData.position);
+        if (currentDragDropObject != null)
+        {
+            OnEndDrag(eventData);
+        }
         currentDragDropObject = this;
         startPosition = transform.position;
 
