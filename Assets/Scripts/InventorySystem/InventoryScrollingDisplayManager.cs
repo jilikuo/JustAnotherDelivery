@@ -41,13 +41,12 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
         inventoryEntries = new List<GameObject>();
         foreach (var package in inventory.packages)
         {
-            var entry = Instantiate(inventoryEntryPrefab);
+            var entry = Instantiate(inventoryEntryPrefab, scrollViewContent.transform);
             entry.GetComponentInChildren<TextMeshProUGUI>().text = package.address;
-            var image = entry.GetComponentInChildren<Image>();
-            var icon = Instantiate(package.item.icon, image.transform);
-            entry.transform.SetParent(scrollViewContent.transform, false);
-            var rect = icon.GetComponent<RectTransform>();
-            rect.sizeDelta = icon.transform.parent.GetComponent<RectTransform>().sizeDelta;
+            // Fill the image location of the entry with the package icon
+            var entryIcon = entry.GetComponentInChildren<Image>();
+            var packageIcon = Instantiate(package.item.icon, entryIcon.transform);
+            packageIcon.gameObject.CenterAndStretchToParent();
 
             var dragDrop = entry.AddComponent<DragDropPackage>();
             dragDrop.data = package;

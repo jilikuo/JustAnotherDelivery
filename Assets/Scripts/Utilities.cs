@@ -53,6 +53,26 @@ public static class GameObjectExtension
     {
         return gameObject.GetComponent<RectTransform>().ToWorldBounds();
     }
+
+    public static void CenterAndStretchToParent(this GameObject gameObject)
+    {
+        // TODO: Determine if position needs to be set
+        RectTransform rect = gameObject.GetComponent<RectTransform>();
+
+        // Remove scaling
+        rect.localScale = Vector3.one;
+
+        // Set pivot to center
+        rect.pivot = new Vector2(0.5f, 0.5f);
+
+        // Set anchors to extents
+        rect.anchorMin = new Vector2(0f, 0f); // Bottom-left corner
+        rect.anchorMax = new Vector2(1f, 1f); // Top-right corner      
+
+        // Reset offsets
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+    }
 }
 
 public static class ImageExtension
