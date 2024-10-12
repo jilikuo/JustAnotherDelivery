@@ -58,9 +58,6 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         rect.pivot = anchorPoint;
         icon.transform.position = parent.transform.position;
 
-        var addressBox = icon.GetComponentInChildren<TextMeshProUGUI>();
-        addressBox.text = address;
-
         var dragDrop = icon.AddComponent<DragDropPackage>();
         dragDrop.data = new Package(packageItem, address);
 

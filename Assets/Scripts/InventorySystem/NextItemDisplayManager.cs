@@ -13,6 +13,7 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
     [Header("Required fields")]
     [SerializeField] private TextMeshProUGUI nextItemLabel;
     [SerializeField] private GameObject nextItemBackground;
+    [SerializeField] private TextMeshProUGUI addressLabel;
     [SerializeField] private PackageGenerator packageGenerator;
     [Header("Derived fields")]
     [SerializeField] private DragDropObject nextItem;
@@ -27,18 +28,28 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
         {
             Debug.LogError("nextItemBackground is not set");
         }
+        if (addressLabel == null)
+        {
+            Debug.LogError("addressLabel is not set");
+        }
         if (packageGenerator == null)
         {
             Debug.LogError("packageGenerator is not set");
         }
     }
+
     private void Update()
     {
         if (nextItem == null)
         {
             nextItem = packageGenerator.CreateDragDrop(nextItemBackground);
-            if (nextItem == null)
+            if (nextItem != null)
             {
+                addressLabel.text = nextItem.GetComponent<DragDropPackage>().data.address;
+            }
+            else
+            {
+                addressLabel.text = "";
                 // TODO: Report no more items
             }
         }
