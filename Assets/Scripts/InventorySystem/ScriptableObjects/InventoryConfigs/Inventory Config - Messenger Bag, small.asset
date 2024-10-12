@@ -10,11 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47175b8fd7168c94bbd20578e6d6064f, type: 3}
-  m_Name: Example Config - Backpack
+  m_Name: Inventory Config - Messenger Bag, small
   m_EditorClassIdentifier: 
   layoutPrefab: {fileID: 3667202316927842243, guid: 3df55a44a32a5064d8775e4111fd8aed, type: 3}
-  defaultCellPrefab: {fileID: 1359519084202413533, guid: 7d211349193cb6744ae67cc512cbd16d, type: 3}
-  goodCellPrefab: {fileID: 7236831457935909525, guid: f7a555697588fe94b9b9c764996a13c6, type: 3}
-  badCellPrefab: {fileID: 7236831457935909525, guid: 67cbf5c607fd62a43aef9bb3bdaf57b4, type: 3}
-  hilightCellPrefab: {fileID: 7236831457935909525, guid: f011cb7439e61664f84fb87463017616, type: 3}
-  label: Backpack
+  label: Small Messenger Bag

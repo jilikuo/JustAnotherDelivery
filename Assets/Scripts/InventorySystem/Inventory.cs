@@ -3,20 +3,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
 {
     [Header("Next Inventory Configuration")]
     public InventoryConfigObject inventoryConfig;
-    public PackagesListObject packagesList;
+    public RandomStringGenerator packageAddressGen;
+    public RandomGameObjectGenerator packageIconGen;
 
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
 
-    public void AddItem(ItemObject item, string address)
+    public void AddItem(GameObject icon, string address)
     {
-        packages.Add(new Package(item, address));
+        packages.Add(new Package(icon, address));
         Debug.Log("Added item to Inventory: " + address);
     }
 
@@ -73,12 +75,12 @@ public class Inventory : ScriptableObject
 [Serializable]
 public class Package
 {
-    public ItemObject item;
+    public GameObject icon;
     public string address;
 
-    public Package(ItemObject item, string address)
+    public Package(GameObject icon, string address)
     {
-        this.item = item;
+        this.icon = icon;
         this.address = address;
     }
 }

@@ -2582,7 +2582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollViewContent: {fileID: 1387683749}
-  inventoryEntryPrefab: {fileID: 7989685343620036020, guid: 665d0ef32cafeb04c88170e2808706d7, type: 3}
+  inventoryEntryPrefab: {fileID: 7989685343620036020, guid: 8af8bad1b0f6b4d4695a7321a193c070, type: 3}
   inventory: {fileID: 0}
   inventoryEntries: []
 --- !u!1 &1062276415

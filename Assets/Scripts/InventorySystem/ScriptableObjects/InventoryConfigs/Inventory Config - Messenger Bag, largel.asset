@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d221db266afbab14cb90271d3135c0d5, type: 3}
-  m_Name: Example Package 1 - 1x1
+  m_Script: {fileID: 11500000, guid: 47175b8fd7168c94bbd20578e6d6064f, type: 3}
+  m_Name: Inventory Config - Messenger Bag, largel
   m_EditorClassIdentifier: 
-  icon: {fileID: 8032073241508131154, guid: 7358ec63e9db1a246b4c4fc1ba87cb13, type: 3}
-  label: Package 1
-  description: 1x1
+  layoutPrefab: {fileID: 9126641603784428282, guid: 9d902666f8638264e8778f27c314fbae, type: 3}
+  label: Large Messenger Bag

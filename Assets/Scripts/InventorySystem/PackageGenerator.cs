@@ -6,29 +6,42 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.VisualScripting.Member;
-using static UnityEditor.Progress;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 {
-    [SerializeField] private PackagesListObject initPackagesList;
-    [Header("Packages List defaults to Player.inventory.packagesList")]
-    [SerializeField] private PackagesListObject packagesList;
+    [Header("Init Packages List defaults to Player.inventory.packagesList")]
+    [SerializeField] private RandomStringGenerator initPackageAddressGen;
+    [SerializeField] private RandomGameObjectGenerator initPackageIconGen;
+    [SerializeField] private RandomStringGenerator packageAddressGen;
+    [SerializeField] private RandomGameObjectGenerator packageIconGen;
+    [SerializeField] private float imageScale = 75;
 
     private void Start()
     {
-        if (initPackagesList == null)
+        if (initPackageAddressGen == null)
         {
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (player == null)
             {
                 Debug.LogError("Failed to locate Player");
             }
-            initPackagesList = player.inventory.packagesList;
-            if (initPackagesList == null)
+            initPackageAddressGen = player.inventory.packageAddressGen;
+            if (initPackageAddressGen == null)
             {
-                Debug.LogError("Failed to locate initPackagesList");
+                Debug.LogError("Failed to locate initPackageAddressGen");
+            }
+        }
+        if (initPackageIconGen == null)
+        {
+            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            if (player == null)
+            {
+                Debug.LogError("Failed to locate Player");
+            }
+            initPackageIconGen = player.inventory.packageIconGen;
+            if (initPackageIconGen == null)
+            {
+                Debug.LogError("Failed to locate initPackageIconGen");
             }
         }
         Reset();
@@ -36,30 +49,31 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 
     public void Reset()
     {
-        packagesList = initPackagesList.Clone();
+        packageAddressGen = initPackageAddressGen.Clone();
+        packageIconGen = initPackageIconGen.Clone();
     }
 
     public DragDropObject CreateDragDrop(GameObject parent)
     {
-        if (packagesList.addresses.Count == 0)
+        string address = packageAddressGen.GetEntry();
+        if (address == null)
         {
             return null;
         }
+        packageAddressGen.RemoveEntry(address);
+        GameObject packageIcon = packageIconGen.GetEntry();
 
-        string address = packagesList.addresses.RandomElement();
-        packagesList.addresses.Remove(address);
-        ItemObject packageItem = packagesList.packageItems.RandomElement();
-
-        var icon = Instantiate(packageItem.icon, parent.transform);
+        var icon = Instantiate(packageIcon, parent.transform);
         var rect = icon.GetComponent<RectTransform>();
-        var anchorPoint = new Vector2(0.5f, 0.5f);
-        rect.anchorMin = anchorPoint;
-        rect.anchorMax = anchorPoint;
-        rect.pivot = anchorPoint;
+        rect.localScale = new Vector3(imageScale, imageScale, 1f);
+        var centerPoint = new Vector2(0.5f, 0.5f);
+        rect.pivot = centerPoint;
+        rect.anchorMin = centerPoint; // Bottom-left corner
+        rect.anchorMax = centerPoint; // Top-right corner      
         icon.transform.position = parent.transform.position;
 
         var dragDrop = icon.AddComponent<DragDropPackage>();
-        dragDrop.data = new Package(packageItem, address);
+        dragDrop.data = new Package(packageIcon, address);
 
         return dragDrop;
     }
@@ -77,7 +91,7 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
             Debug.LogError("Failed to locate Package data");
             return;
         }
-        packagesList.addresses.Add(package.data.address);
+        packageAddressGen.AddEntry(package.data.address);
         Destroy(item.gameObject);
     }
 }

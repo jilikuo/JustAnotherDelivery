@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73347958f8284449ad4321423012469, type: 3}
+  m_Name: PackageAddressGen - Example1
+  m_EditorClassIdentifier: 
+  defaultEntry: 
+  entries:
+  - Mary, 123 Easy St
+  - Bob, 123 Easy St
+  - Sid, 123 My Wy
+  - Ethel, 123 My Wy
+  - Mick, Walkabout Ln
+  - Wally, Walkabout Ln
+  - Glenda, Walkabout Ln
+  - Bart, 456 Lynnwood Ave
+  - Emma, 456 Lynnwood Ave
+  - Douglas, 456 Lynnwood Ave
