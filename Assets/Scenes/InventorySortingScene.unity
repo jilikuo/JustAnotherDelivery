@@ -2135,8 +2135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2a6838495f2464bbddf3384323741f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initPackagesList: {fileID: 0}
-  packagesList: {fileID: 0}
+  initPackageAddressGen: {fileID: 0}
+  initPackageIconGen: {fileID: 0}
+  packageAddressGen: {fileID: 0}
+  packageIconGen: {fileID: 0}
 --- !u!114 &7510503733266433622
 MonoBehaviour:
   m_ObjectHideFlags: 0
