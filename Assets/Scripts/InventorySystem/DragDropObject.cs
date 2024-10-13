@@ -13,6 +13,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     public static DragDropObject currentDragDropObject;
 
     [Header("Pre-drag state")]
+    protected Vector2 dragOffset = Vector2.zero;
     protected Vector3 startPosition = Vector3.zero;
     protected IItemDraggable itemDraggableParent;
     protected Transform oldParent;
@@ -32,6 +33,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         }
         currentDragDropObject = this;
         startPosition = transform.position;
+        dragOffset = (Vector2)transform.position - eventData.position;
 
         // Transfer the object to the root, to keep it always on top
         itemDraggableParent = GetComponentInParent<IItemDraggable>();
@@ -39,14 +41,12 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         siblingIndex = transform.GetSiblingIndex();
         transform.SetParent(transform.GetComponent<RectTransform>().root, true);
         transform.SetAsLastSibling();
-
-        transform.position = eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         //Debug.Log("OnDrag: From: " + transform.position + " To: " + eventData.position);
-        transform.position = eventData.position;
+        transform.position = eventData.position + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -56,6 +56,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         var itemDroppableParent = (newParent != null) ? newParent.GetComponent<IItemDroppable>() : null;
         if (itemDroppableParent != null && itemDroppableParent.IsValidDropPosition(this))
         {
+            transform.position = eventData.position + dragOffset;
             if (itemDraggableParent != null)
             {
                 itemDraggableParent.RemoveDragDropObject(this);
