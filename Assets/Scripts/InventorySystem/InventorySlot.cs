@@ -11,8 +11,6 @@ public class InventorySlot : MonoBehaviour
 {
     [Header("Required fields")]
     [SerializeField] private Image highlight;
-    [SerializeField] private Color highlightGood = new Color(0f, 1f, 0f, .75f);
-    [SerializeField] private Color highlightBad = new Color(1f, 0f, 0f, .75f);
     [Header("Optional fields")]
     public DragDropObject item;
     [Header("Derived fields")]
@@ -24,17 +22,6 @@ public class InventorySlot : MonoBehaviour
 
     // Start is called before the first frame update
     private void Start()
-    {
-        Init();
-    }
-
-    // Highlight this slot, if the current DragDrop item is above it
-    private void Update()
-    {
-        HighlightOnIntersect(DragDropObject.currentDragDropObject);
-    }
-
-    public void Init()
     {
         if (highlight == null)
         {
@@ -82,32 +69,19 @@ public class InventorySlot : MonoBehaviour
         return Intersects(item.GetWorldBounds());
     }
 
+    public void SetHighlight(Color color)
+    {
+        highlight.color = color;
+        highlight.enabled = true;
+
+        //Debug.Log("Set Highlight of: " + gameObject.name);
+    }
+
     public void ClearHighlight()
     {
         highlight.enabled = false;
         highlight.color = Color.white;
 
         //Debug.Log("Cleared Highlight of: " + gameObject.name);
-    }
-
-    // If the item does not intersect, clear highlighting in the slot.
-    // Otherwise, highlight in highlightGood, if this slot can take the item.
-    // * This slot can take the item, if this slot is empty, or if the item is already in this slot.
-    // Otherwise, highlight in highlightBad.
-    //
-    // Returns: whether this slot may be set to the item
-    public bool HighlightOnIntersect(DragDropObject item)
-    {
-        if (!Intersects(item))
-        {
-            ClearHighlight();
-            return false;
-        }
-        bool canSet = MaySet(item);
-        highlight.color = (canSet) ? highlightGood : highlightBad;
-        highlight.enabled = true;
-
-        //Debug.Log("Highlighted: " + gameObject.name);
-        return canSet;
     }
 }

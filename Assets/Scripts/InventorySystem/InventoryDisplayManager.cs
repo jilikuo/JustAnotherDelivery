@@ -19,9 +19,13 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
     [SerializeField] private Inventory inventory;
     [Header("Inventory Config defaults to Inventory.inventoryConfig")]
     [SerializeField] private InventoryConfigObject inventoryConfig;
+    [SerializeField] private Color highlightGood = new Color(0f, 1f, 0f, .75f);
+    [SerializeField] private Color highlightBad = new Color(1f, 0f, 0f, .75f);
     [Header("Derived fields")]
     [SerializeField] private GameObject inventoryLayout;
     [SerializeField] private GameObject gridObject;
+    [SerializeField] private Image layoutBackground;
+    [SerializeField] private Color layoutColor;
     [SerializeField] private List<InventorySlot> inventorySlots = new List<InventorySlot>();
 
     // Start is called before the first frame update
@@ -51,6 +55,11 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
         Reset();
     }
 
+    private void Update()
+    {
+        HighlightIntersecting(DragDropObject.currentDragDropObject);
+    }
+
     private bool IsInit()
     {
         return inventoryLayout != null;
@@ -72,6 +81,8 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
             rect.anchorMax = anchorPoint;
             rect.pivot = anchorPoint;
             inventoryLayout.transform.position = inventoryBackground.transform.position;
+            layoutBackground = inventoryLayout.GetComponent<Image>();
+            layoutColor = layoutBackground.color;
 
             // Update the inventory label
             inventoryLabel.text = inventoryConfig.label;
@@ -101,6 +112,15 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
 
         inventory.Reset();
     }
+    public void SetHighlight(Color color)
+    {
+        layoutBackground.color = color;
+    }
+
+    public void ClearHighlight()
+    {
+        layoutBackground.color = layoutColor;
+    }
 
     public void RemoveDragDropObject(DragDropObject item)
     {
@@ -127,8 +147,12 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
         // Remove the item from the inventory
         inventory.RemoveItem(item.gameObject);
     }
-
     public bool IsValidDropPosition(DragDropObject item)
+    {
+        return HighlightIntersecting(item);
+    }
+
+    private bool HighlightIntersecting(DragDropObject item)
     {
         if (!IsInit())
         {
@@ -137,43 +161,66 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
 
         if (item == null)
         {
+            ClearHighlight();
+            foreach (var slot in inventorySlots)
+            {
+                slot.ClearHighlight();
+            }
             return false;
         }
 
         // Find the bounds of all intersecting slots
         Bounds itemBounds = item.GetWorldBounds();
-        int i = 0;
-        for (; i < inventorySlots.Count(); ++i)
+        Bounds gridBounds = item.GetWorldBounds();
+        bool foundFirst = false;
+        bool isDroppable = false;
+        foreach (var slot in inventorySlots)
         {
-            if (!inventorySlots[i].Intersects(itemBounds))
+            if (!slot.Intersects(itemBounds))
             {
+                slot.ClearHighlight();
                 continue;
             }
-            if (!inventorySlots[i].MaySet(item))
+            if (!foundFirst)
             {
-                return false;
+                foundFirst = true;
+                gridBounds = slot.bounds;
+                isDroppable = slot.MaySet(item);
             }
-            break;
-        }
-        if (i == inventorySlots.Count())
-        {
-            return false;
-        }
-        Bounds bounds = inventorySlots[i].bounds;
-        for (; i < inventorySlots.Count(); ++i)
-        {
-            if (!inventorySlots[i].Intersects(itemBounds))
+            else
             {
-                continue;
+                gridBounds.Encapsulate(slot.bounds);
             }
-            if (!inventorySlots[i].MaySet(item))
+            if (slot.MaySet(item))
             {
-                return false;
+                slot.SetHighlight(highlightGood);
             }
-            bounds.Encapsulate(inventorySlots[i].bounds);
+            else
+            {
+                slot.SetHighlight(highlightBad);
+                isDroppable = false;
+            }
         }
 
-        return bounds.ContainsBounds(itemBounds);
+        if (foundFirst)
+        {
+            isDroppable &= gridBounds.ContainsBounds(itemBounds);
+
+            if (isDroppable)
+            {
+                SetHighlight(highlightGood);
+            }
+            else
+            {
+                SetHighlight(highlightBad);
+            }
+        }
+        else
+        {
+            ClearHighlight();
+        }
+
+        return isDroppable;
     }
 
     public void AddDragDropObject(DragDropObject item)
