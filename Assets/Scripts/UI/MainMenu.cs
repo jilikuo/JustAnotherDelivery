@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private string StartingSceneName = "InventorySortingScene";
     public GameObject continueButton;
-    public GameObject loadMenuPanel;
     public GameObject settingsMenuPanel;
     public GameObject creditsMenuPanel;
 
@@ -23,16 +22,11 @@ public class MainMenu : MonoBehaviour
             Debug.LogError("Continue Button not found.");
         }
 
-        if (loadMenuPanel == null) {
-            Debug.LogError("Load Panel not found.");
-        }
-
         if (settingsMenuPanel == null) {
              Debug.LogError("Settings Panel not found.");
         }
         #endregion
 
-        loadMenuPanel.SetActive(false);
         settingsMenuPanel.SetActive(false);
         creditsMenuPanel.SetActive(false);
         HandleContinueButtonStatus();
