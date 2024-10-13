@@ -49,12 +49,6 @@ public class MainMenu : MonoBehaviour
         Debug.Log("You pressed the Continue Game button.");
     }
 
-    public void LoadGame()
-    {
-        loadMenuPanel.SetActive(true);
-        activePanel = loadMenuPanel;
-    }
-
     public void Settings()
     {
         settingsMenuPanel.SetActive(true);
