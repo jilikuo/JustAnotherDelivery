@@ -53,8 +53,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     {
         //Debug.Log("OnEndDrag: From: " + transform.position + " To: " + eventData.position);
         var newParent = FindItemDroppableIntersection(eventData);
-        var ItemDroppableParent = (newParent != null) ? newParent.GetComponent<IItemDroppable>() : null;
-        if (ItemDroppableParent != null && ItemDroppableParent.IsValidDropPosition(this))
+        var itemDroppableParent = (newParent != null) ? newParent.GetComponent<IItemDroppable>() : null;
+        if (itemDroppableParent != null && itemDroppableParent.IsValidDropPosition(this))
         {
             if (itemDraggableParent != null)
             {
@@ -62,7 +62,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
             }
             transform.SetParent(newParent.transform, true);
             transform.SetAsLastSibling();
-            ItemDroppableParent.AddDragDropObject(this);
+            itemDroppableParent.AddDragDropObject(this);
         }
         else
         {
