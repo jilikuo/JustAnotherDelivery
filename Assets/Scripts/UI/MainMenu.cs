@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using SaveSystem;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsMenuPanel;
 
     private GameObject activePanel;
-    private bool hasSaveFile = false;
 
     void Awake()
     {
@@ -26,21 +26,24 @@ public class MainMenu : MonoBehaviour
              Debug.LogError("Settings Panel not found.");
         }
         #endregion
+    }
 
+    private void Start()
+    {
+        continueButton.GetComponent<Button>().interactable = SaveSystem.DataManager.instance.HasLoadedGameData();
         settingsMenuPanel.SetActive(false);
         creditsMenuPanel.SetActive(false);
-        HandleContinueButtonStatus();
     }
 
     public void NewGame()
     {
+        SaveSystem.DataManager.instance.ResetGameData();
         GameManager.instance.StartNewGame();
     }
 
     public void ContinueGame()
     {
-        //TODO: Continue from last saved file logic
-        Debug.Log("You pressed the Continue Game button.");
+        GameManager.instance.ContinueGame();
     }
 
     public void Settings()
@@ -64,18 +67,5 @@ public class MainMenu : MonoBehaviour
     {
         activePanel.SetActive(false);
         activePanel = null;
-    }
-
-    private void HandleContinueButtonStatus()
-    {
-        //if save file exists, hasSaveFile = true
-        if (hasSaveFile)
-        {
-            continueButton.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            continueButton.GetComponent<Button>().interactable = false;
-        }
     }
 }

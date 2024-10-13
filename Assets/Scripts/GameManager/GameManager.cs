@@ -104,4 +104,9 @@ public class GameManager : MonoBehaviour
         timeSystem.StartTime();
         timeSystem.StopTimeAt(dayEndHour);
     }
+
+    public void ContinueGame()
+    {
+        // TODO: Add implementation
+    }
 }
