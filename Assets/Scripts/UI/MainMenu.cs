@@ -7,7 +7,6 @@ using SaveSystem;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private string StartingSceneName = "InventorySortingScene";
     public GameObject continueButton;
     public GameObject settingsMenuPanel;
     public GameObject creditsMenuPanel;
