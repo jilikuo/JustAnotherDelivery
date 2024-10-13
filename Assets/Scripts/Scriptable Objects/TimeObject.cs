@@ -41,9 +41,15 @@ public class TimeObject : ScriptableObject
         UpdateVars();
     }
 
+    public void RestartDay(float newHour)
+    {
+        time = ((day - 1) * 24f) + newHour; // +1 day is done in UpdateVars for display
+        UpdateVars();
+    }
+
     public void SetNextDay(float newHour)
     {
-        time = (day * 24f) + newHour; // +1 day is done in UpdateVars for displaying
+        time = (day * 24f) + newHour; // +1 day is done in UpdateVars for display
         UpdateVars();
     }
 

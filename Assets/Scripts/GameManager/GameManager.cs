@@ -11,9 +11,6 @@ public class GameManager : MonoBehaviour
     public string mainMenuScene = "MainMenuScene";
     public string packageScene = "PackageSortingScene";
     public string upgradeScene = "UpgradeMenuScene";
-    
-    private float dayStartHour;
-    private float dayEndHour;
 
     private TimeSystem timeSystem;
     private int lastSceneIndex;
@@ -34,9 +31,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
-        dayStartHour = timeSystem.dayStartHour;
-        dayEndHour = timeSystem.dayEndHour;
-
         lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
 
 #if !UNITY_EDITOR
@@ -49,8 +43,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timeSystem.isTimeStopped.value &&
-            timeSystem.currentTime.GetTime() >= dayEndHour && 
+        if (timeSystem.IsTimedOut() && 
             (SceneManager.GetActiveScene().buildIndex != lastSceneIndex))
         {
             Debug.Log("Ran out of time");
@@ -89,20 +82,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(mainMenuScene);
     }
 
+    public void RestartDay()
+    {
+        SceneManager.LoadScene(inventoryScene);
+        timeSystem.RestartDay();
+    }
+
     public void LoadNewDay()
     {
         SceneManager.LoadScene(inventoryScene);
         timeSystem.StartNextDay();
-        timeSystem.StopTimeAt(timeSystem.currentTime.GetTime() + (dayEndHour - dayStartHour));
-        timeSystem.StartTime();
     }
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene(inventoryScene);
-        timeSystem.SetTime(dayStartHour);
-        timeSystem.StartTime();
-        timeSystem.StopTimeAt(dayEndHour);
+        RestartDay();
     }
 
     public void ContinueGame()

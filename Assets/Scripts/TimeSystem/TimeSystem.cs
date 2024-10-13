@@ -14,6 +14,8 @@ public class TimeSystem : MonoBehaviour
     [SerializeField] private float stopTime = 0f;
     [SerializeField] private bool hasTimer = false;
 
+    private float dayDuration = 0f;
+
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("TimeSystem");
@@ -31,7 +33,7 @@ public class TimeSystem : MonoBehaviour
     void Start()
     {
         isTimeStopped.value = true; // Start in stopped state
-        currentTime.SetTime(dayStartHour);
+        dayDuration = dayEndHour - dayStartHour;
     }
 
     void Update()
@@ -76,6 +78,22 @@ public class TimeSystem : MonoBehaviour
 
     public void StartNextDay()
     {
+        StopTime();
         currentTime.SetNextDay(dayStartHour);
+        StopTimeAfter(dayDuration);
+        StartTime();
+    }
+
+    public void RestartDay()
+    {
+        StopTime();
+        currentTime.RestartDay(dayStartHour);
+        StopTimeAfter(dayDuration);
+        StartTime();
+    }
+
+    public bool IsTimedOut()
+    {
+        return hasTimer && (stopTime == currentTime.GetTime());
     }
 }
