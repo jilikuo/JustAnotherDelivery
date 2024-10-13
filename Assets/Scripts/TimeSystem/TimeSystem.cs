@@ -11,7 +11,6 @@ public class TimeSystem : MonoBehaviour
     public BoolVariable isGamePaused;
     public BoolVariable isTimeStopped;
 
-    [SerializeField] private float time = 0f;
     [SerializeField] private float stopTime = 0f;
     [SerializeField] private bool hasTimer = false;
 
@@ -33,13 +32,12 @@ public class TimeSystem : MonoBehaviour
     {
         isTimeStopped.value = true; // Start in stopped state
         currentTime.SetTime(dayStartHour);
-        time = currentTime.GetTime();
     }
 
     void Update()
     {
         if (isGamePaused.value || isTimeStopped.value) return;
-        time += Time.deltaTime / framesPerHour;
+        float time = currentTime.GetTime() + Time.deltaTime / framesPerHour;
         if (hasTimer && (time > stopTime))
         {
             time = stopTime;
@@ -67,19 +65,17 @@ public class TimeSystem : MonoBehaviour
 
     public void StopTimeAfter(float timeInc)
     {
-        stopTime = time + timeInc;
+        stopTime = currentTime.GetTime() + timeInc;
         hasTimer = true;
     }
 
     public void SetTime(float newTime)
     {
-        time = newTime;
-        currentTime.SetTime(time);
+        currentTime.SetTime(newTime);
     }
 
     public void StartNextDay()
     {
         currentTime.SetNextDay(dayStartHour);
-        time = currentTime.GetTime();
     }
 }
