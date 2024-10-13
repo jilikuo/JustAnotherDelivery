@@ -19,8 +19,8 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
     [SerializeField] private Inventory inventory;
     [Header("Inventory Config defaults to Inventory.inventoryConfig")]
     [SerializeField] private InventoryConfigObject inventoryConfig;
-    [SerializeField] private Color highlightGood = new Color(0f, 1f, 0f, .75f);
-    [SerializeField] private Color highlightBad = new Color(1f, 0f, 0f, .75f);
+    [SerializeField] private Color highlightGood = new Color(0f, 1f, 0f, .40f);
+    [SerializeField] private Color highlightBad = new Color(1f, 0f, 0f, .40f);
     [Header("Derived fields")]
     [SerializeField] private GameObject inventoryLayout;
     [SerializeField] private GameObject gridObject;
