@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public string mainMenuScene = "MainMenuScene";
-    public string inventorySortingScene = "InventorySortingScene";
-    public string packageDeliveryScene = "PackageDeliveryScene";
-    public string upgradeMenuScene = "UpgradeMenuScene";
+    [SerializeField] private string mainMenuScene = "MainMenuScene";
+    [SerializeField] private string inventorySortingScene = "InventorySortingScene";
+    [SerializeField] private string packageDeliveryScene = "PackageDeliveryScene";
+    [SerializeField] private string upgradeMenuScene = "UpgradeMenuScene";
 
     private TimeSystem timeSystem;
     private int lastSceneIndex;
@@ -36,66 +36,45 @@ public class GameManager : MonoBehaviour
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            LoadNextScene();
+            SceneManager.LoadScene(mainMenuScene);
         }
 #endif
     }
 
-    private void Update()
-    {
-        if (timeSystem.IsTimedOut() && 
-            (SceneManager.GetActiveScene().buildIndex != lastSceneIndex))
-        {
-            Debug.Log("Ran out of time");
-            LoadUpgradeMenu();
-        }
-    }
-
     public void LoadNextScene()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        string currentSceneName = SceneManager.GetActiveScene().name;
 
-        //if the scene is the second to last, the day ends earlier, time should be stopped.
-        if (currentSceneIndex == (lastSceneIndex - 1))
+        if (currentSceneName == inventorySortingScene)
+        {
+            SceneManager.LoadScene(packageDeliveryScene);
+        }
+        else if (currentSceneName == packageDeliveryScene)
         {
             timeSystem.StopTime();
-            Debug.Log("Day ended before time ran out");
+            SceneManager.LoadScene(upgradeMenuScene);
         }
-        
-        if (currentSceneIndex < (lastSceneIndex))
-        {
-            SceneManager.LoadScene(currentSceneIndex + 1);
-        }
-        else
+        else if (currentSceneName == upgradeMenuScene)
         {
             LoadNewDay();
         }
     }
 
-    public void LoadUpgradeMenu()
-    {
-        SceneManager.LoadScene(upgradeMenuScene);
-    }
-
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene(mainMenuScene);
-    }
-
     public void RestartDay()
     {
-        SceneManager.LoadScene(inventorySortingScene);
         timeSystem.RestartDay();
+        SceneManager.LoadScene(inventorySortingScene);
     }
 
     public void LoadNewDay()
     {
-        SceneManager.LoadScene(inventorySortingScene);
         timeSystem.StartNextDay();
+        SceneManager.LoadScene(inventorySortingScene);
     }
 
     public void StartNewGame()
     {
+        timeSystem.SetTime(0f);
         RestartDay();
     }
 

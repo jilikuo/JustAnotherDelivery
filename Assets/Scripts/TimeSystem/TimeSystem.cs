@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TimeSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TimeSystem : MonoBehaviour
     public TimeObject currentTime;
     public BoolVariable isGamePaused;
     public BoolVariable isTimeStopped;
+    public UnityEvent timeoutEvent = new UnityEvent();
 
     [SerializeField] private float stopTime = 0f;
     [SerializeField] private bool hasTimer = false;
@@ -45,6 +47,7 @@ public class TimeSystem : MonoBehaviour
             time = stopTime;
             isTimeStopped.value = true;
             hasTimer = false;
+            timeoutEvent.Invoke();
         }
         currentTime.SetTime(time);
     }
@@ -90,10 +93,5 @@ public class TimeSystem : MonoBehaviour
         currentTime.RestartDay(dayStartHour);
         StopTimeAfter(dayDuration);
         StartTime();
-    }
-
-    public bool IsTimedOut()
-    {
-        return hasTimer && (stopTime == currentTime.GetTime());
     }
 }
