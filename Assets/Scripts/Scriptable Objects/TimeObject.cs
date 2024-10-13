@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu]
 [Serializable]
@@ -21,10 +21,10 @@ public class TimeObject : ScriptableObject
 
     public TimeObject(float value)
     {
-        Set(value);
+        SetTime(value);
     }
 
-    public void Set(float newTime)
+    public void SetTime(float newTime)
     {
         time = newTime;
         UpdateVars();

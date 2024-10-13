@@ -32,7 +32,7 @@ public class TimeSystem : MonoBehaviour
     void Start()
     {
         isTimeStopped.value = true; // Start in stopped state
-        currentTime.Set(dayStartHour);
+        currentTime.SetTime(dayStartHour);
         time = currentTime.GetTime();
     }
 
@@ -46,7 +46,7 @@ public class TimeSystem : MonoBehaviour
             isTimeStopped.value = true;
             hasTimer = false;
         }
-        currentTime.Set(time);
+        currentTime.SetTime(time);
     }
 
     public void StartTime()
@@ -74,7 +74,7 @@ public class TimeSystem : MonoBehaviour
     public void SetTime(float newTime)
     {
         time = newTime;
-        currentTime.Set(time);
+        currentTime.SetTime(time);
     }
 
     public void StartNextDay()
