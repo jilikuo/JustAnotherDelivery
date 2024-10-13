@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public string inventoryScene = "InventorySortingScene";
     public string mainMenuScene = "MainMenuScene";
-    public string packageScene = "PackageSortingScene";
-    public string upgradeScene = "UpgradeMenuScene";
+    public string inventorySortingScene = "InventorySortingScene";
+    public string packageDeliveryScene = "PackageDeliveryScene";
+    public string upgradeMenuScene = "UpgradeMenuScene";
 
     private TimeSystem timeSystem;
     private int lastSceneIndex;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadUpgradeMenu()
     {
-        SceneManager.LoadScene(upgradeScene);
+        SceneManager.LoadScene(upgradeMenuScene);
     }
 
     public void LoadMainMenu()
@@ -84,13 +84,13 @@ public class GameManager : MonoBehaviour
 
     public void RestartDay()
     {
-        SceneManager.LoadScene(inventoryScene);
+        SceneManager.LoadScene(inventorySortingScene);
         timeSystem.RestartDay();
     }
 
     public void LoadNewDay()
     {
-        SceneManager.LoadScene(inventoryScene);
+        SceneManager.LoadScene(inventorySortingScene);
         timeSystem.StartNextDay();
     }
 
