@@ -6,7 +6,11 @@ public class MinimapAvatar : MonoBehaviour
 {
     public GameObject playerObject;
     public GameObject avatarObject;
-    public int stepSize = 10;
+    public float horizontalFactor = -2.7f; // - means the world coordinates are opposite to UI coordinates, 2 is the relation between world space and UI space
+    public float verticalFactor = -2.875f;
+
+    public int rotationFactor = -1;
+    public int rotationDifference = 90; // 90 degrees difference between world rotation and UI rotation
 
     private Transform playerTransform;
     private RectTransform avatarRectTransform;
@@ -54,7 +58,8 @@ public class MinimapAvatar : MonoBehaviour
 
     private void MovePlayerAvatar()
     {
-        Vector2 targetPos = new(playerTransform.position.x * stepSize, playerTransform.position.y * stepSize);
+        Vector2 targetPos = new(playerTransform.position.x * horizontalFactor, playerTransform.position.z * verticalFactor);
         avatarRectTransform.anchoredPosition = targetPos;
+        avatarRectTransform.rotation = Quaternion.Euler(0, 0, (playerTransform.eulerAngles.y + rotationDifference) * rotationFactor);
     }
 }
