@@ -15,16 +15,11 @@ namespace SaveSystem
     {
         private GameData gameData = new GameData();
 
-        [SerializeField]
-        private string autoSaveDirectory;
-        [SerializeField]
-        private string autoSaveFilename = "autosave.dat";
-        [SerializeField]
-        private int updatesPerSave = 600;
+        [SerializeField] private string autoSaveDirectory;
+        [SerializeField] private string autoSaveFilename = "autosave.dat";
+        [SerializeField] private int minSceneSaveIndex = 2;
 
         private FileManager autoSaveFileManager;
-
-        private int updateCounter = 2; // Ensure everything is updated, before first save
 
         public static DataManager instance;
 
@@ -43,38 +38,29 @@ namespace SaveSystem
                 Destroy(gameObject);
             }
         }
-
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
-            if (--updateCounter > 0)
-            {
-                return;
-            }
-            updateCounter = updatesPerSave;
-            UpdateAndSaveToFile();
+            SceneManager.activeSceneChanged += ChangedActiveScene;
         }
-        private void OnApplicationQuit()
+
+        private void ChangedActiveScene(Scene current, Scene next)
         {
-            SaveToFile();
+            UpdateAndSaveToFile();
         }
 
         public bool HasLoadedGameData()
         {
-            return (gameData != null) && (gameData.sceneIndex >= 0);
+            Debug.Log("GameData loaded: " + (gameData != null));
+            if (gameData != null) Debug.Log("GameData Scene name: " + gameData.sceneName + " index: " + gameData.sceneIndex);
+            return (gameData != null) && (gameData.sceneIndex >= minSceneSaveIndex);
         }
 
-        public bool Load(ISaveable saveable)
+        public void LoadGame()
         {
-            //Debug.Log("Loading class: " + saveable.GetType().Name);
-            //Debug.Log("instance.HasCurrentSceneData(): " + instance.HasCurrentSceneData());
-            if (!instance.HasLoadedGameData())
+            foreach (var saveable in FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveable>().ToArray())
             {
-                //Debug.Log("Loading disabled for class: " + saveable.GetType().Name);
-                return false;
+                saveable.Load(gameData);
             }
-
-            return saveable.Load(gameData);
         }
 
         public int GetLastSceneIndex()
@@ -110,18 +96,20 @@ namespace SaveSystem
 
         private bool UpdateGameData()
         {
-            IEnumerable<ISaveable> saveableObjs = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
-            if (!saveableObjs.Any())
+            if (SceneManager.GetActiveScene().buildIndex < minSceneSaveIndex)
             {
                 return false;
             }
-            if (gameData == null) gameData = new GameData();
+            IEnumerable<ISaveable> saveableObjs = FindObjectsOfType<MonoBehaviour>().OfType<ISaveable>();
+            List<string> destroyedObjectIds = ((gameData != null) && (gameData.destroyedObjectIds != null)) ? gameData.destroyedObjectIds : new List<string>();
+            gameData = new GameData();
             gameData.sceneName = SceneManager.GetActiveScene().name;
             gameData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
             foreach (var obj in saveableObjs)
             {
                 obj.Save(gameData);
             }
+            gameData.destroyedObjectIds = destroyedObjectIds;
             return true;
         }
 

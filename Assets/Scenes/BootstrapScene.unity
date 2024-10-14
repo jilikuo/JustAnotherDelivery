@@ -154,7 +154,7 @@ MonoBehaviour:
   inventoryConfig: {fileID: 11400000, guid: 7e87a4fdda910844e91ad016e8c65d29, type: 2}
   packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
   packageAddressGen: {fileID: 11400000, guid: 0e58b94f55cac784e8f77a9f66c0d9dd, type: 2}
-  packagesAddressBackup: []
+  packageAddressBackup: []
   packages: []
 --- !u!4 &1021089625
 Transform:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoSaveDirectory: 
   autoSaveFilename: autosave.dat
-  updatesPerSave: 600
+  minSceneSaveIndex: 2
 --- !u!4 &1087678563
 Transform:
   m_ObjectHideFlags: 0
@@ -305,11 +305,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30783288d0524b468968de971580b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGamePausedRef: {fileID: 11400000, guid: eb2624745f2374f41b95777887ed2b2b, type: 2}
   dayStartHour: 8
   dayEndHour: 18
   framesPerHour: 60
   currentTime: {fileID: 11400000, guid: 50ffc14d05f05f844a239f0735e96a5a, type: 2}
-  isGamePaused: {fileID: 11400000, guid: eb2624745f2374f41b95777887ed2b2b, type: 2}
   isTimeStopped: {fileID: 11400000, guid: 7eef25d0ece6cc14d87e5ac3b851e777, type: 2}
   timeoutEvent:
     m_PersistentCalls:
@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ea935c0c6ec6b42b6b44b29bd767e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryConfigs: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

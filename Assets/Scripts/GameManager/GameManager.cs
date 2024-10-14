@@ -1,3 +1,5 @@
+using SaveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +16,9 @@ public class GameManager : MonoBehaviour
         UpgradeMenuScene
     }
     public static GameManager instance;
+
+    [Header("Data for upgrades")]
+    public List<InventoryConfigObject> inventoryConfigs;
 
     private TimeSystem timeSystem;
 
@@ -86,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     public void ContinueGame()
     {
-        // TODO: Add implementation
+        SaveSystem.DataManager.instance.LoadGame();
+        SceneManager.LoadScene(SaveSystem.DataManager.instance.GetLastSceneIndex());
     }
 }

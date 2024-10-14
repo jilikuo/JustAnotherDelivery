@@ -31,6 +31,13 @@ public abstract class RandomObjectGenerator<T> : ScriptableObject where T : clas
         }
     }
 
+    // Returns a copy of the entry with the given key
+    public T GetEntryCopy(string key)
+    {
+        var entry = GetEntry(key);
+        return (entry == null) ? entry : CopyEntry(entry);
+    }
+
     // Returns the entry with the given key
     public T GetEntry(string key)
     {

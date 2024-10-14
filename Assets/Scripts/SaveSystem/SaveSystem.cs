@@ -24,6 +24,14 @@ namespace SaveSystem
         public int sceneIndex = -1;
         public string sceneName;
 
+        // All scenes
+        public List<string> timeSystemData = new List<string>();
+
+        public List<string> inventoryData = new List<string>();
+        public List<string> inventoryPackageAddressGenData = new List<string>();
+        public List<string> inventoryPackageAddressBackupData = new List<string>();
+        public List<string> inventoryPackagesData = new List<string>();
+
         // Destroyed objects
         public List<string> destroyedObjectIds = new List<string>();
     }

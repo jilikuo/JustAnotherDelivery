@@ -1,17 +1,19 @@
 using DragDrop;
+using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, ISaveable
 {
     [Header("Inventory Configuration")]
     public InventoryConfigObject inventoryConfig;
     public RandomGameObjectGenerator packageIconGen;
     public RandomStringGenerator packageAddressGen;
-    public List<string> packagesAddressBackup;
+    public List<string> packageAddressBackup;
 
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
@@ -32,10 +34,58 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        if (packagesAddressBackup == null)
+        if (packageAddressBackup == null)
         {
-            packagesAddressBackup = new List<string>(packageAddressGen.entries);
+            packageAddressBackup = new List<string>(packageAddressGen.entries);
         }
+    }
+
+    public void Save(GameData gameData)
+    {
+        gameData.inventoryData = new List<string>();
+        var data = gameData.inventoryData;
+        ISaveable.AddKey(data, "inventoryConfigLabel", inventoryConfig.label);
+
+        gameData.inventoryPackageAddressGenData = new List<string>(packageAddressGen.entries);
+        gameData.inventoryPackageAddressBackupData = new List<string>(packageAddressBackup);
+
+        gameData.inventoryData = new List<string>();
+        data = gameData.inventoryPackagesData;
+        foreach ( var package in packages)
+        {
+            ISaveable.AddKey(data, package.iconName, package.address);
+        }
+    }
+
+    public bool Load(GameData gameData)
+    {
+        foreach (var key_value in gameData.inventoryData)
+        {
+            var parsed = ISaveable.ParseKey(key_value);
+            string key = parsed[0];
+            string value = parsed[1];
+            //Debug.Log("Loading key: " + key + " value: " + value);
+            switch (key)
+            {
+                case "inventoryConfigLabel":
+                    inventoryConfig = GameManager.instance.inventoryConfigs.Find(x => x.label == value);
+                    break;
+            }
+        }
+
+        packageAddressGen.entries = new List<string>(gameData.inventoryPackageAddressGenData);
+        packageAddressBackup = new List<string>(gameData.inventoryPackageAddressBackupData);
+
+        packages = new List<Package>();
+        foreach (var key_value in gameData.inventoryPackagesData)
+        {
+            var parsed = ISaveable.ParseKey(key_value);
+            string iconName = parsed[0];
+            string address = parsed[1];
+            packages.Add(new Package(iconName, address));
+        }
+
+        return true;
     }
 
     public void AddItem(string iconName, string address)
@@ -47,7 +97,7 @@ public class Inventory : MonoBehaviour
     public void Reset()
     {
         packages = new List<Package>();
-        packageAddressGen.entries = new List<string>(packagesAddressBackup);
+        packageAddressGen.entries = new List<string>(packageAddressBackup);
     }
 
     public void AddItem(GameObject item)
