@@ -93,5 +93,6 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.DataManager.instance.LoadGame();
         SceneManager.LoadScene(SaveSystem.DataManager.instance.GetLastSceneIndex());
+        timeSystem.StartTime();
     }
 }
