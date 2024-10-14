@@ -9,8 +9,9 @@ public class Inventory : MonoBehaviour
 {
     [Header("Inventory Configuration")]
     public InventoryConfigObject inventoryConfig;
-    public RandomStringGenerator packageAddressGen;
     public RandomGameObjectGenerator packageIconGen;
+    public RandomStringGenerator packageAddressGen;
+    public List<string> packagesAddressBackup;
 
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
@@ -29,6 +30,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (packagesAddressBackup == null)
+        {
+            packagesAddressBackup = new List<string>(packageAddressGen.entries);
+        }
+    }
+
     public void AddItem(string iconName, string address)
     {
         packages.Add(new Package(iconName, address));
@@ -38,6 +47,7 @@ public class Inventory : MonoBehaviour
     public void Reset()
     {
         packages = new List<Package>();
+        packageAddressGen.entries = new List<string>(packagesAddressBackup);
     }
 
     public void AddItem(GameObject item)

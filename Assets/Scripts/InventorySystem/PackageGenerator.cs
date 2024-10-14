@@ -9,47 +9,29 @@ using UnityEngine.UI;
 
 public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 {
-    [SerializeField] private RandomStringGenerator initPackageAddressGen;
-    [SerializeField] private RandomGameObjectGenerator initPackageIconGen;
-    [SerializeField] private RandomStringGenerator packageAddressGen;
     [SerializeField] private RandomGameObjectGenerator packageIconGen;
+    [SerializeField] private RandomStringGenerator packageAddressGen;
     [SerializeField] private float imageScale = 75;
+
+    private Inventory inventory;
 
     private void Start()
     {
-        if (initPackageAddressGen == null)
+        var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        if (inventory == null)
         {
-            var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-            if (inventory == null)
-            {
-                Debug.LogError("Failed to locate Inventory");
-            }
-            initPackageAddressGen = inventory.packageAddressGen;
-            if (initPackageAddressGen == null)
-            {
-                Debug.LogError("Failed to locate initPackageAddressGen");
-            }
+            Debug.LogError("Failed to locate Inventory");
         }
-        if (initPackageIconGen == null)
+        packageIconGen = inventory.packageIconGen;
+        if (packageIconGen == null)
         {
-            var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-            if (inventory == null)
-            {
-                Debug.LogError("Failed to locate Inventory");
-            }
-            initPackageIconGen = inventory.packageIconGen;
-            if (initPackageIconGen == null)
-            {
-                Debug.LogError("Failed to locate initPackageIconGen");
-            }
+            Debug.LogError("Failed to locate packageIconGen");
         }
-        Reset();
-    }
-
-    public void Reset()
-    {
-        packageAddressGen = initPackageAddressGen.Clone();
-        packageIconGen = initPackageIconGen.Clone();
+        packageAddressGen = inventory.packageAddressGen;
+        if (packageAddressGen == null)
+        {
+            Debug.LogError("Failed to locate packageAddressGen");
+        }
     }
 
     public DragDropObject CreateDragDrop(GameObject parent)

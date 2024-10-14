@@ -47,21 +47,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
                 Debug.LogError("Failed to locate inventoryConfig");
             }
         }
-        Reset();
-    }
 
-    private void Update()
-    {
-        HighlightIntersecting(DragDropObject.currentDragDropObject);
-    }
-
-    private bool IsInit()
-    {
-        return inventoryLayout != null;
-    }
-
-    public void Reset()
-    {
         if (inventoryLayout != null)
         {
             Destroy(inventoryLayout.gameObject);
@@ -104,9 +90,18 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
             gridObject = null;
             inventorySlots = null;
         }
-
-        inventory.Reset();
     }
+
+    private void Update()
+    {
+        HighlightIntersecting(DragDropObject.currentDragDropObject);
+    }
+
+    private bool IsInit()
+    {
+        return inventoryLayout != null;
+    }
+
     public void SetHighlight(Color color)
     {
         layoutBackground.color = color;

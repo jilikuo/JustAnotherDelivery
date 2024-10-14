@@ -55,16 +55,6 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
         }
     }
 
-    public void Reset()
-    {
-        if (nextItem != null)
-        {
-            Destroy(nextItem.gameObject);
-            nextItem = null;
-        }
-        packageGenerator.Reset();
-    }
-
     public void RemoveDragDropObject(DragDropObject item)
     {
         if (item  == null)
