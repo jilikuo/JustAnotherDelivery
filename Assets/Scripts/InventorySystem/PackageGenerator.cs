@@ -73,7 +73,7 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         icon.transform.position = parent.transform.position;
 
         var dragDrop = icon.AddComponent<DragDropPackage>();
-        dragDrop.data = new Package(packageIcon, address);
+        dragDrop.data = new Package(packageIcon.name, address);
 
         return dragDrop;
     }

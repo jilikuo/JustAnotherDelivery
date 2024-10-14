@@ -16,9 +16,9 @@ public class Inventory : ScriptableObject
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
 
-    public void AddItem(GameObject icon, string address)
+    public void AddItem(string iconName, string address)
     {
-        packages.Add(new Package(icon, address));
+        packages.Add(new Package(iconName, address));
         Debug.Log("Added item to Inventory: " + address);
     }
 
@@ -75,12 +75,12 @@ public class Inventory : ScriptableObject
 [Serializable]
 public class Package
 {
-    public GameObject icon;
+    public string iconName;
     public string address;
 
-    public Package(GameObject icon, string address)
+    public Package(string iconName, string address)
     {
-        this.icon = icon;
+        this.iconName = iconName;
         this.address = address;
     }
 }

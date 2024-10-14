@@ -45,7 +45,7 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
             entry.GetComponentInChildren<TextMeshProUGUI>().text = package.address;
             // Fill the image location of the entry with the package icon
             var entryIcon = entry.GetComponentInChildren<Image>();
-            var packageIcon = Instantiate(package.icon, entryIcon.transform);
+            var packageIcon = Instantiate(inventory.packageIconGen.GetEntry(package.iconName), entryIcon.transform);
             packageIcon.gameObject.CenterAndStretchToParent();
 
             var dragDrop = entry.AddComponent<DragDropPackage>();
