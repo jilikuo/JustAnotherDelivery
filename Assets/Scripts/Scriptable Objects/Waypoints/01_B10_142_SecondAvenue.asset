@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
-  m_Name: 04_A9_
+  m_Name: 01_B10_142_SecondAvenue
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 1
+  addressNumber: 142
   position:
-    x: -22
+    x: -42
     y: 1
-    z: -29
+    z: 8
   rotation:
-    x: -10
-    y: -130
+    x: -20
+    y: -155
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  eastWaypoint: {fileID: 11400000, guid: c03fa9bd4c856ee4182965fca6a4c6d4, type: 2}
-  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  westWaypoint: {fileID: 11400000, guid: 805564171113b924aac3a34b6fefd9b9, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 548320923f010fb40bfa256779cb573c, type: 2}
+  southWaypoint: {fileID: 11400000, guid: d5965a80743d44b40b9dd2afefbfdc9b, type: 2}
+  westWaypoint: {fileID: 11400000, guid: fe99f79f011344348a0c26d0079c0b1b, type: 2}
   isValid: 1
   isAccessible: 1

@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
-  m_Name: 04_A6_
+  m_Name: 06_A3_1267_FirstAvenue
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 0
+  addressNumber: 1267
   position:
-    x: 11
+    x: 63
     y: 1
     z: -28
   rotation:
-    x: -20
-    y: -160
+    x: -15
+    y: -180
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  eastWaypoint: {fileID: 11400000, guid: 805564171113b924aac3a34b6fefd9b9, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 47e6cdf05d7fa1f4c9d7fc8dc941ca43, type: 2}
   southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  westWaypoint: {fileID: 11400000, guid: 47e6cdf05d7fa1f4c9d7fc8dc941ca43, type: 2}
+  westWaypoint: {fileID: 11400000, guid: 4f8a595050a83a248b4f8f67f59f8f85, type: 2}
   isValid: 1
   isAccessible: 1

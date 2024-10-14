@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
-  m_Name: 00_C10_HQ
+  m_Name: 05_B2_2_SecondAvenue
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 1
+  addressNumber: 2
   position:
-    x: -42
+    x: 84
     y: 1
-    z: 32
+    z: 4.5
   rotation:
-    x: -10
-    y: -123
+    x: -9
+    y: -180
     z: 0
-  northWaypoint: {fileID: 11400000, guid: faf2c210b23e79b4396abbd4711a962b, type: 2}
-  eastWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  southWaypoint: {fileID: 11400000, guid: 1a8fe85ba0031a84685a620304f0cf71, type: 2}
+  northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 3d63f7d91b379a44e9f234893aa541d1, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   westWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   isValid: 1
   isAccessible: 1

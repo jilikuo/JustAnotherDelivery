@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
-  m_Name: 03_D12_
+  m_Name: 08_C1_999_FirstLane
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 0
+  addressNumber: 999
   position:
-    x: -72
+    x: 108
     y: 1
-    z: 47
+    z: 25
   rotation:
-    x: -17
-    y: -107
+    x: -15
+    y: -80
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   eastWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  westWaypoint: {fileID: 11400000, guid: ca06e62548490b04e93f8d9447c5a49c, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 27303d7d17df3ab49972acc61d3874d5, type: 2}
+  westWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   isValid: 1
   isAccessible: 1

@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
-  m_Name: 03_A7_
+  m_Name: 00_C10_190_HQ
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 6
+  addressNumber: 190
   position:
-    x: -12
+    x: -42
     y: 1
-    z: -27
+    z: 32
   rotation:
     x: -10
-    y: -140
+    y: -123
     z: 0
-  northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
-  eastWaypoint: {fileID: 11400000, guid: a80222b86e666e54785141b640d9f262, type: 2}
-  southWaypoint: {fileID: 11400000, guid: fe99f79f011344348a0c26d0079c0b1b, type: 2}
-  westWaypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
+  northWaypoint: {fileID: 11400000, guid: faf2c210b23e79b4396abbd4711a962b, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 1a8fe85ba0031a84685a620304f0cf71, type: 2}
+  westWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   isValid: 1
   isAccessible: 1
