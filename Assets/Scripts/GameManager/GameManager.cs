@@ -5,15 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum SceneIndex
+    {
+        BootstrapScene,
+        MainMenuScene,
+        SortingInventoryScene,
+        PackageDeliveryScene,
+        UpgradeMenuScene
+    }
     public static GameManager instance;
 
-    [SerializeField] private string mainMenuScene = "MainMenuScene";
-    [SerializeField] private string inventorySortingScene = "InventorySortingScene";
-    [SerializeField] private string packageDeliveryScene = "PackageDeliveryScene";
-    [SerializeField] private string upgradeMenuScene = "UpgradeMenuScene";
-
     private TimeSystem timeSystem;
-    private int lastSceneIndex;
 
     private void Awake()
     {
@@ -31,45 +33,49 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
-        lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
 
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            SceneManager.LoadScene(mainMenuScene);
+            SceneManager.LoadScene(1);
         }
 #endif
     }
 
     public void LoadNextScene()
     {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-
-        if (currentSceneName == inventorySortingScene)
+        int index = SceneManager.GetActiveScene().buildIndex;
+        int next_index = index + 1;
+        switch ((SceneIndex)SceneManager.GetActiveScene().buildIndex)
         {
-            SceneManager.LoadScene(packageDeliveryScene);
-        }
-        else if (currentSceneName == packageDeliveryScene)
-        {
-            timeSystem.StopTime();
-            SceneManager.LoadScene(upgradeMenuScene);
-        }
-        else if (currentSceneName == upgradeMenuScene)
-        {
-            LoadNewDay();
-        }
+            case SceneIndex.BootstrapScene:
+            case SceneIndex.MainMenuScene:
+            case SceneIndex.SortingInventoryScene:
+                SceneManager.LoadScene(next_index);
+                break;
+            case SceneIndex.PackageDeliveryScene:
+                timeSystem.StopTime();
+                SceneManager.LoadScene(next_index);
+                break;
+            case SceneIndex.UpgradeMenuScene:
+                LoadNewDay();
+                break;
+            default:
+                Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
+                break;
+        };
     }
 
     public void RestartDay()
     {
         timeSystem.RestartDay();
-        SceneManager.LoadScene(inventorySortingScene);
+        SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
     }
 
     public void LoadNewDay()
     {
         timeSystem.StartNextDay();
-        SceneManager.LoadScene(inventorySortingScene);
+        SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
     }
 
     public void StartNewGame()
