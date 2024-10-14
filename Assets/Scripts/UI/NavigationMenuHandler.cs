@@ -8,10 +8,10 @@ using UnityEngine.UI;
 public class NavigationMenuHandler : MonoBehaviour
 {
     public GameObject movementBar;
-    public GameObject moveAheadButton;
-    public GameObject moveBackButton;
-    public GameObject moveLeftButton;
-    public GameObject moveRightButton;
+    public GameObject moveNorthButton;
+    public GameObject moveSouthButton;
+    public GameObject moveWestButton;
+    public GameObject moveEastButton;
 
     public GameObject interactionBar;
     public GameObject nameLabel;
@@ -30,6 +30,8 @@ public class NavigationMenuHandler : MonoBehaviour
     private bool canFlee = true;
     private bool interactionBarIsDirty = false;
 
+    private List<GameObject> movementButtons;
+
     private void Awake()
     {
         #region Null Checks
@@ -43,7 +45,7 @@ public class NavigationMenuHandler : MonoBehaviour
             throw new System.Exception("Interaction Bar not set in NavigationMenuHandler");
         }
 
-        if (moveAheadButton == null || moveBackButton == null || moveLeftButton == null || moveRightButton == null)
+        if (moveNorthButton == null || moveSouthButton == null || moveWestButton == null || moveEastButton == null)
         {
             throw new System.Exception("One or more movement buttons not set in NavigationMenuHandler");
         }
@@ -73,6 +75,14 @@ public class NavigationMenuHandler : MonoBehaviour
         activeBar = movementBar;
 
         interactionBar.SetActive(false);
+
+        movementButtons = new List<GameObject>
+        {
+            moveNorthButton,
+            moveSouthButton,
+            moveWestButton,
+            moveEastButton
+        };
     }
 
     private void Update()
@@ -119,27 +129,27 @@ public class NavigationMenuHandler : MonoBehaviour
     {
         switch (direction)
         {
-            case Direction.Forward:
-                moveAheadButton.SetActive(false);
+            case Direction.North:
+                moveNorthButton.SetActive(false);
                 break;
-            case Direction.Backward:
-                moveBackButton.SetActive(false);
+            case Direction.South:
+                moveSouthButton.SetActive(false);
                 break;
-            case Direction.Left:
-                moveLeftButton.SetActive(false);
+            case Direction.West:
+                moveWestButton.SetActive(false);
                 break;
-            case Direction.Right:
-                moveRightButton.SetActive(false);
+            case Direction.East:
+                moveEastButton.SetActive(false);
                 break;
         }
     }
 
-    public void EnableAllMovement()
+    public void UpdateAllMovementButtons()
     {
-        moveAheadButton.SetActive(true);
-        moveBackButton.SetActive(true);
-        moveLeftButton.SetActive(true);
-        moveRightButton.SetActive(true);
+        foreach (GameObject button in movementButtons)
+        {
+            button.GetComponent<NavButtonScript>().CheckCanMove();
+        }
     }
 
     private void UpdateInteractionButton()
