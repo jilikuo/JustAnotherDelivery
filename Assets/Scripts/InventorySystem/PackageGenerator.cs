@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 {
-    [Header("Init Packages List defaults to Player.inventory.packagesList")]
     [SerializeField] private RandomStringGenerator initPackageAddressGen;
     [SerializeField] private RandomGameObjectGenerator initPackageIconGen;
     [SerializeField] private RandomStringGenerator packageAddressGen;
@@ -20,12 +19,12 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
     {
         if (initPackageAddressGen == null)
         {
-            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            if (player == null)
+            var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+            if (inventory == null)
             {
-                Debug.LogError("Failed to locate Player");
+                Debug.LogError("Failed to locate Inventory");
             }
-            initPackageAddressGen = player.inventory.packageAddressGen;
+            initPackageAddressGen = inventory.packageAddressGen;
             if (initPackageAddressGen == null)
             {
                 Debug.LogError("Failed to locate initPackageAddressGen");
@@ -33,12 +32,12 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         }
         if (initPackageIconGen == null)
         {
-            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            if (player == null)
+            var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+            if (inventory == null)
             {
-                Debug.LogError("Failed to locate Player");
+                Debug.LogError("Failed to locate Inventory");
             }
-            initPackageIconGen = player.inventory.packageIconGen;
+            initPackageIconGen = inventory.packageIconGen;
             if (initPackageIconGen == null)
             {
                 Debug.LogError("Failed to locate initPackageIconGen");

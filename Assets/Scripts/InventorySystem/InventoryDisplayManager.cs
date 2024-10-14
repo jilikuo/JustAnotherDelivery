@@ -15,7 +15,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
     [SerializeField] private TextMeshProUGUI inventoryLabel;
     [SerializeField] private GameObject inventoryBackground;
     [Header("Optional fields")]
-    [Header("Inventory defaults to PlayerInventory")]
+    [Header("Inventory defaults to Inventory")]
     [SerializeField] private Inventory inventory;
     [Header("Inventory Config defaults to Inventory.inventoryConfig")]
     [SerializeField] private InventoryConfigObject inventoryConfig;
@@ -33,12 +33,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
     {
         if (inventory == null)
         {
-            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            if (player == null)
-            {
-                Debug.LogError("Failed to locate Player");
-            }
-            inventory = player.inventory;
+            inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
             if (inventory == null)
             {
                 Debug.LogError("Failed to locate inventory");

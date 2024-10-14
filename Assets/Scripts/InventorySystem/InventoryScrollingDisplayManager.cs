@@ -16,7 +16,7 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
     [SerializeField] private GameObject scrollViewContent;
     [SerializeField] private GameObject inventoryEntryPrefab;
     [Header("Optional fields")]
-    [Header("Inventory defaults to PlayerInventory")]
+    [Header("Inventory defaults to Inventory")]
     [SerializeField] private Inventory inventory;
     [Header("Derived fields")]
     [SerializeField] private List<GameObject> inventoryEntries = new List<GameObject>();
@@ -26,12 +26,7 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
     {
         if (inventory == null)
         {
-            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            if (player == null)
-            {
-                Debug.LogError("Failed to locate Player");
-            }
-            inventory = player.inventory;
+            inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
             if (inventory == null)
             {
                 Debug.LogError("Failed to locate inventory");

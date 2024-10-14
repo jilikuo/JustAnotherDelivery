@@ -18,7 +18,7 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
     [Header("Derived fields")]
     [SerializeField] private DragDropObject nextItem;
 
-    private void Awake()
+    private void Start()
     {
         if (nextItemLabel == null)
         {

@@ -5,16 +5,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
-public class Inventory : ScriptableObject
+public class Inventory : MonoBehaviour
 {
-    [Header("Next Inventory Configuration")]
+    [Header("Inventory Configuration")]
     public InventoryConfigObject inventoryConfig;
     public RandomStringGenerator packageAddressGen;
     public RandomGameObjectGenerator packageIconGen;
 
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
+
+    void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Inventory");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 
     public void AddItem(string iconName, string address)
     {
