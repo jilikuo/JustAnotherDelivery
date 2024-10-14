@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UICamera : MonoBehaviour
 {
     public static UICamera instance;
-    public Transform playerTransform;
+    public GameObject player;
+
+    public bool isSet = false;
 
     private void Awake()
     {
@@ -22,18 +25,36 @@ public class UICamera : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name == "PackageDeliveryScene" && !isSet)
+        {
+            SetCamera();
+        }
+
+        if (isSet && SceneManager.GetActiveScene().name != "PackageDeliveryScene")
+        {
+            isSet = false;
+        }
+
         MoveCamera();
     }
 
     public void MoveCamera()
     {
-        if (this.transform.position != playerTransform.position)
+        if (this.transform.position != player.transform.position)
         {
-            this.transform.position = playerTransform.position;
+            this.transform.position = player.transform.position;
         }
-        if (this.transform.rotation != playerTransform.rotation)
+        if (this.transform.rotation != player.transform.rotation)
         {
-            this.transform.rotation = playerTransform.rotation;
+            this.transform.rotation = player.transform.rotation;
         }
+    }
+
+    private void SetCamera()
+    {
+        player.GetComponent<MovementScript>().RealignToWaypoint();
+        this.transform.position = player.transform.position;
+        this.transform.rotation = player.transform.rotation;
+        isSet = true;
     }
 }

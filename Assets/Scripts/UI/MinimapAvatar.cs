@@ -14,7 +14,7 @@ public class MinimapAvatar : MonoBehaviour
 
     private Transform playerTransform;
     private RectTransform avatarRectTransform;
-    private bool playerMoved = false;
+    private bool playerMoved = true;
 
     private void Start()
     {

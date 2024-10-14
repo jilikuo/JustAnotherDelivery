@@ -103,4 +103,15 @@ public class MovementScript : MonoBehaviour
                 throw new System.ArgumentException("Invalid Direction received at CheckDirection method");
         }
     }
+
+    public void RealignToWaypoint()
+    {
+        playerTransform.position = new Vector3(currentWaypoint.position.x,
+                                       currentWaypoint.position.y,
+                                       currentWaypoint.position.z);
+
+        playerTransform.rotation = Quaternion.Euler(currentWaypoint.rotation.x,
+                                                    currentWaypoint.rotation.y,
+                                                    currentWaypoint.rotation.z);
+    }
 }
