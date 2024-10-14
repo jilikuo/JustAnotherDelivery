@@ -1459,23 +1459,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -200
+      value: -0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -200
-      objectReference: {fileID: 0}
-    - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1507,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 242937143088788410, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1525,24 +1513,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773080873140145224, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8750084805730096035, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_Name
       value: TimeoutPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8750084805730096035, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
---- !u!1 &509519747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8750084805730096035, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-  m_PrefabInstance: {fileID: 509519746}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &531933753
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,7 +5616,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
   avatarObject: {fileID: 772166692}
-  positionFactor: -2
+  horizontalFactor: -2.7
+  verticalFactor: -2.875
+  rotationFactor: -1
+  rotationDifference: 90
 --- !u!1 &1445029234
 GameObject:
   m_ObjectHideFlags: 0
@@ -7182,7 +7168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918980cf43b071e43a9ff618bbd8c1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeoutPanel: {fileID: 509519747}
 --- !u!1 &1828635558
 GameObject:
   m_ObjectHideFlags: 0

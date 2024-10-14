@@ -8,6 +8,7 @@ TagManager:
   - TimeSystem
   - UICamera
   - Inventory
+  - TimeoutPanel
   layers:
   - Default
   - TransparentFX

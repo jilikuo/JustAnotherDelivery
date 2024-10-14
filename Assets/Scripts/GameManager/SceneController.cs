@@ -5,33 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private GameObject timeoutPanel;
+    [Header("Optional fields")]
+    [SerializeField] private TimeSystem timeSystem;
+    [SerializeField] private GameObject timeoutPanelParent;
+
+    private void Start()
+    {
+        if (timeoutPanelParent == null)
+        {
+            timeoutPanelParent = GameObject.FindGameObjectWithTag("TimeoutPanel");
+        }
+        if (timeSystem == null)
+        {
+            timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
+        }
+        timeSystem.timeoutEvent.AddListener(ShowTimeoutPanel);
+    }
 
     public void LoadNextScene()
     {
         GameManager.instance.LoadNextScene();
     }
 
-    void OnEnable()
-    {
-        if (timeoutPanel != null)
-        {
-            timeoutPanel.SetActive(false);
-            GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>().timeoutEvent.AddListener(ShowTimeoutPanel);
-        }
-    }
-
-    void OnDisable()
-    {
-        if (timeoutPanel != null)
-        {
-            GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>().timeoutEvent.RemoveListener(ShowTimeoutPanel);
-        }
+    public void RestartDay()
+    { 
+        GameManager.instance.RestartDay();
     }
 
     private void ShowTimeoutPanel()
     {
-        Debug.Log("Ran out of time");
-        timeoutPanel.SetActive(true);
+        if (timeoutPanelParent != null)
+        {
+            Debug.Log("Ran out of time");
+            // timeoutPanelParent is enabled to make it Findable.
+            // It has one child - the actual panel, which is disabled.
+            timeoutPanelParent.transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 }
