@@ -10,24 +10,66 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
 {
-    [SerializeField] private TextMeshProUGUI recycleItemLabel;
-    [SerializeField] private GameObject recycleItemBackground;
+    [SerializeField] private Color highlightColor = new Color(0f, 1f, 0f, .40f);
+    // TODO: Remove itemText, if it will not be used in final UI
+    [SerializeField] private TextMeshProUGUI itemText;
+    [SerializeField] private GameObject itemBackground;
     [SerializeField] private PackageGenerator packageGenerator;
+
+    private Image backgroundImage;
+    private Color backgroundColor;
 
     private void Awake()
     {
-        if (recycleItemLabel == null)
+        if (itemText == null)
         {
-            Debug.LogError("recycleItemLabel is not set");
+            Debug.LogError("itemText is not set");
         }
-        if (recycleItemBackground == null)
+        if (itemBackground == null)
         {
-            Debug.LogError("recycleItemBackground is not set");
+            Debug.LogError("itemBackground is not set");
         }
         if (packageGenerator == null)
         {
             Debug.LogError("packageGenerator is not set");
         }
+    }
+
+    private void Start()
+    {
+        if (itemText != null)
+        {
+            itemText.GetComponent<TMPro.TextMeshProUGUI>().text = "";
+        }
+        backgroundImage = itemBackground.GetComponent<Image>();
+        backgroundColor = backgroundImage.color;
+    }
+
+    private void Update()
+    {
+        var item = DragDropObject.currentDragDropObject;
+        if (item == null)
+        {
+            ClearHighlight();
+            return;
+        }
+        if (!backgroundImage.GetWorldBounds().Intersects(item.GetWorldBounds()))
+        {
+            ClearHighlight();
+            return;
+        }
+        SetHighlight();
+    }
+
+    public void SetHighlight()
+    {
+        backgroundImage.color = highlightColor;
+    }
+
+
+    public void ClearHighlight()
+    {
+        backgroundImage.color = backgroundColor;
     }
 
     public void AddDragDropObject(DragDropObject item)
