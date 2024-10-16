@@ -1,0 +1,12 @@
+Font: Old Standard TT  Style: Regular
+Point Size: 69   SP/PD Ratio: 7.2%
+
+Characters included: 99/99
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------
