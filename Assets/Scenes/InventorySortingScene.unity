@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimeoutPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8750084805730096035, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
