@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private BoolVariable isGamePaused;
+    [SerializeField] private float money;
 
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
@@ -25,7 +26,6 @@ public class GameManager : MonoBehaviour
     private TimeSystem timeSystem;
     private Inventory inventory;
 
-    private float money;
 
     private void Awake()
     {
@@ -158,5 +158,10 @@ public class GameManager : MonoBehaviour
     public float GetMoney()
     {
         return money;
+    }
+
+    public float SpendMoney(float amount)
+    {
+        return money = Math.Max(money - amount, 0f);
     }
 }

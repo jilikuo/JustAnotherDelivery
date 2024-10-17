@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float speedMultiplier = 1f;
+
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");

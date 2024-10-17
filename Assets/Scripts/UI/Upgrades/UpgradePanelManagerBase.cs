@@ -73,7 +73,7 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
     {
         UpdateValues();
         cost = GetUpgradeCost();
-        upgradeCostText.text = cost.ToString();
+        upgradeCostText.text = "Cost: " + cost.ToString();
         UpdateDisplay();
     }
 
