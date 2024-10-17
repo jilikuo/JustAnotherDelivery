@@ -226,7 +226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6178409c90d3d4cbc56b66e94a162a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeoutPanel: {fileID: 6773080873140145224}
 --- !u!1 &6775376870667594381
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 242937143088788410}
+  - component: {fileID: 5701208989038754314}
   m_Layer: 5
   m_Name: TimeoutPanelParent
   m_TagString: TimeoutPanel
@@ -530,3 +530,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5701208989038754314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8750084805730096035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6178409c90d3d4cbc56b66e94a162a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

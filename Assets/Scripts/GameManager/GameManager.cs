@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
-        timeSystem.timeoutEvent.AddListener(ShowTimeoutPanel);
 
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -120,17 +119,5 @@ public class GameManager : MonoBehaviour
     public void RewardForDelivery(Package package)
     {
         money++;
-    }
-
-    private void ShowTimeoutPanel()
-    {
-        var timeoutPanelParent = GameObject.FindGameObjectWithTag("TimeoutPanel");
-        if (timeoutPanelParent != null)
-        {
-            Debug.Log("Ran out of time");
-            // timeoutPanelParent is enabled to make it Findable.
-            // It has one child - the actual panel, which is disabled.
-            timeoutPanelParent.transform.GetChild(0).gameObject.SetActive(true);
-        }
     }
 }
