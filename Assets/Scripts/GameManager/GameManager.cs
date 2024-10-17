@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     private TimeSystem timeSystem;
 
+    private float money;
+
     private void Awake()
     {
         if (instance == null)
@@ -87,6 +89,7 @@ public class GameManager : MonoBehaviour
     {
         timeSystem.SetTime(0f);
         SaveSystem.DataManager.instance.ResetGameData();
+        money = 0;
         RestartDay();
     }
 
@@ -95,5 +98,10 @@ public class GameManager : MonoBehaviour
         SaveSystem.DataManager.instance.LoadGame();
         SceneManager.LoadScene(SaveSystem.DataManager.instance.GetLastSceneIndex());
         timeSystem.StartTime();
+    }
+
+    public void RewardForDelivery(Package package)
+    {
+        money++;
     }
 }
