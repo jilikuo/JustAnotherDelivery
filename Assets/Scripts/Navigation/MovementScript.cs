@@ -114,4 +114,9 @@ public class MovementScript : MonoBehaviour
                                                     currentWaypoint.rotation.y,
                                                     currentWaypoint.rotation.z);
     }
+
+    public string GetCurrentAddress()
+    {
+        return currentWaypoint.addressNumber + ", " + currentWaypoint.streetName;
+    }
 }

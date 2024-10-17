@@ -12,11 +12,14 @@ public class NavigationMenuHandler : MonoBehaviour
     public GameObject moveSouthButton;
     public GameObject moveWestButton;
     public GameObject moveEastButton;
+    public GameObject enterInteractionButton;
+    public GameObject exitInteractionButton;
 
     public GameObject interactionBar;
     public GameObject nameLabel;
     public GameObject titleLabel;
     public GameObject messageBox;
+    public GameObject currentAddressLabel;
 
     public GameObject emergencyButton;
     public GameObject personalAnswerButton;
@@ -25,6 +28,8 @@ public class NavigationMenuHandler : MonoBehaviour
     public GameObject fleeButton;
 
     private GameObject activeBar;
+
+    private GameObject player;
 
     private bool canCallEmergency = true;
     private bool canFlee = true;
@@ -37,37 +42,48 @@ public class NavigationMenuHandler : MonoBehaviour
         #region Null Checks
         if (movementBar == null)
         {
-            throw new System.Exception("Movement Bar not set in NavigationMenuHandler");
+            throw new System.Exception("Movement Bar not set");
         }
 
         if (interactionBar == null)
         {
-            throw new System.Exception("Interaction Bar not set in NavigationMenuHandler");
+            throw new System.Exception("Interaction Bar not set");
         }
 
         if (moveNorthButton == null || moveSouthButton == null || moveWestButton == null || moveEastButton == null)
         {
-            throw new System.Exception("One or more movement buttons not set in NavigationMenuHandler");
+            throw new System.Exception("One or more movement buttons not set");
+        }
+
+        if (enterInteractionButton == null || exitInteractionButton == null)
+        {
+            throw new System.Exception("Enter or Exit Interaction Button not set");
         }
 
         if (nameLabel == null)
         {
-            throw new System.Exception("Name label not set in NavigationMenuHandler");
+            throw new System.Exception("Name label not set");
         }
 
         if (titleLabel == null)
         {
-            throw new System.Exception("Title label not set in NavigationMenuHandler");
+            throw new System.Exception("Title label not set");
         }
 
         if (messageBox == null)
         {
-            throw new System.Exception("Message box not set in NavigationMenuHandler");
+            throw new System.Exception("Message box not set");
         }
 
         if (emergencyButton == null || personalAnswerButton == null || professionalAnswerButton == null || doNotSpeakButton == null || fleeButton == null)
         {
-            throw new System.Exception("One or more interaction buttons not set in NavigationMenuHandler");
+            throw new System.Exception("One or more interaction buttons not set");
+        }
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null )
+        { 
+            throw new System.Exception("Player not found");
         }
         #endregion
 
@@ -85,12 +101,19 @@ public class NavigationMenuHandler : MonoBehaviour
         };
     }
 
+    private void Start()
+    {
+        UpdateNavMenuAfterMovement();
+    }
+
     private void Update()
     {
         if (activeBar == interactionBar && interactionBarIsDirty)
         {
             UpdateInteractionButton();
         }
+
+        ActiveBarSanitizer();
     }
 
     public void ActivateMovementBar()
@@ -144,12 +167,17 @@ public class NavigationMenuHandler : MonoBehaviour
         }
     }
 
-    public void UpdateAllMovementButtons()
+    public void UpdateNavMenuAfterMovement()
     {
+        
+
         foreach (GameObject button in movementButtons)
         {
             button.GetComponent<NavButtonScript>().CheckCanMove();
         }
+
+        string currentAddress = player.GetComponent<MovementScript>().GetCurrentAddress();
+        currentAddressLabel.GetComponent<TMPro.TextMeshProUGUI>().text = currentAddress;
     }
 
     private void UpdateInteractionButton()
@@ -158,5 +186,25 @@ public class NavigationMenuHandler : MonoBehaviour
         fleeButton.SetActive(canFlee);
         
         interactionBarIsDirty = false;
+    }
+
+    // If by any reason both bars are active, deactivate the one that should not be active
+    private void ActiveBarSanitizer()
+    {
+        if (activeBar == movementBar)
+        {
+            if (interactionBar.activeSelf)
+            {
+                interactionBar.SetActive(false);
+            }
+        }
+
+        if (activeBar == interactionBar)
+        {
+            if (movementBar.activeSelf)
+            {
+                movementBar.SetActive(false);
+            }
+        }
     }
 }
