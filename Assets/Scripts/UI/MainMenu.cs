@@ -36,7 +36,6 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SaveSystem.DataManager.instance.ResetGameData();
         GameManager.instance.StartNewGame();
     }
 

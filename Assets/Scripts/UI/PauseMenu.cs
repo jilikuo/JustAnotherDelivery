@@ -4,19 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SaveSystem;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject settingsMenuPanel;
     public GameObject pauseMenuPanel;
 
-    public TimeSystem time;
-
-
+    [SerializeField] private TextMeshProUGUI menuText;
+    [SerializeField] private TextMeshProUGUI exitText;
 
     public static PauseMenu instance;
     void Awake()
     {
+        Time.timeScale = 1;
         #region NotNullChecks
         if (settingsMenuPanel == null)
         {
@@ -25,10 +26,6 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuPanel == null)
         {
             Debug.LogError("Pause Panel not found.");
-        }
-        if (time == null)
-        {
-            Debug.LogError("TimeSystem Script not found.");
         }
         #endregion
         if (instance == null)
@@ -44,17 +41,27 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex > 1)
         {
             if (pauseMenuPanel.activeSelf)
             {
-                time.StartTime();
+                Time.timeScale = 1;
                 pauseMenuPanel.SetActive(false);
             }
             else if (settingsMenuPanel.activeSelf) Settings();
-            else if (SceneManager.GetActiveScene().name != "MainMenuScene")
+            else
             {
-                time.StopTime();
+                Time.timeScale = 0;
+                if (SceneManager.GetActiveScene().name == "UpgradeMenuScene")
+                {
+                    menuText.text = "Save and Return to Menu";
+                    exitText.text = "Save and Exit";
+                }
+                else
+                {
+                    menuText.text = "Return to Menu";
+                    exitText.text = "Exit";
+                }
                 pauseMenuPanel.SetActive(true);
             }
         }
@@ -62,7 +69,7 @@ public class PauseMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SaveSystem.DataManager.instance.ResetGameData();
+        Time.timeScale = 1;
         pauseMenuPanel.SetActive(false);
         GameManager.instance.StartNewGame();
     }
@@ -80,17 +87,24 @@ public class PauseMenu : MonoBehaviour
             pauseMenuPanel.SetActive(true);
         }
     }
-
+    
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        pauseMenuPanel.SetActive(false);
+    }
 
     public void ExitGame()
     {
-        SaveSystem.DataManager.instance.UpdateAndSaveToFile();
+        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name == "UpgradeMenuScene") SaveSystem.DataManager.instance.UpdateAndSaveToFile();
         Application.Quit();
     }
 
     public void BackToMain()
     {
-        SaveSystem.DataManager.instance.UpdateAndSaveToFile();
+        Time.timeScale = 1;
+        if (SceneManager.GetActiveScene().name == "UpgradeMenuScene") SaveSystem.DataManager.instance.UpdateAndSaveToFile();
         pauseMenuPanel.SetActive(false);
         SceneManager.LoadScene("MainMenuScene");
     }

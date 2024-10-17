@@ -506,7 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsMenuPanel: {fileID: 1347107334}
   pauseMenuPanel: {fileID: 1638125052}
-  time: {fileID: 1194416448}
+  menuText: {fileID: 804009743}
+  exitText: {fileID: 956407050}
 --- !u!1 &548135410
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +940,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save and Return to Menu
+  m_text: Return to Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
@@ -1073,7 +1074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save and Exit Game
+  m_text: Exit Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
@@ -2405,22 +2406,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1194416448}
-        m_TargetAssemblyTypeName: TimeSystem, Assembly-CSharp
-        m_MethodName: StartTime
+      - m_Target: {fileID: 524594354}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1638125052}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

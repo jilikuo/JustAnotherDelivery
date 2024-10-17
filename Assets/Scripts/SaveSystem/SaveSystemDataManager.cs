@@ -46,6 +46,7 @@ namespace SaveSystem
         private void ChangedActiveScene(Scene current, Scene next)
         {
             UpdateAndSaveToFile();
+            Debug.Log("saving data");
         }
 
         public bool HasLoadedGameData()
@@ -91,6 +92,7 @@ namespace SaveSystem
 
         public void ResetGameData()
         {
+            Debug.Log("resetting save");
             gameData = new GameData();
         }
 

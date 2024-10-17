@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         timeSystem.SetTime(0f);
+        SaveSystem.DataManager.instance.ResetGameData();
         RestartDay();
     }
 
