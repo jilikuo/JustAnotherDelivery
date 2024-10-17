@@ -1362,10 +1362,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6773080873140145224, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8750084805730096035, guid: e29da00ccece0d2468df40c6c54ae428, type: 3}
       propertyPath: m_Name
       value: TimeoutPanel
