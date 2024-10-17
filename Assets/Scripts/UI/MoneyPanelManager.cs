@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoneyPanelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject moneyText;
+    [SerializeField] private TMPro.TextMeshProUGUI moneyText;
 
     private void Awake()
     {
@@ -15,8 +15,13 @@ public class MoneyPanelManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        moneyText = moneyText.GetComponent<TMPro.TextMeshProUGUI>();
+    }
+
     private void Update()
     {
-        moneyText.GetComponent<TMPro.TextMeshProUGUI>().text = GameManager.instance.GetMoney().ToString();
+        moneyText.text = GameManager.instance.GetMoney().ToString();
     }
 }
