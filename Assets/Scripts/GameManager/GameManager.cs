@@ -138,4 +138,9 @@ public class GameManager : MonoBehaviour
     {
         money++;
     }
+
+    public float GetMoney()
+    {
+        return money;
+    }
 }
