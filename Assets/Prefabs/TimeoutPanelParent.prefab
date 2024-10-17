@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 242937143088788410}
   m_Layer: 5
-  m_Name: TimeoutPanel
+  m_Name: TimeoutPanelParent
   m_TagString: TimeoutPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
