@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     }
     public static GameManager instance;
 
+    [SerializeField] private BoolVariable isGamePaused;
+
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
 
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
+        isGamePaused.value = false;
 
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -63,6 +66,21 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
         Debug.Log(mode);
+    }
+
+    public bool IsGamePaused()
+    { 
+        return isGamePaused.value;
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused.value = true;
+    }
+
+    public void UnpauseGame()
+    {
+        isGamePaused.value = false;
     }
 
     public void LoadNextScene()

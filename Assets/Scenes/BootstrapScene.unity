@@ -2634,6 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ea935c0c6ec6b42b6b44b29bd767e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGamePaused: {fileID: 11400000, guid: eb2624745f2374f41b95777887ed2b2b, type: 2}
   inventoryConfigs: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
