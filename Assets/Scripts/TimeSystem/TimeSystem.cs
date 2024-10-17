@@ -134,19 +134,17 @@ public class TimeSystem : MonoBehaviour, ISaveable
         currentTime.SetTime(newTime);
     }
 
-    public void StartNextDay()
+    public void SetNextDay(bool stopTime = true)
     {
-        StopTime();
+        if (stopTime) StopTime();
         currentTime.SetNextDay(dayStartHour);
         StopTimeAfter(dayDuration);
-        StartTime();
     }
 
-    public void RestartDay()
+    public void ResetDay(bool stopTime = true)
     {
-        StopTime();
-        currentTime.RestartDay(dayStartHour);
+        if (stopTime) StopTime();
+        currentTime.SetHour(dayStartHour);
         StopTimeAfter(dayDuration);
-        StartTime();
     }
 }

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public List<InventoryConfigObject> inventoryConfigs;
 
     private TimeSystem timeSystem;
+    private Inventory inventory;
 
     private float money;
 
@@ -42,7 +43,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         isGamePaused.value = false;
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
 
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -64,8 +67,23 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
-        Debug.Log(mode);
+        if (timeSystem == null) return;
+
+        switch ((SceneIndex)scene.buildIndex)
+        {
+            case SceneIndex.BootstrapScene:
+            case SceneIndex.MainMenuScene:
+            case SceneIndex.SortingInventoryScene:
+            case SceneIndex.PackageDeliveryScene:
+                timeSystem.StartTime();
+                break;
+            case SceneIndex.UpgradeMenuScene:
+                timeSystem.StopTime();
+                break;
+            default:
+                Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
+                break;
+        };
     }
 
     public bool IsGamePaused()
@@ -92,14 +110,11 @@ public class GameManager : MonoBehaviour
             case SceneIndex.BootstrapScene:
             case SceneIndex.MainMenuScene:
             case SceneIndex.SortingInventoryScene:
-                SceneManager.LoadScene(next_index);
-                break;
             case SceneIndex.PackageDeliveryScene:
-                timeSystem.StopTime();
                 SceneManager.LoadScene(next_index);
                 break;
             case SceneIndex.UpgradeMenuScene:
-                LoadNewDay();
+                StartNextDay();
                 break;
             default:
                 Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
@@ -109,13 +124,15 @@ public class GameManager : MonoBehaviour
 
     public void RestartDay()
     {
-        timeSystem.RestartDay();
+        timeSystem.ResetDay();
+        inventory.Reset();
         SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
     }
 
-    public void LoadNewDay()
+    public void StartNextDay()
     {
-        timeSystem.StartNextDay();
+        timeSystem.SetNextDay();
+        inventory.Reset();
         SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
     }
 
@@ -131,7 +148,6 @@ public class GameManager : MonoBehaviour
     {
         SaveSystem.DataManager.instance.LoadGame();
         SceneManager.LoadScene(SaveSystem.DataManager.instance.GetLastSceneIndex());
-        timeSystem.StartTime();
     }
 
     public void RewardForDelivery(Package package)

@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour, ISaveable
     public InventoryConfigObject inventoryConfig;
     public RandomGameObjectGenerator packageIconGen;
     public RandomStringGenerator packageAddressGen;
-    public List<string> packageAddressBackup;
 
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
@@ -32,22 +31,11 @@ public class Inventory : MonoBehaviour, ISaveable
         }
     }
 
-    private void Start()
-    {
-        if (packageAddressBackup == null)
-        {
-            packageAddressBackup = new List<string>(packageAddressGen.entries);
-        }
-    }
-
     public void Save(GameData gameData)
     {
         gameData.inventoryData = new List<string>();
         var data = gameData.inventoryData;
         ISaveable.AddKey(data, "inventoryConfigLabel", inventoryConfig.label);
-
-        gameData.inventoryPackageAddressGenData = new List<string>(packageAddressGen.entries);
-        gameData.inventoryPackageAddressBackupData = new List<string>(packageAddressBackup);
 
         gameData.inventoryData = new List<string>();
         data = gameData.inventoryPackagesData;
@@ -73,9 +61,6 @@ public class Inventory : MonoBehaviour, ISaveable
             }
         }
 
-        packageAddressGen.entries = new List<string>(gameData.inventoryPackageAddressGenData);
-        packageAddressBackup = new List<string>(gameData.inventoryPackageAddressBackupData);
-
         packages = new List<Package>();
         foreach (var key_value in gameData.inventoryPackagesData)
         {
@@ -97,7 +82,6 @@ public class Inventory : MonoBehaviour, ISaveable
     public void Reset()
     {
         packages = new List<Package>();
-        packageAddressGen.entries = new List<string>(packageAddressBackup);
     }
 
     public void AddItem(GameObject item)

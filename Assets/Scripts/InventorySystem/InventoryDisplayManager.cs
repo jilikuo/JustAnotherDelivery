@@ -18,10 +18,10 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
     [Header("Inventory defaults to Inventory")]
     [SerializeField] private Inventory inventory;
     [Header("Inventory Config defaults to Inventory.inventoryConfig")]
-    [SerializeField] private InventoryConfigObject inventoryConfig;
     [SerializeField] private Color highlightGood = new Color(0f, 1f, 0f, .40f);
     [SerializeField] private Color highlightBad = new Color(1f, 0f, 0f, .40f);
     [Header("Derived fields")]
+    [SerializeField] private InventoryConfigObject inventoryConfig;
     [SerializeField] private GameObject inventoryLayout;
     [SerializeField] private GameObject gridObject;
     [SerializeField] private Image layoutBackground;
@@ -39,56 +39,38 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
                 Debug.LogError("Failed to locate inventory");
             }
         }
+        inventoryConfig = inventory.inventoryConfig;
         if (inventoryConfig == null)
         {
-            inventoryConfig = inventory.inventoryConfig;
-            if (inventoryConfig == null)
+            Debug.LogError("Failed to locate inventoryConfig");
+        }
+        inventoryLayout = Instantiate(inventoryConfig.layoutPrefab, inventoryBackground.transform);
+        var rect = inventoryLayout.GetComponent<RectTransform>();
+        var anchorPoint = new Vector2(0.5f, 0.5f);
+        rect.anchorMin = anchorPoint;
+        rect.anchorMax = anchorPoint;
+        rect.pivot = anchorPoint;
+        inventoryLayout.transform.position = inventoryBackground.transform.position;
+        layoutBackground = inventoryLayout.GetComponent<Image>();
+        layoutColor = layoutBackground.color;
+
+        // Update the inventory label
+        inventoryLabel.text = inventoryConfig.label;
+
+        // Locate the grid
+        gridObject = inventoryLayout.transform.gameObject.transform.Find("Grid").gameObject;
+
+        // Locate the inventorySlots
+        inventorySlots = new List<InventorySlot>();
+        for (int i = 0; i < gridObject.transform.childCount; i++)
+        {
+            var child = gridObject.transform.GetChild(i);
+            var slot = child.GetComponent<InventorySlot>();
+            if (slot == null)
             {
-                Debug.LogError("Failed to locate inventoryConfig");
+                slot = child.AddComponent<InventorySlot>();
             }
-        }
-
-        if (inventoryLayout != null)
-        {
-            Destroy(inventoryLayout.gameObject);
-            inventoryLayout = null;
-        }
-        if (inventoryConfig != null)
-        {
-            inventoryLayout = Instantiate(inventoryConfig.layoutPrefab, inventoryBackground.transform);
-            var rect = inventoryLayout.GetComponent<RectTransform>();
-            var anchorPoint = new Vector2(0.5f, 0.5f);
-            rect.anchorMin = anchorPoint;
-            rect.anchorMax = anchorPoint;
-            rect.pivot = anchorPoint;
-            inventoryLayout.transform.position = inventoryBackground.transform.position;
-            layoutBackground = inventoryLayout.GetComponent<Image>();
-            layoutColor = layoutBackground.color;
-
-            // Update the inventory label
-            inventoryLabel.text = inventoryConfig.label;
-
-            // Locate the grid
-            gridObject = inventoryLayout.transform.gameObject.transform.Find("Grid").gameObject;
-
-            // Locate the inventorySlots
-            inventorySlots = new List<InventorySlot>();
-            for (int i = 0; i < gridObject.transform.childCount; i++)
-            {
-                var child = gridObject.transform.GetChild(i);
-                var slot = child.GetComponent<InventorySlot>();
-                if (slot == null)
-                {
-                    slot = child.AddComponent<InventorySlot>();
-                }
-                inventorySlots.Add(slot);
-            }
-        }
-        else
-        {
-            inventoryLabel.text = "";
-            gridObject = null;
-            inventorySlots = null;
+            inventorySlots.Add(slot);
         }
     }
 

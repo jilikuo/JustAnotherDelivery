@@ -27,7 +27,7 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         {
             Debug.LogError("Failed to locate packageIconGen");
         }
-        packageAddressGen = inventory.packageAddressGen;
+        packageAddressGen = inventory.packageAddressGen.Clone();
         if (packageAddressGen == null)
         {
             Debug.LogError("Failed to locate packageAddressGen");
