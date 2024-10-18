@@ -31,6 +31,7 @@ namespace SaveSystem
                 DontDestroyOnLoad(gameObject);
                 gameData = null;
                 autoSaveFileManager = new FileManager(autoSaveDirectory, autoSaveFilename);
+                Debug.Log(autoSaveDirectory);
                 LoadFromFile();
             }
             else
@@ -94,6 +95,7 @@ namespace SaveSystem
         {
             Debug.Log("resetting save");
             gameData = new GameData();
+            SaveToFile();
         }
 
         private bool UpdateGameData()
@@ -137,7 +139,7 @@ namespace SaveSystem
             }
             public bool Save(GameData gameData)
             {
-                //Debug.Log("Saving game to file: " + filePath);
+                Debug.Log("Saving game to file: " + filePath);
                 string data;
                 try
                 {

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private int money;
     [SerializeField] private int baseMinutesPerMovement = 20;
     [SerializeField] private int baseMinutesPerInteraction = 5;
+    [SerializeField] private Inventory inventory;
 
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
@@ -202,6 +203,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public void StartNewGame()
     {
         timeSystem.SetTime(0f);
+        inventory.packages = new List<Package>();
         SaveSystem.DataManager.instance.ResetGameData();
         money = 0;
         inventoryConfigIndex = 0;
