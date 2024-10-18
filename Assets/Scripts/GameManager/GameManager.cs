@@ -187,6 +187,9 @@ public class GameManager : MonoBehaviour, ISaveable
         timeSystem.SetTime(0f);
         SaveSystem.DataManager.instance.ResetGameData();
         money = 0;
+        inventoryConfigIndex = 0;
+        speedMultiplier = 1.0f;
+        packageValueMultiplier = 1.0f;
         RestartDay();
     }
 
