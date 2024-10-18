@@ -35,6 +35,7 @@ public class Waypoints : ScriptableObject
 
     public bool isValid;
     public bool isAccessible;
+    public bool isDirty;
 
     public List<Characters> residents;
 
@@ -46,5 +47,14 @@ public class Waypoints : ScriptableObject
     public bool IsNpcAvailable()
     {
         return residents.Count > 0;
+    }
+
+    private void OnValidate()
+    {
+        if (residents == null)
+        {
+            isDirty = false;
+        }
+        isDirty = true;
     }
 }

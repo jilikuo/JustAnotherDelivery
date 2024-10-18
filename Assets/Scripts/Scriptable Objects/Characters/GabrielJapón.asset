@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: "Gabriel Jap\xF3n"
   title: Undertaker
   characterPrefab: {fileID: 8599970136786983478, guid: 7305fabfae319ba43a43a45eea189db4, type: 3}
+  address: {fileID: 0}
   hasBeenAssigned: 1

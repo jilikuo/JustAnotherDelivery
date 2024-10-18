@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
-  m_Name: ElizaBlack
+  m_Name: CarlosDavid
   m_EditorClassIdentifier: 
-  fullName: Eliza Black
-  title: Construction Manager
-  characterPrefab: {fileID: 5759978751558158010, guid: d5a777a40e856c44aa00fd6b46c79d55, type: 3}
+  fullName: Carlos David
+  title: Firefighter
+  characterPrefab: {fileID: 4305610374441403860, guid: 27f0a7ca0bf13ec4fa90f537ad41cef6, type: 3}
   address: {fileID: 0}
-  hasBeenAssigned: 1
+  hasBeenAssigned: 0

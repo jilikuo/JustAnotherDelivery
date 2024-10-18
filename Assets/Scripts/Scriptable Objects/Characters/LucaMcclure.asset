@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: Luca Mcclure
   title: Bus driver
   characterPrefab: {fileID: 8214104907330504658, guid: 7e7ee54664b349f428aa0212da44f088, type: 3}
+  address: {fileID: 0}
   hasBeenAssigned: 1

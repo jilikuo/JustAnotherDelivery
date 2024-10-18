@@ -11,6 +11,7 @@ public class Characters : ScriptableObject
     public string fullName;
     public string title;
     public GameObject characterPrefab;
+    public Waypoints waypoint;
 
     public bool hasBeenAssigned; // just for in-editor QoL
 }

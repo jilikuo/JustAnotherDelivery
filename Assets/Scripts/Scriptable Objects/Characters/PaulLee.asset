@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: Paul Lee
   title: Personal Financial Advisor
   characterPrefab: {fileID: 8599970136786983478, guid: 7305fabfae319ba43a43a45eea189db4, type: 3}
-  hasBeenAssigned: 0
+  address: {fileID: 0}
+  hasBeenAssigned: 1

@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: Robert Black
   title: Software Architect
   characterPrefab: {fileID: 283720091687621643, guid: 877bdba468dd9b74ebf56eed33fa4d86, type: 3}
-  hasBeenAssigned: 0
+  address: {fileID: 0}
+  hasBeenAssigned: 1

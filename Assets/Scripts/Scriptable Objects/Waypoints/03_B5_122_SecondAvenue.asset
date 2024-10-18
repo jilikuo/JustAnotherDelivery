@@ -29,6 +29,7 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: 3d63f7d91b379a44e9f234893aa541d1, type: 2}
   isValid: 1
   isAccessible: 1
+  isDirty: 0
   residents:
   - {fileID: 11400000, guid: 23e54a7d33ad50f4c8a3740b8ed29377, type: 2}
   - {fileID: 11400000, guid: 7f7db90238275064f919096375c11ac4, type: 2}

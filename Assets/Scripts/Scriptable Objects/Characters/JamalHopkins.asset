@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: Jamal Hopkins
   title: 'Retail Manager '
   characterPrefab: {fileID: 6658364297737582876, guid: c758f182fae5d7f41a18cf3f3ea80a5b, type: 3}
+  address: {fileID: 0}
   hasBeenAssigned: 1

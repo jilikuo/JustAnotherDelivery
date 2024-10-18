@@ -15,4 +15,5 @@ MonoBehaviour:
   fullName: Samuel Tyler Scott
   title: Painter
   characterPrefab: {fileID: 4305610374441403860, guid: 27f0a7ca0bf13ec4fa90f537ad41cef6, type: 3}
+  address: {fileID: 0}
   hasBeenAssigned: 1

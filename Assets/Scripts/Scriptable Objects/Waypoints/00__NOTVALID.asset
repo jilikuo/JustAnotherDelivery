@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
   m_Name: 00__NOTVALID
   m_EditorClassIdentifier: 
+  streetName:
+    streetId: 0
+  addressNumber: 0
   position:
     x: 0
     y: 0
@@ -26,3 +29,5 @@ MonoBehaviour:
   westWaypoint: {fileID: 0}
   isValid: 0
   isAccessible: 0
+  isDirty: 0
+  residents: []
