@@ -22,8 +22,8 @@ public class Waypoints : ScriptableObject
         }
     }
 
-    public StreetName streetName;
-    public int addressNumber;
+    [SerializeField]private StreetName streetName;
+    [SerializeField]private int addressNumber;
 
     public Coordinates position;
     public Coordinates rotation;
@@ -39,9 +39,20 @@ public class Waypoints : ScriptableObject
 
     public List<Characters> residents;
 
-    public string GetCurrentAddress()
+    public string GetFullAddress()
     {
         return addressNumber + ", " + streetName.Name;
+        //TODO: Extra Info (apt number, floor, etc)
+    }
+
+    public string GetStreetName()
+    {
+        return streetName.Name;
+    }
+
+    public int GetAddressNumber()
+    {
+        return addressNumber;
     }
 
     public bool IsNpcAvailable()

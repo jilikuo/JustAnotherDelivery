@@ -80,7 +80,7 @@ public class NPCCollection : ScriptableObject
 
             if (npc.waypoint != wp)
             {
-                    Debug.LogError("Character " + npc.fullName + " is already assigned to " + npc.waypoint.GetCurrentAddress() + " Could not assign them to " + wp.GetCurrentAddress());
+                    Debug.LogError("Character " + npc.fullName + " is already assigned to " + npc.waypoint.GetFullAddress() + " Could not assign them to " + wp.GetFullAddress());
             }
             return false;
         }
@@ -92,6 +92,6 @@ public class NPCCollection : ScriptableObject
     {
         npc.waypoint = wp;
         npc.hasBeenAssigned = true;
-        Debug.Log("Assigned " + npc.fullName + " to " + wp.GetCurrentAddress() + ".");
+        Debug.Log("Assigned " + npc.fullName + " to " + wp.GetFullAddress() + ".");
     }
 }

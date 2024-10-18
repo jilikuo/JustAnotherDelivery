@@ -227,7 +227,7 @@ public class NavigationMenuHandler : MonoBehaviour
     public void UpdateNavMenuAfterMovement()
     {
         currentWaypoint = player.GetComponent<MovementScript>().GetCurrentWaypoint();
-        currentAddressLabel.GetComponent<TextMeshProUGUI>().text = currentWaypoint.GetCurrentAddress();
+        currentAddressLabel.GetComponent<TextMeshProUGUI>().text = currentWaypoint.GetFullAddress();
 
         foreach (GameObject button in movementButtons)
         {
