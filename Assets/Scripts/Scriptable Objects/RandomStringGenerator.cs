@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Utilities/Random String Generator")]
 [Serializable]
 public class RandomStringGenerator : RandomObjectGenerator<string>
 {

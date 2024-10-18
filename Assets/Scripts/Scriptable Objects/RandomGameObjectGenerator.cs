@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Utilities/Random Game Object Generator")]
 [Serializable]
 public class RandomGameObjectGenerator : RandomObjectGenerator<GameObject>
 {

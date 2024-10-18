@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Time System/Time Object")]
 [Serializable]
 public class TimeObject : ScriptableObject
 {

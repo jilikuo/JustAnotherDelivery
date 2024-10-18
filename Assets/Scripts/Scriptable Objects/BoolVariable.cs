@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Utilities/Bool Variable")]
 [Serializable]
 public class BoolVariable : ScriptableObject
 {
