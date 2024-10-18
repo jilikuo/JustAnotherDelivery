@@ -2683,7 +2683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 516144409979297642, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 516144409979297642, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2691,7 +2691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 516144409979297642, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1000
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 516144409979297642, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2744,30 +2744,6 @@ PrefabInstance:
     - target: {fileID: 1841755830394638865, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
       propertyPath: m_Name
       value: MoneyPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989492170767881678, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007071377703757390, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6085418776813818065, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046488398698678927, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 220
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046488398698678927, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -230
-      objectReference: {fileID: 0}
-    - target: {fileID: 8046488398698678927, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
