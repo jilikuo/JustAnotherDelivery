@@ -29,7 +29,6 @@ namespace SaveSystem
 
         public List<string> timeSystemData = new List<string>();
 
-        public List<string> inventoryData = new List<string>();
         public List<string> inventoryPackagesData = new List<string>();
 
         // Destroyed objects

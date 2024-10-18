@@ -22,8 +22,13 @@ public class GameManager : MonoBehaviour, ISaveable
 
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
+    public int inventoryConfigIndex = 0;
     public float speedMultiplier = 1f;
     public float packageValueMultiplier = 1f;
+
+    [Header("Data for plot")]
+    public RandomGameObjectGenerator packageIconGen;
+    public RandomStringGenerator packageAddressGen;
 
     private TimeSystem timeSystem;
     private Inventory inventory;
@@ -32,6 +37,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         var data = gameData.gameManagerData;
         ISaveable.AddKey(data, "money", money);
+        ISaveable.AddKey(data, "inventoryConfigIndex", inventoryConfigIndex);
         ISaveable.AddKey(data, "speedMultiplier", speedMultiplier);
         ISaveable.AddKey(data, "packageValueMultiplier", packageValueMultiplier);
     }
@@ -48,6 +54,9 @@ public class GameManager : MonoBehaviour, ISaveable
             {
                 case "money":
                     money = (float)Convert.ToDouble(value);
+                    break;
+                case "inventoryConfigIndex":
+                    inventoryConfigIndex = Convert.ToInt32(value);
                     break;
                 case "speedMultiplier":
                     speedMultiplier = (float)Convert.ToDouble(value);
@@ -205,5 +214,15 @@ public class GameManager : MonoBehaviour, ISaveable
         }
         money -= amount;
         return true;
+    }
+
+    public InventoryConfigObject GetInventoryConfig()
+    {
+        return inventoryConfigs[inventoryConfigIndex];
+    }
+
+    public InventoryConfigObject GetInventoryConfig(int index)
+    {
+        return ((index >= 0) && (index < inventoryConfigs.Count)) ? inventoryConfigs[index] : null;
     }
 }

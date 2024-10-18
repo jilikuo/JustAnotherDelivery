@@ -22,12 +22,12 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         {
             Debug.LogError("Failed to locate Inventory");
         }
-        packageIconGen = inventory.packageIconGen;
+        packageIconGen = GameManager.instance.packageIconGen;
         if (packageIconGen == null)
         {
             Debug.LogError("Failed to locate packageIconGen");
         }
-        packageAddressGen = inventory.packageAddressGen.Clone();
+        packageAddressGen = GameManager.instance.packageAddressGen.Clone();
         if (packageAddressGen == null)
         {
             Debug.LogError("Failed to locate packageAddressGen");

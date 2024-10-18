@@ -39,7 +39,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
                 Debug.LogError("Failed to locate inventory");
             }
         }
-        inventoryConfig = inventory.inventoryConfig;
+        inventoryConfig = GameManager.instance.inventoryConfigs[GameManager.instance.inventoryConfigIndex];
         if (inventoryConfig == null)
         {
             Debug.LogError("Failed to locate inventoryConfig");

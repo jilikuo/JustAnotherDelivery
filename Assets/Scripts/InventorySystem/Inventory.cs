@@ -9,11 +9,6 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour, ISaveable
 {
-    [Header("Inventory Configuration")]
-    public InventoryConfigObject inventoryConfig;
-    public RandomGameObjectGenerator packageIconGen;
-    public RandomStringGenerator packageAddressGen;
-
     [Header("Current Inventory")]
     public List<Package> packages = new List<Package>();
 
@@ -33,12 +28,7 @@ public class Inventory : MonoBehaviour, ISaveable
 
     public void Save(GameData gameData)
     {
-        gameData.inventoryData = new List<string>();
-        var data = gameData.inventoryData;
-        ISaveable.AddKey(data, "inventoryConfigLabel", inventoryConfig.label);
-
-        gameData.inventoryData = new List<string>();
-        data = gameData.inventoryPackagesData;
+        var data = gameData.inventoryPackagesData;
         foreach ( var package in packages)
         {
             ISaveable.AddKey(data, package.iconName, package.address);
@@ -47,20 +37,6 @@ public class Inventory : MonoBehaviour, ISaveable
 
     public bool Load(GameData gameData)
     {
-        foreach (var key_value in gameData.inventoryData)
-        {
-            var parsed = ISaveable.ParseKey(key_value);
-            string key = parsed[0];
-            string value = parsed[1];
-            //Debug.Log("Loading key: " + key + " value: " + value);
-            switch (key)
-            {
-                case "inventoryConfigLabel":
-                    inventoryConfig = GameManager.instance.inventoryConfigs.Find(x => x.label == value);
-                    break;
-            }
-        }
-
         packages = new List<Package>();
         foreach (var key_value in gameData.inventoryPackagesData)
         {

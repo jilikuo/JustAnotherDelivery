@@ -1313,10 +1313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa1c530eac209b439e0669675ffd97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryConfig: {fileID: 11400000, guid: 7e87a4fdda910844e91ad016e8c65d29, type: 2}
-  packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
-  packageAddressGen: {fileID: 11400000, guid: 0e58b94f55cac784e8f77a9f66c0d9dd, type: 2}
-  packageAddressBackup: []
   packages: []
 --- !u!4 &1021089625
 Transform:
@@ -2635,7 +2631,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGamePaused: {fileID: 11400000, guid: eb2624745f2374f41b95777887ed2b2b, type: 2}
-  inventoryConfigs: []
+  money: 0
+  inventoryConfigs:
+  - {fileID: 11400000, guid: 7e87a4fdda910844e91ad016e8c65d29, type: 2}
+  - {fileID: 11400000, guid: 58ba99ceb7b72e2448d4a8bc448b5a1c, type: 2}
+  - {fileID: 11400000, guid: 7ffc79ab85362454d991a6f09ae1a0de, type: 2}
+  inventoryConfigIndex: 0
+  speedMultiplier: 1
+  packageValueMultiplier: 1
+  packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
+  packageAddressGen: {fileID: 11400000, guid: 0e58b94f55cac784e8f77a9f66c0d9dd, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
