@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
     public float speedMultiplier = 1f;
+    public float packageValueMultiplier = 1f;
 
     private TimeSystem timeSystem;
     private Inventory inventory;

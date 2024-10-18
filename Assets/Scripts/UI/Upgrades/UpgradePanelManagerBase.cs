@@ -66,7 +66,6 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
     {
         GameManager.instance.SpendMoney(cost);
         DoUpgrade();
-        upgradeButton.onClick.AddListener(BuyUpgrade);
     }
 
     protected void UpdateUpgradePanel()

@@ -717,7 +717,6 @@ MonoBehaviour:
   upgradeButton: {fileID: 0}
   upgradeLabel: Travel Speed Multiplier
   costPerLevel: 2
-  player: {fileID: 0}
   value: 0
   nextValue: 0
 --- !u!1001 &1114358661
@@ -821,6 +820,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 516144409979297642, guid: fa8d7f5eb6e912246a6081bcbb3fbe0b, type: 3}
   m_PrefabInstance: {fileID: 1114358661}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1252136587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+  m_PrefabInstance: {fileID: 1512777316}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1512777316
 PrefabInstance:
@@ -1032,18 +1036,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
       propertyPath: m_Name
-      value: LevelUpgradePanel
+      value: ValueUpgradePanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1512777320}
   m_SourcePrefab: {fileID: 100100000, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
 --- !u!224 &1512777317 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4881899239363119035, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
   m_PrefabInstance: {fileID: 1512777316}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1512777320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252136587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ddee18a5a886c47964ebf19aec0a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  currentStateDisplayPanel: {fileID: 0}
+  currentStateBackground: {fileID: 0}
+  currentStateCenterText: {fileID: 0}
+  currentStateBottomText: {fileID: 0}
+  nextStateDisplayPanel: {fileID: 0}
+  nextStateBackground: {fileID: 0}
+  nextStateCenterText: {fileID: 0}
+  nextStateBottomText: {fileID: 0}
+  upgradeTermsPanel: {fileID: 0}
+  upgradeLabelText: {fileID: 0}
+  upgradeCostText: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  upgradeLabel: Package Value Multiplier
+  costPerLevel: 4
+  player: {fileID: 0}
+  value: -1
+  nextValue: -1
 --- !u!1 &1515019025
 GameObject:
   m_ObjectHideFlags: 0
