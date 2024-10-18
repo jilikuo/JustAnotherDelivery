@@ -57,6 +57,9 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
         // Update the inventory label
         inventoryLabel.text = inventoryConfig.label;
 
+        // Put the inventory label on top
+        inventoryLabel.transform.SetAsLastSibling();
+
         // Locate the grid
         gridObject = inventoryLayout.transform.gameObject.transform.Find("Grid").gameObject;
 
@@ -236,5 +239,8 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
 
         // Add the item to the inventory
         inventory.AddItem(item.gameObject);
+
+        // Put the inventory label on top
+        inventoryLabel.transform.SetAsLastSibling();
     }
 }

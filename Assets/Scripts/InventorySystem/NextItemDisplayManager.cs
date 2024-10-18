@@ -46,6 +46,9 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
             if (nextItem != null)
             {
                 addressLabel.text = nextItem.GetComponent<DragDropPackage>().data.address;
+
+                // Put the address label on top
+                addressLabel.transform.SetAsLastSibling();
             }
             else
             {
