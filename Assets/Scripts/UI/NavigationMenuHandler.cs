@@ -5,6 +5,13 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Would be better described as NavigationMenuManager, but changing it now would require 
+/// changing the references in the scene, and/or causing unpredicted behavior.
+/// 
+/// Handles all the UI elements related to navigation and interaction with NPCs.
+/// Probably the logic of the interactions would be better handled in a separate script.
+/// </summary>
 public class NavigationMenuHandler : MonoBehaviour
 {
     public GameObject movementBar;
@@ -148,15 +155,17 @@ public class NavigationMenuHandler : MonoBehaviour
 
     public void ActivateInteractionBar()
     {
+        if (!currentWaypoint.IsNpcAvailable())
+        {
+            return;
+        }
+
         if (activeBar == interactionBar)
         {
             EndInteraction();
         }
 
-        if (!currentWaypoint.IsNpcAvailable())
-        {
-            return;
-        }
+        GameManager.instance.SpendInteractionTime();
 
         activeBar.SetActive(false);
 

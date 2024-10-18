@@ -134,6 +134,11 @@ public class TimeSystem : MonoBehaviour, ISaveable
         currentTime.SetTime(newTime);
     }
 
+    public void AdvanceTime(float amount)
+    {
+        SetTime(currentTime.GetTime() + amount);
+    }
+
     public void SetNextDay(bool stopTime = true)
     {
         if (stopTime) StopTime();

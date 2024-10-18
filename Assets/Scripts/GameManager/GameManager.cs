@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour, ISaveable
 
     [SerializeField] private BoolVariable isGamePaused;
     [SerializeField] private int money;
+    [SerializeField] private int baseMinutesPerMovement = 20;
+    [SerializeField] private int baseMinutesPerInteraction = 5;
 
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
@@ -167,6 +169,20 @@ public class GameManager : MonoBehaviour, ISaveable
                 Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
                 break;
         };
+    }
+
+    public void SpendMovementTime()
+    {
+        float baseTime = baseMinutesPerMovement / 60f;
+        float moveTime = baseTime / speedMultiplier;
+        timeSystem.AdvanceTime(moveTime);
+    }
+
+    public void SpendInteractionTime()
+    {
+        float baseTime = baseMinutesPerInteraction / 60f;
+        float inteTime = baseTime / speedMultiplier;
+        timeSystem.AdvanceTime(inteTime);
     }
 
     public void RestartDay()
