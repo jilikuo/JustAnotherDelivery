@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 0
   playerObject: {fileID: 0}
+  isThisUI: 1
 --- !u!1 &38999182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,11 +1297,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 855775587}
   - {fileID: 1737251755}
   - {fileID: 914362173}
   - {fileID: 240420950}
   - {fileID: 625553251}
+  - {fileID: 855775587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5530,7 +5531,7 @@ GameObject:
   - component: {fileID: 1420495266}
   m_Layer: 0
   m_Name: MinimapManager
-  m_TagString: Untagged
+  m_TagString: MinimapManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6105,6 +6106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 3
   playerObject: {fileID: 0}
+  isThisUI: 1
 --- !u!1 &1615773885
 GameObject:
   m_ObjectHideFlags: 0
@@ -6993,6 +6995,10 @@ PrefabInstance:
       propertyPath: m_text
       value: End Day
       objectReference: {fileID: 0}
+    - target: {fileID: 3344980432655795317, guid: 8b1d186e2ff3907469263691f1f9f09f, type: 3}
+      propertyPath: m_fontSize
+      value: 46.95
+      objectReference: {fileID: 0}
     - target: {fileID: 3745307697866665707, guid: 8b1d186e2ff3907469263691f1f9f09f, type: 3}
       propertyPath: m_Name
       value: SidePanel
@@ -7377,6 +7383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 2
   playerObject: {fileID: 0}
+  isThisUI: 1
 --- !u!114 &1780662626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7700,6 +7707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementDirection: 1
   playerObject: {fileID: 0}
+  isThisUI: 1
 --- !u!114 &1919520574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,6 +8674,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121186813}
   m_Mesh: {fileID: -1882288969009487663, guid: 2b4b9ed5ea6281f4a896c5785e9291a3, type: 3}
+--- !u!1 &2131305674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2131305677}
+  - component: {fileID: 2131305676}
+  - component: {fileID: 2131305675}
+  m_Layer: 0
+  m_Name: KeyboardMovementHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2131305675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131305674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f02ae998e5b1d4ebc2e757425579e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: 0
+  playerObject: {fileID: 0}
+  isThisUI: 0
+--- !u!114 &2131305676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131305674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6492828a5fdfeed468ad0a2841abfa95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2131305677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131305674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &280131782408223510
 GameObject:
   m_ObjectHideFlags: 0
@@ -9245,5 +9313,6 @@ SceneRoots:
   - {fileID: 1883510422}
   - {fileID: 1420495265}
   - {fileID: 1523050659}
+  - {fileID: 2131305677}
   - {fileID: 357762302}
   - {fileID: 71840659}
