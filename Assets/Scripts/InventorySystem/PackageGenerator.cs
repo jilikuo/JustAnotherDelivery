@@ -44,12 +44,12 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
 
     public DragDropObject CreateDragDrop(GameObject parent)
     {
-        string address = packageAddressGen.GetEntry();
-        if (address == null)
+        string nameAndAddress = packageAddressGen.GetEntry();
+        if (nameAndAddress == null)
         {
             return null;
         }
-        packageAddressGen.RemoveEntry(address);
+        packageAddressGen.RemoveEntry(nameAndAddress);
         GameObject packageIcon = packageIconGen.GetEntry();
 
         var icon = Instantiate(packageIcon, parent.transform);
@@ -62,7 +62,8 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         icon.transform.position = parent.transform.position;
 
         var dragDrop = icon.AddComponent<DragDropPackage>();
-        dragDrop.data = new Package(packageIcon.name, address, CalcCost(icon));
+        var parsed = nameAndAddress.Split(',', 2);
+        dragDrop.data = new Package(packageIcon.name, parsed[0], parsed[1], CalcCost(icon));
 
         return dragDrop;
     }
@@ -80,7 +81,7 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
             Debug.LogError("Failed to locate Package data");
             return;
         }
-        packageAddressGen.AddEntry(package.data.address);
+        packageAddressGen.AddEntry(package.data.fullName + "," + package.data.ToDisplayString());
         Destroy(item.gameObject);
     }
 }

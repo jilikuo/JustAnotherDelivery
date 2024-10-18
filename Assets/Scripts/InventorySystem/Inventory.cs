@@ -48,10 +48,10 @@ public class Inventory : MonoBehaviour, ISaveable
         return true;
     }
 
-    public void AddItem(string iconName, string address, int cost)
+    public void AddItem(string iconName, string fullName, string address, int cost)
     {
-        packages.Add(new Package(iconName, address, cost));
-        Debug.Log("Added item to Inventory: " + address);
+        packages.Add(new Package(iconName, fullName, address, cost));
+        Debug.Log("Added item to Inventory: " + fullName + "@" + address);
     }
 
     public void Reset()
@@ -108,12 +108,14 @@ public class Inventory : MonoBehaviour, ISaveable
 public class Package
 {
     public string iconName;
+    public string fullName;
     public string address;
     public int cost;
 
-    public Package(string iconName, string address, int cost)
+    public Package(string iconName, string fullName, string address, int cost)
     {
         this.iconName = iconName;
+        this.fullName = fullName;
         this.address = address;
         this.cost = cost;
     }
@@ -123,13 +125,19 @@ public class Package
     {
         var parsed = attributes.Split(':');
         this.iconName = parsed[0];
-        this.address = parsed[1];
-        this.cost = Convert.ToInt32(parsed[2]);
+        this.fullName = parsed[1];
+        this.address = parsed[2];
+        this.cost = Convert.ToInt32(parsed[3]);
     }
 
     // Helper for Save
     public override string ToString()
     {
-        return string.Join(":", iconName, address, cost);
+        return string.Join(":", iconName, fullName, address, cost);
+    }
+
+    public string ToDisplayString()
+    {
+        return string.Join("@", fullName, address) + ", Coins: " + cost;
     }
 }
