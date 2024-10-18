@@ -72,8 +72,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
   - {fileID: 11400000, guid: 4b15e8794e7bef944a5b672cd7a4f913, type: 2}
   - {fileID: 11400000, guid: ff1a8dd6e3dc9e64fa19978e5e7a3437, type: 2}
-  - {fileID: 11400000, guid: cc75194c828ac6f4c805b043afeb1435, type: 2}
   - {fileID: 11400000, guid: 23120308938d0f74c8fe23b1624ce2cd, type: 2}
+  - {fileID: 11400000, guid: cc75194c828ac6f4c805b043afeb1435, type: 2}
   - {fileID: 11400000, guid: d166fc67ddd0805429c46ec66e32a741, type: 2}
   - {fileID: 11400000, guid: 9e98ad504de77b845a3341b455c5253b, type: 2}
   - {fileID: 11400000, guid: 69533d1f49e0073438c34ffdabe99e1e, type: 2}
@@ -84,3 +84,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bbd94fb0d2121e4aac1983368825e16, type: 2}
   - {fileID: 11400000, guid: 072075b506439ed4d956cc9a3dc8d90e, type: 2}
   refreshCollection: 0
+  logTag: '[NPC Collection]'
