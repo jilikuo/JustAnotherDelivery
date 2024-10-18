@@ -2005,10 +2005,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772519652128072258, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_text
-      value: 'Deliver all of your packages.
+      value: 'Move North/South/East/West using the buttons in your screen or WASD/Arrow
+        keys in your keyboard.
 
-        Click "End Day," when you''ve
-        emptied your bag.'
+
+        Click on the screen once you are are the
+        correct Address, until the correct recipient for the package welcomes you,
+        then drag and drop the package to the delivery Box.
+
+
+        Deliver all
+        your packages.
+
+        Press the "End Day" button when you''re done.
+
+
+        You
+        don''t need to be at the HQ to finish the day, but it would be safer if you
+        were.
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 772519652128072258, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 772519652128072258, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 772519652128072258, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1124030593160018838, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_Pivot.x
@@ -2089,6 +2117,14 @@ PrefabInstance:
     - target: {fileID: 1124030593160018838, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1715698903981793204, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995445202779070833, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 6212902391656629887, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_Name
