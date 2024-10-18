@@ -337,7 +337,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903896722}
   m_SourcePrefab: {fileID: 100100000, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
 --- !u!224 &132616183 stripped
 RectTransform:
@@ -1078,7 +1081,6 @@ MonoBehaviour:
   upgradeButton: {fileID: 0}
   upgradeLabel: Package Value Multiplier
   costPerLevel: 4
-  player: {fileID: 0}
   value: -1
   nextValue: -1
 --- !u!1 &1515019025
@@ -1326,6 +1328,40 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 813591693700207047, guid: a4ba0ead48b53e34bb20f1d80a435605, type: 3}
   m_PrefabInstance: {fileID: 1598650651}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1903896719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+  m_PrefabInstance: {fileID: 132616182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1903896722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903896719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6b47124bdc18044a0c9ddf0364dd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  currentStateDisplayPanel: {fileID: 0}
+  currentStateBackground: {fileID: 0}
+  currentStateCenterText: {fileID: 0}
+  currentStateBottomText: {fileID: 0}
+  nextStateDisplayPanel: {fileID: 0}
+  nextStateBackground: {fileID: 0}
+  nextStateCenterText: {fileID: 0}
+  nextStateBottomText: {fileID: 0}
+  upgradeTermsPanel: {fileID: 0}
+  upgradeLabelText: {fileID: 0}
+  upgradeCostText: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  upgradeLabel: Messenger Bag Size
+  costPerLevel: 10
+  value: -1
+  nextValue: -1
 --- !u!1 &2090525113
 GameObject:
   m_ObjectHideFlags: 0

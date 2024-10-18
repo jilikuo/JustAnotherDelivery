@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public abstract class UpgradePanelManagerBase : MonoBehaviour
 {
-    public float cost;
+    [SerializeField] private float cost;
 
     [SerializeField] protected GameObject currentStateDisplayPanel;
     [SerializeField] protected Image currentStateBackground;
@@ -43,7 +43,7 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
         upgradeButton.onClick.AddListener(BuyUpgrade);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if ((cost != GetUpgradeCost()) || HasUpdatedValue())
         {

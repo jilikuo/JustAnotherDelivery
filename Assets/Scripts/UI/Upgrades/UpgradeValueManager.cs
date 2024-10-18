@@ -9,14 +9,12 @@ public class UpgradeValueManager : UpgradePanelManagerTextBase
 {
     [SerializeField] private string upgradeLabel = "Package Value Multiplier";
     [SerializeField] private float costPerLevel = 4;
-    [SerializeField] private Player player;
     [SerializeField] private float value = -1;
     [SerializeField] private float nextValue = -1;
 
     private void Start()
     {
         SetVars();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
     protected override string GetUpgradeLabel()
     {
@@ -26,7 +24,6 @@ public class UpgradeValueManager : UpgradePanelManagerTextBase
     protected override void DoUpgrade()
     {
         GameManager.instance.packageValueMultiplier = nextValue;
-        UpdateValues();
     }
     protected override void UpdateValues()
     {

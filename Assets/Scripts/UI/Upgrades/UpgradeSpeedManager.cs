@@ -24,7 +24,6 @@ public class UpgradeSpeedManager : UpgradePanelManagerTextBase
     protected override void DoUpgrade()
     {
         GameManager.instance.speedMultiplier = nextValue;
-        UpdateValues();
     }
     protected override void UpdateValues()
     {

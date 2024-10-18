@@ -10,7 +10,9 @@ public abstract class UpgradePanelManagerTextBase : UpgradePanelManagerBase
     {
         base.SetVars();
         currentStateBottomText.text = "";
+        currentStateBottomText.enabled = false;
         nextStateBottomText.text = "";
+        nextStateBottomText.enabled = false;
     }
 
     protected override void UpdateDisplay()
