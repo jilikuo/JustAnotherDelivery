@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
+  m_Name: SamuelTylerScott
+  m_EditorClassIdentifier: 
+  fullName: Samuel Tyler Scott
+  title: Painter
+  characterPrefab: {fileID: 4305610374441403860, guid: 27f0a7ca0bf13ec4fa90f537ad41cef6, type: 3}

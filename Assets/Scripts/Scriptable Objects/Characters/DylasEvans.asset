@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
+  m_Name: DylasEvans
+  m_EditorClassIdentifier: 
+  fullName: Dylan Evans
+  title: Designer
+  characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
