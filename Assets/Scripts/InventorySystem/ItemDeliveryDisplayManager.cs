@@ -41,6 +41,9 @@ public class ItemDeliveryDisplayManager : MonoBehaviour, IItemDroppable
 
         GameManager.instance.RewardForDelivery(package.data);
         Destroy(itemGameObject);
+
+        deliveryBox.SetActive(false);
+        navigationManager.SetMessage("Thank you for the delivery!");
     }
 
     public bool IsValidDropPosition(DragDropObject item)
@@ -51,6 +54,7 @@ public class ItemDeliveryDisplayManager : MonoBehaviour, IItemDroppable
 
         if (package.data.fullName != activeNpc.name)
         {
+            navigationManager.SetMessage("This is not mine!");
             return false;
         }
 
