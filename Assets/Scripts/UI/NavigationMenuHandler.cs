@@ -36,6 +36,7 @@ public class NavigationMenuHandler : MonoBehaviour
     private bool interactionBarIsDirty = false;
 
     private List<GameObject> movementButtons;
+    private List<GameObject> interactionButtons;
 
     private void Awake()
     {
@@ -99,6 +100,15 @@ public class NavigationMenuHandler : MonoBehaviour
             moveWestButton,
             moveEastButton
         };
+
+        interactionButtons = new List<GameObject>
+        { 
+            emergencyButton,
+            personalAnswerButton,
+            professionalAnswerButton,
+            doNotSpeakButton,
+            fleeButton
+        };
     }
 
     private void Start()
@@ -127,10 +137,18 @@ public class NavigationMenuHandler : MonoBehaviour
     {
         activeBar.SetActive(false);
         interactionBar.SetActive(true);
+        
+        //TODO: unhide the interaction buttons when they get implemented
+        foreach (GameObject button in interactionButtons)
+        {
+            button.SetActive(false);
+        }
+
         activeBar = interactionBar;
 
-        //TODO: Only make interaction bar dirty if canCallEmergency or CanFlee has changed
-        interactionBarIsDirty = true;
+        //TODO: if canCallEmergency or CanFlee has changed, set interactionBarIsDirty to true
+        interactionBarIsDirty = false; //if true, it will enable emergency button and flee button,
+                                       //because there is no logic to handle their states as of now
     }
 
     public void SetActiveCharacterName(string name)
@@ -169,15 +187,13 @@ public class NavigationMenuHandler : MonoBehaviour
 
     public void UpdateNavMenuAfterMovement()
     {
-        
+        string currentAddress = player.GetComponent<MovementScript>().GetCurrentAddress();
+        currentAddressLabel.GetComponent<TMPro.TextMeshProUGUI>().text = currentAddress;
 
         foreach (GameObject button in movementButtons)
         {
             button.GetComponent<NavButtonScript>().CheckCanMove();
         }
-
-        string currentAddress = player.GetComponent<MovementScript>().GetCurrentAddress();
-        currentAddressLabel.GetComponent<TMPro.TextMeshProUGUI>().text = currentAddress;
     }
 
     private void UpdateInteractionButton()
