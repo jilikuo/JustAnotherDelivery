@@ -25,6 +25,8 @@ namespace SaveSystem
         public string sceneName;
 
         // All scenes
+        public List<string> gameManagerData = new List<string>();
+
         public List<string> timeSystemData = new List<string>();
 
         public List<string> inventoryData = new List<string>();

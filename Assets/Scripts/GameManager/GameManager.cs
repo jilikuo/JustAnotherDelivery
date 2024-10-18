@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     public enum SceneIndex
     {
@@ -28,6 +28,41 @@ public class GameManager : MonoBehaviour
     private TimeSystem timeSystem;
     private Inventory inventory;
 
+    public void Save(GameData gameData)
+    {
+        var data = gameData.gameManagerData;
+        ISaveable.AddKey(data, "money", money);
+        ISaveable.AddKey(data, "speedMultiplier", speedMultiplier);
+        ISaveable.AddKey(data, "packageValueMultiplier", packageValueMultiplier);
+    }
+
+    public bool Load(GameData gameData)
+    {
+        foreach (var key_value in gameData.gameManagerData)
+        {
+            var parsed = ISaveable.ParseKey(key_value);
+            string key = parsed[0];
+            string value = parsed[1];
+            //Debug.Log("Loading key: " + key + " value: " + value);
+            switch (key)
+            {
+                case "money":
+                    money = (float)Convert.ToDouble(value);
+                    break;
+                case "speedMultiplier":
+                    speedMultiplier = (float)Convert.ToDouble(value);
+                    break;
+                case "packageValueMultiplier":
+                    packageValueMultiplier = (float)Convert.ToDouble(value);
+                    break;
+                default:
+                    Debug.LogError("Unrecognized key: " + key + " value: " + value);
+                    break;
+            }
+        }
+
+        return true;
+    }
 
     private void Awake()
     {
