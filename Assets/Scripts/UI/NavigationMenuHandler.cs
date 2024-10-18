@@ -39,6 +39,7 @@ public class NavigationMenuHandler : MonoBehaviour
     private GameObject activeBar;
 
     private GameObject player;
+    private Characters activeNPC;
     private GameObject activeNpcPortrait;
     private Waypoints currentWaypoint;
 
@@ -193,7 +194,8 @@ public class NavigationMenuHandler : MonoBehaviour
         int i = Random.Range(0, currentWaypoint.residents.Count);
         Characters randomCharacter = currentWaypoint.residents[i];
 
-        activeNpcPortrait = Instantiate(currentWaypoint.residents[i].characterPrefab, cameraWorldView.transform);
+        activeNPC = randomCharacter;
+        activeNpcPortrait = Instantiate(activeNPC.characterPrefab, cameraWorldView.transform);
         SetActiveCharacterName(randomCharacter.fullName);
         SetActiveCharacterTitle(randomCharacter.title);
         SetMessage("Hello, do you happen to have my precious package?");
@@ -273,9 +275,15 @@ public class NavigationMenuHandler : MonoBehaviour
         }
     }
 
+    public Characters GetActiveNPC()
+    {
+        return activeNPC;
+    }
+
     private void EndInteraction()
     {
         interactionBar.SetActive(false);
         Destroy(activeNpcPortrait);
+        activeNPC = null;
     }
 }
