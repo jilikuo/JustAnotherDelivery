@@ -24,9 +24,9 @@ public class UpgradeSizeManager : UpgradePanelManagerTextBase
 
     protected override void DoUpgrade()
     {
-        GameManager.instance.inventoryConfigIndex = nextValue;
-        if (nextValue < GameManager.instance.inventoryConfigs.Count)
+        if ((nextValue >= 0) && (nextValue < GameManager.instance.inventoryConfigs.Count))
         {
+            GameManager.instance.inventoryConfigIndex = nextValue;
             initCost *= costPerLevel;
         }
         else
