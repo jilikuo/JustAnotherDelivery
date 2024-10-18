@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             case SceneIndex.BootstrapScene:
             case SceneIndex.MainMenuScene:
+                break;
             case SceneIndex.SortingInventoryScene:
             case SceneIndex.PackageDeliveryScene:
                 timeSystem.StartTime();
