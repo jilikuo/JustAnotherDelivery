@@ -18,8 +18,16 @@ public enum Streets
 [Serializable]
 public class StreetName
 {
-    public Streets streetId;
+    [SerializeField]private Streets streetId;
     private string name;
+    public string Name
+    {
+        get 
+        {
+            name = streetNames[streetId];
+            return name; 
+        }
+    }
 
     private static Dictionary<Streets, string> streetNames = new Dictionary<Streets, string>
     {
