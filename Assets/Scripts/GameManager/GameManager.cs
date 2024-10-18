@@ -162,8 +162,13 @@ public class GameManager : MonoBehaviour
         return money;
     }
 
-    public float SpendMoney(float amount)
+    public bool SpendMoney(float amount)
     {
-        return money = Math.Max(money - amount, 0f);
+        if (money < amount)
+        {
+            return false;
+        }
+        money -= amount;
+        return true;
     }
 }

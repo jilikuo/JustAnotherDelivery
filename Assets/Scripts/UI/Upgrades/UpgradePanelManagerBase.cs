@@ -64,8 +64,14 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
 
     private void BuyUpgrade()
     {
-        GameManager.instance.SpendMoney(cost);
-        DoUpgrade();
+        if (GameManager.instance.SpendMoney(cost))
+        {
+            DoUpgrade();
+        }
+        else
+        {
+            Debug.Log("Failed to buy upgrade - Cost: " + cost + " Available: " + GameManager.instance.GetMoney());
+        }
     }
 
     protected void UpdateUpgradePanel()
