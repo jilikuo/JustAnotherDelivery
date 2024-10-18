@@ -11,7 +11,7 @@ public class NavButtonScript : MonoBehaviour
     private bool isDirectionValid;
     private bool isDirectionAccessible;
 
-    private void Start()
+    private void Awake()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null)

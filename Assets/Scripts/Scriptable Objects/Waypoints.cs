@@ -37,4 +37,14 @@ public class Waypoints : ScriptableObject
     public bool isAccessible;
 
     public List<Characters> residents;
+
+    public string GetCurrentAddress()
+    {
+        return addressNumber + ", " + streetName.Name;
+    }
+
+    public bool IsNpcAvailable()
+    {
+        return residents.Count > 0;
+    }
 }

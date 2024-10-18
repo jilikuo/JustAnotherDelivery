@@ -38,6 +38,7 @@ public class ItemDeliveryDisplayManager : MonoBehaviour, IItemDroppable
 
     public bool IsValidDropPosition(DragDropObject item)
     {
+        //TODO: If active character != recipient, return false
         return true;
     }
 }

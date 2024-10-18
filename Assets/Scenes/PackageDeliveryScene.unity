@@ -1234,7 +1234,7 @@ RectTransform:
   m_Father: {fileID: 1758127561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1310,10 +1310,10 @@ RectTransform:
   - {fileID: 515406068}
   m_Father: {fileID: 1469926845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 230.28308, y: -100}
+  m_SizeDelta: {x: 450.56616, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437133103
 MonoBehaviour:
@@ -2384,10 +2384,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 888985669}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 870, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -55}
+  m_SizeDelta: {x: 650, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &781278846
 MonoBehaviour:
@@ -2472,7 +2472,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 20.01654, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3723,7 +3723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1107911705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5036,10 +5036,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 888985669}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 340, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 950, y: -30}
+  m_SizeDelta: {x: 540, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1366563908
 MonoBehaviour:
@@ -5713,6 +5713,7 @@ MonoBehaviour:
   professionalAnswerButton: {fileID: 940662481}
   doNotSpeakButton: {fileID: 1501804326}
   fleeButton: {fileID: 650933646}
+  cameraWorldView: {fileID: 2038429695}
 --- !u!1 &1572693964
 GameObject:
   m_ObjectHideFlags: 0

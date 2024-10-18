@@ -27,9 +27,13 @@ public class NavigationMenuHandler : MonoBehaviour
     public GameObject doNotSpeakButton;
     public GameObject fleeButton;
 
+    public GameObject cameraWorldView;
+
     private GameObject activeBar;
 
     private GameObject player;
+    private GameObject activeNpcPortrait;
+    private Waypoints currentWaypoint;
 
     private bool canCallEmergency = true;
     private bool canFlee = true;
@@ -86,6 +90,8 @@ public class NavigationMenuHandler : MonoBehaviour
         { 
             throw new System.Exception("Player not found");
         }
+
+        currentWaypoint = player.GetComponent<MovementScript>().GetCurrentWaypoint();
         #endregion
     }
 
@@ -127,14 +133,35 @@ public class NavigationMenuHandler : MonoBehaviour
 
     public void ActivateMovementBar()
     {
-        activeBar.SetActive(false);
+        if (activeBar == interactionBar)
+        {
+            EndInteraction();
+        }
+        else
+        {
+            activeBar.SetActive(false);
+        }
+
         movementBar.SetActive(true);
         activeBar = movementBar;
     }
 
     public void ActivateInteractionBar()
     {
+        if (activeBar == interactionBar)
+        {
+            EndInteraction();
+        }
+
+        if (!currentWaypoint.IsNpcAvailable())
+        {
+            return;
+        }
+
         activeBar.SetActive(false);
+
+        PickRandomCharacter();
+
         interactionBar.SetActive(true);
         
         //TODO: unhide the interaction buttons when they get implemented
@@ -148,6 +175,19 @@ public class NavigationMenuHandler : MonoBehaviour
         //TODO: if canCallEmergency or CanFlee has changed, set interactionBarIsDirty to true
         interactionBarIsDirty = false; //if true, it will enable emergency button and flee button,
                                        //because there is no logic to handle their states as of now
+
+        
+    }
+
+    public void PickRandomCharacter()
+    {
+        int i = Random.Range(0, currentWaypoint.residents.Count);
+        Characters randomCharacter = currentWaypoint.residents[i];
+
+        activeNpcPortrait = Instantiate(currentWaypoint.residents[i].characterPrefab, cameraWorldView.transform);
+        SetActiveCharacterName(randomCharacter.fullName);
+        SetActiveCharacterTitle(randomCharacter.title);
+        SetMessage("Hello, do you happen to have my precious package?");
     }
 
     public void SetActiveCharacterName(string name)
@@ -186,8 +226,8 @@ public class NavigationMenuHandler : MonoBehaviour
 
     public void UpdateNavMenuAfterMovement()
     {
-        string currentAddress = player.GetComponent<MovementScript>().GetCurrentAddress();
-        currentAddressLabel.GetComponent<TMPro.TextMeshProUGUI>().text = currentAddress;
+        currentWaypoint = player.GetComponent<MovementScript>().GetCurrentWaypoint();
+        currentAddressLabel.GetComponent<TextMeshProUGUI>().text = currentWaypoint.GetCurrentAddress();
 
         foreach (GameObject button in movementButtons)
         {
@@ -210,7 +250,8 @@ public class NavigationMenuHandler : MonoBehaviour
         {
             if (interactionBar.activeSelf)
             {
-                interactionBar.SetActive(false);
+                EndInteraction();
+
             }
         }
 
@@ -221,5 +262,11 @@ public class NavigationMenuHandler : MonoBehaviour
                 movementBar.SetActive(false);
             }
         }
+    }
+
+    private void EndInteraction()
+    {
+        interactionBar.SetActive(false);
+        Destroy(activeNpcPortrait);
     }
 }

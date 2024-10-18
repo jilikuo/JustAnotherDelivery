@@ -15,4 +15,4 @@ MonoBehaviour:
   fullName: Dylan Evans
   title: Designer
   characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
-  hasBeenAssigned: 0
+  hasBeenAssigned: 1
