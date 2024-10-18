@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
-  m_Name: DylasEvans
+  m_Name: SamirCampbell
   m_EditorClassIdentifier: 
-  fullName: Dylan Evans
-  title: Designer
-  characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
+  fullName: Samuel Campbell
+  title: Human Resources Assistant
+  characterPrefab: {fileID: 6658364297737582876, guid: c758f182fae5d7f41a18cf3f3ea80a5b, type: 3}
+  hasBeenAssigned: 1

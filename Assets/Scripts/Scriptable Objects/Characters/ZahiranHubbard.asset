@@ -15,3 +15,4 @@ MonoBehaviour:
   fullName: Zahiran Hubbard
   title: 'Scientist '
   characterPrefab: {fileID: 5759978751558158010, guid: d5a777a40e856c44aa00fd6b46c79d55, type: 3}
+  hasBeenAssigned: 1

@@ -15,3 +15,4 @@ MonoBehaviour:
   fullName: Maya Wang
   title: Sales Manager
   characterPrefab: {fileID: 2921666839425887456, guid: cd9338e4affc0d249aeec422d4ff6fd2, type: 3}
+  hasBeenAssigned: 1

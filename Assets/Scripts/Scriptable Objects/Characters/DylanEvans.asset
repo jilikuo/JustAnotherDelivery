@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
-  m_Name: TirrellGordon
+  m_Name: DylanEvans
   m_EditorClassIdentifier: 
-  fullName: Tirrell Gordon
-  title: Public Relations Manager
-  characterPrefab: {fileID: 5759978751558158010, guid: d5a777a40e856c44aa00fd6b46c79d55, type: 3}
-  hasBeenAssigned: 1
+  fullName: Dylan Evans
+  title: Designer
+  characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
+  hasBeenAssigned: 0

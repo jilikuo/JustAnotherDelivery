@@ -35,4 +35,6 @@ public class Waypoints : ScriptableObject
 
     public bool isValid;
     public bool isAccessible;
+
+    public List<Characters> residents;
 }
