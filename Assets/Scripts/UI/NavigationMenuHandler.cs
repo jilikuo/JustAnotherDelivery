@@ -87,10 +87,12 @@ public class NavigationMenuHandler : MonoBehaviour
             throw new System.Exception("Player not found");
         }
         #endregion
+    }
 
+    private void Start()
+    {
         movementBar.SetActive(true);
         activeBar = movementBar;
-
         interactionBar.SetActive(false);
 
         movementButtons = new List<GameObject>
@@ -102,17 +104,14 @@ public class NavigationMenuHandler : MonoBehaviour
         };
 
         interactionButtons = new List<GameObject>
-        { 
+        {
             emergencyButton,
             personalAnswerButton,
             professionalAnswerButton,
             doNotSpeakButton,
             fleeButton
         };
-    }
 
-    private void Start()
-    {
         UpdateNavMenuAfterMovement();
     }
 
