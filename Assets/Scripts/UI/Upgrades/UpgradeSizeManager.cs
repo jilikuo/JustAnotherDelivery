@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class UpgradeSizeManager : UpgradePanelManagerTextBase
 {
     [SerializeField] private string upgradeLabel = "Messenger Bag Size";
-    [SerializeField] private float initCost = 10; 
-    [SerializeField] private float costPerLevel = 10;
+    [SerializeField] private int initCost = 10; 
+    [SerializeField] private int costPerLevel = 10;
     [SerializeField] private int value = -1;
     [SerializeField] private int nextValue = -1;
 
@@ -52,7 +52,7 @@ public class UpgradeSizeManager : UpgradePanelManagerTextBase
         return (inventoryConfig != null) ? inventoryConfig.label : null;
     }
 
-    protected override float GetUpgradeCost()
+    protected override int GetUpgradeCost()
     {
         return initCost;
     }

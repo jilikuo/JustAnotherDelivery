@@ -3,6 +3,7 @@ using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,30 +29,28 @@ public class Inventory : MonoBehaviour, ISaveable
 
     public void Save(GameData gameData)
     {
+        gameData.inventoryPackagesData = new List<string>();
         var data = gameData.inventoryPackagesData;
-        foreach ( var package in packages)
+        foreach (var package in packages)
         {
-            ISaveable.AddKey(data, package.iconName, package.address);
+            data.Add(package.ToString());
         }
     }
 
     public bool Load(GameData gameData)
     {
         packages = new List<Package>();
-        foreach (var key_value in gameData.inventoryPackagesData)
+        foreach (var val in gameData.inventoryPackagesData)
         {
-            var parsed = ISaveable.ParseKey(key_value);
-            string iconName = parsed[0];
-            string address = parsed[1];
-            packages.Add(new Package(iconName, address));
+            packages.Add(new Package(val));
         }
 
         return true;
     }
 
-    public void AddItem(string iconName, string address)
+    public void AddItem(string iconName, string address, int cost)
     {
-        packages.Add(new Package(iconName, address));
+        packages.Add(new Package(iconName, address, cost));
         Debug.Log("Added item to Inventory: " + address);
     }
 
@@ -110,10 +109,27 @@ public class Package
 {
     public string iconName;
     public string address;
+    public int cost;
 
-    public Package(string iconName, string address)
+    public Package(string iconName, string address, int cost)
     {
         this.iconName = iconName;
         this.address = address;
+        this.cost = cost;
+    }
+
+    // Helper for Load
+    public Package(string attributes)
+    {
+        var parsed = attributes.Split(':');
+        this.iconName = parsed[0];
+        this.address = parsed[1];
+        this.cost = Convert.ToInt32(parsed[2]);
+    }
+
+    // Helper for Save
+    public override string ToString()
+    {
+        return string.Join(":", iconName, address, cost);
     }
 }

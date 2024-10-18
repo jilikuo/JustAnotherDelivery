@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UpgradeSpeedManager : UpgradePanelManagerTextBase
 {
     [SerializeField] private string upgradeLabel = "Travel Speed Multiplier";
-    [SerializeField] private float costPerLevel = 2;
+    [SerializeField] private int costPerLevel = 2;
     [SerializeField] private float value = -1;
     [SerializeField] private float nextValue = -1;
 
@@ -40,9 +40,9 @@ public class UpgradeSpeedManager : UpgradePanelManagerTextBase
         return nextValue.ToString() + "x";
     }
 
-    protected override float GetUpgradeCost()
+    protected override int GetUpgradeCost()
     {
-        return nextValue * costPerLevel;
+        return (int)(nextValue * costPerLevel);
     }
 
     protected override bool HasUpdatedValue()

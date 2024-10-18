@@ -34,6 +34,14 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         }
     }
 
+    private int CalcCost(GameObject icon)
+    {
+        // Arbitrary cost value, currently based on icon size
+        var rect = icon.GetComponent<RectTransform>();
+        float cost = Mathf.Max(1, rect.sizeDelta.x * rect.sizeDelta.y);
+        return (int)(GameManager.instance.packageValueMultiplier * cost);
+    }
+
     public DragDropObject CreateDragDrop(GameObject parent)
     {
         string address = packageAddressGen.GetEntry();
@@ -54,7 +62,7 @@ public class PackageGenerator : MonoBehaviour, IDragDropGenerator
         icon.transform.position = parent.transform.position;
 
         var dragDrop = icon.AddComponent<DragDropPackage>();
-        dragDrop.data = new Package(packageIcon.name, address);
+        dragDrop.data = new Package(packageIcon.name, address, CalcCost(icon));
 
         return dragDrop;
     }

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public static GameManager instance;
 
     [SerializeField] private BoolVariable isGamePaused;
-    [SerializeField] private float money;
+    [SerializeField] private int money;
 
     [Header("Data for upgrades")]
     public List<InventoryConfigObject> inventoryConfigs;
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour, ISaveable
             switch (key)
             {
                 case "money":
-                    money = (float)Convert.ToDouble(value);
+                    money = Convert.ToInt32(value);
                     break;
                 case "inventoryConfigIndex":
                     inventoryConfigIndex = Convert.ToInt32(value);
@@ -198,15 +198,15 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void RewardForDelivery(Package package)
     {
-        money++;
+        money += package.cost;
     }
 
-    public float GetMoney()
+    public int GetMoney()
     {
         return money;
     }
 
-    public bool SpendMoney(float amount)
+    public bool SpendMoney(int amount)
     {
         if (money < amount)
         {
