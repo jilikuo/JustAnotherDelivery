@@ -26,6 +26,7 @@ public class NavigationMenuHandler : MonoBehaviour
     public GameObject nameLabel;
     public GameObject titleLabel;
     public GameObject messageBox;
+    public GameObject deliveryBox;
     public GameObject currentAddressLabel;
 
     public GameObject emergencyButton;
@@ -164,6 +165,11 @@ public class NavigationMenuHandler : MonoBehaviour
         if (activeBar == interactionBar)
         {
             EndInteraction();
+        }
+
+        if (!deliveryBox.activeSelf)
+        {
+            deliveryBox.SetActive(true);
         }
 
         GameManager.instance.SpendInteractionTime();

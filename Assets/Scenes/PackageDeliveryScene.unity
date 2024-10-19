@@ -4766,6 +4766,7 @@ MonoBehaviour:
   nameLabel: {fileID: 781278844}
   titleLabel: {fileID: 1366563906}
   messageBox: {fileID: 1661239182}
+  deliveryBox: {fileID: 1373279105}
   currentAddressLabel: {fileID: 1939194806}
   emergencyButton: {fileID: 1372315785}
   personalAnswerButton: {fileID: 1062276415}
