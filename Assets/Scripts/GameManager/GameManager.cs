@@ -150,6 +150,12 @@ public class GameManager : MonoBehaviour, ISaveable
         isGamePaused.value = false;
     }
 
+    public void LoadScene(GameScene sceneIndex)
+    {
+        // TODO: Reorganize scene loading
+        SceneManager.LoadScene((int)sceneIndex);
+    }
+
     public void LoadNextScene()
     {
         int index = SceneManager.GetActiveScene().buildIndex;

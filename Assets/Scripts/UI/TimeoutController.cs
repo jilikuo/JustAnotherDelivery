@@ -21,6 +21,12 @@ public class TimeoutController : MonoBehaviour
         timeoutPanel.SetActive(true);
     }
 
+    public void Continue()
+    {
+        timeoutPanel.SetActive(false);
+        GameManager.instance.LoadScene(GameManager.GameScene.UpgradeMenuScene);
+    }
+
     public void RestartDay()
     {
         timeoutPanel.SetActive(false);
