@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PauseOnEnable : MonoBehaviour
+public class PauseOnEnableHandler : MonoBehaviour
 {
     private void OnEnable()
     {

@@ -338,19 +338,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 63338088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 400281600}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: BackToMain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &63338088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to Main Menu
+  m_text: Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
@@ -920,19 +908,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 807351856}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 400281600}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: BackToMain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &807351856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +958,7 @@ GameObject:
   - component: {fileID: 1311992338}
   - component: {fileID: 1311992340}
   - component: {fileID: 1311992339}
+  - component: {fileID: 1311992341}
   m_Layer: 5
   m_Name: CreditsMenuPanel
   m_TagString: Untagged
@@ -1048,6 +1025,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311992337}
   m_CullTransparentMesh: 1
+--- !u!114 &1311992341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311992337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff1edaecb65ce0479855c112582463d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337155817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1335,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to Main Menu
+  m_text: Close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
@@ -2700,6 +2689,7 @@ GameObject:
   - component: {fileID: 2044772827}
   - component: {fileID: 2044772829}
   - component: {fileID: 2044772828}
+  - component: {fileID: 2044772830}
   m_Layer: 5
   m_Name: SettingsMenuPanel
   m_TagString: Untagged
@@ -2765,6 +2755,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044772826}
   m_CullTransparentMesh: 1
+--- !u!114 &2044772830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044772826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff1edaecb65ce0479855c112582463d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2088567841
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
     public GameObject settingsMenuPanel;
     public GameObject creditsMenuPanel;
 
-    private GameObject activePanel;
 
     void Awake()
     {
@@ -47,23 +46,15 @@ public class MainMenu : MonoBehaviour
     public void Settings()
     {
         settingsMenuPanel.SetActive(true);
-        activePanel = settingsMenuPanel;
     }
 
     public void Credits()
     {
         creditsMenuPanel.SetActive(true);
-        activePanel = creditsMenuPanel;
     }
 
     public void ExitGame()
     {
         GameManager.instance.ExitGame();
-    }
-
-    public void BackToMain()
-    {
-        activePanel.SetActive(false);
-        activePanel = null;
     }
 }
