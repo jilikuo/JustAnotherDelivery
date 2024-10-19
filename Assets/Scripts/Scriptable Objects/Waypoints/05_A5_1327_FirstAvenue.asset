@@ -16,12 +16,12 @@ MonoBehaviour:
     streetId: 0
   addressNumber: 1327
   position:
-    x: 29
+    x: 21
     y: 1
     z: -30
   rotation:
-    x: -5
-    y: -220
+    x: 337
+    y: 130
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   eastWaypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
@@ -33,3 +33,4 @@ MonoBehaviour:
   residents:
   - {fileID: 11400000, guid: 7e704ddfde240f6429d5f625e5051a2b, type: 2}
   - {fileID: 11400000, guid: cc75194c828ac6f4c805b043afeb1435, type: 2}
+  updateCoordinates: 0

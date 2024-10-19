@@ -16,12 +16,12 @@ MonoBehaviour:
     streetId: 5
   addressNumber: 911
   position:
-    x: 45
+    x: 40
     y: 1
-    z: 24
+    z: 28
   rotation:
-    x: 9
-    y: -100
+    x: 354
+    y: 230
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   eastWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
@@ -29,6 +29,7 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   isValid: 1
   isAccessible: 1
-  isDirty: 0
+  isDirty: 1
   residents:
   - {fileID: 11400000, guid: ab85fd333d1c95e43af454455a17f840, type: 2}
+  updateCoordinates: 0

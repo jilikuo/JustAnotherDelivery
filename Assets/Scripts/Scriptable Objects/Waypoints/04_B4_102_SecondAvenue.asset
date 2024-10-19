@@ -20,8 +20,8 @@ MonoBehaviour:
     y: 1
     z: 2
   rotation:
-    x: -15
-    y: -225
+    x: 345
+    y: 130.00002
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   eastWaypoint: {fileID: 11400000, guid: b22d84c2b50935d44aa84057b90ed5d1, type: 2}
@@ -29,7 +29,8 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: acf63a8efbb074b4a8d1dc93af84b8e6, type: 2}
   isValid: 1
   isAccessible: 1
-  isDirty: 0
+  isDirty: 1
   residents:
   - {fileID: 11400000, guid: d1f7fd60fb20f8d48978f2d4384b0aa8, type: 2}
   - {fileID: 11400000, guid: 23120308938d0f74c8fe23b1624ce2cd, type: 2}
+  updateCoordinates: 0

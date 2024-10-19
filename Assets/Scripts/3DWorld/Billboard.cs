@@ -8,7 +8,7 @@ public class Billboard : MonoBehaviour
 
     private void Start()
     {
-        _camera = GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
+        _camera = UICamera.instance.gameObject.GetComponent<Camera>();
     }
 
     private void LateUpdate()

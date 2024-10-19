@@ -39,6 +39,7 @@ public class Waypoints : ScriptableObject
 
     public List<Characters> residents;
 
+    public bool updateCoordinates;
     public string GetFullAddress()
     {
         return addressNumber + ", " + streetName.Name;
@@ -67,5 +68,14 @@ public class Waypoints : ScriptableObject
             isDirty = false;
         }
         isDirty = true;
+
+        if (updateCoordinates)
+        {
+            Debug.LogWarning("Updating Coordinates. You should not click this if you don't understand what it does.");
+            Transform camtransform = UICamera.instance.gameObject.transform;
+            position = new Coordinates(camtransform.position.x, camtransform.position.y, camtransform.position.z);
+            rotation = new Coordinates(camtransform.rotation.eulerAngles.x, camtransform.rotation.eulerAngles.y, camtransform.rotation.eulerAngles.z);
+        }
+        updateCoordinates = false;
     }
 }

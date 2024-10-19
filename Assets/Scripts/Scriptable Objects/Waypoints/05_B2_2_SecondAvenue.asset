@@ -16,12 +16,12 @@ MonoBehaviour:
     streetId: 1
   addressNumber: 2
   position:
-    x: 84
+    x: 90
     y: 1
-    z: 4.5
+    z: 8
   rotation:
-    x: -9
-    y: -180
+    x: 350
+    y: 210
     z: 0
   northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   eastWaypoint: {fileID: 11400000, guid: 3d63f7d91b379a44e9f234893aa541d1, type: 2}
@@ -29,7 +29,8 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
   isValid: 1
   isAccessible: 1
-  isDirty: 0
+  isDirty: 1
   residents:
   - {fileID: 11400000, guid: e6dff53b8f1128c4cbec8a003091ab9e, type: 2}
   - {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+  updateCoordinates: 0
