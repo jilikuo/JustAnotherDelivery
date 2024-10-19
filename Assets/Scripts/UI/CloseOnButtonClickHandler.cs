@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CloseOnButtonClickHandler : MonoBehaviour
+public class CloseOnButtonClickHandler : CloseOnEscHandler
 {
     Button button;
 

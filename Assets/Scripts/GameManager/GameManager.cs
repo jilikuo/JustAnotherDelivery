@@ -2,6 +2,7 @@ using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour, ISaveable
 
     private TimeSystem timeSystem;
     private Inventory inventory;
+
+    private List<GameObject> escMenuStack = new List<GameObject>();
 
     public void Save(GameData gameData)
     {
@@ -102,6 +105,38 @@ public class GameManager : MonoBehaviour, ISaveable
             SceneManager.LoadScene(1);
         }
 #endif
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseLastEscMenu();
+        }
+    }
+
+    public void AddEscMenu(GameObject menu)
+    {
+        escMenuStack.Add(menu);
+    }
+
+    public void RemoveEscMenu(GameObject menu)
+    {
+        escMenuStack.Remove(menu);
+    }
+
+    private void CloseLastEscMenu()
+    {
+        while ((escMenuStack.Count > 0) && (!escMenuStack.Last().activeSelf))
+        {
+            escMenuStack.Remove(escMenuStack.Last());
+        }
+        if (escMenuStack.Count > 0)
+        {
+            var menu = escMenuStack.Last();
+            menu.SetActive(false);
+            escMenuStack.Remove(menu);
+        }
     }
 
     public bool IsGamePaused()
