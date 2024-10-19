@@ -1341,9 +1341,9 @@ MonoBehaviour:
   inventoryLabel: {fileID: 7968683127815247992}
   inventoryBackground: {fileID: 8496352258786081542}
   inventory: {fileID: 0}
-  inventoryConfig: {fileID: 0}
   highlightGood: {r: 0, g: 1, b: 0, a: 0.39215687}
   highlightBad: {r: 1, g: 0, b: 0, a: 0.39215687}
+  inventoryConfig: {fileID: 0}
   inventoryLayout: {fileID: 0}
   gridObject: {fileID: 0}
   layoutBackground: {fileID: 0}
@@ -1459,9 +1459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2a6838495f2464bbddf3384323741f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  packageIconGen: {fileID: 0}
-  packageAddressGen: {fileID: 0}
+  packageAddressGen: {fileID: 11400000, guid: 13ecd03a8333df04d9371568a6e990e7, type: 2}
   imageScale: 75
+  packageIconGen: {fileID: 0}
 --- !u!114 &7510503733266433622
 MonoBehaviour:
   m_ObjectHideFlags: 0

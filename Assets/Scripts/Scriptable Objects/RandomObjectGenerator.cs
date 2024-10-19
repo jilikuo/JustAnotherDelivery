@@ -11,6 +11,12 @@ public abstract class RandomObjectGenerator<T> : ScriptableObject where T : clas
     public T defaultEntry;
     public List<T> entries;
 
+    public void Clear()
+    {
+        defaultEntry = null;
+        entries = new List<T> ();
+    }
+
     // Returns a copy of random entry
     public T GetEntryCopy()
     {

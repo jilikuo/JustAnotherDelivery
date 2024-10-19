@@ -52,7 +52,7 @@ public class ItemDeliveryDisplayManager : MonoBehaviour, IItemDroppable
         GameObject itemGameObject = item.gameObject;
         DragDropPackage package = itemGameObject.GetComponent<DragDropPackage>();
 
-        if (package.data.fullName != activeNpc.name)
+        if (package.data.address.fullName != activeNpc.name)
         {
             navigationManager.SetMessage("This is not mine!");
             return false;

@@ -1,8 +1,10 @@
 using DragDrop;
+using JetBrains.Annotations;
 using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -105,18 +107,61 @@ public class Inventory : MonoBehaviour, ISaveable
 }
 
 [Serializable]
+public class Address
+{
+    public string fullName;
+    public string address;
+
+    public Address(string fullName, string address)
+    {
+        this.fullName = fullName;
+        this.address = address;
+    }
+
+    public Address(Characters character)
+    {
+        this.fullName = character.fullName;
+        this.address = character.waypoint.GetFullAddress();
+    }
+
+    // Helper for Load
+    public Address(string attributes)
+    {
+        var parsed = attributes.Split('@');
+        this.fullName = parsed[0];
+        this.address = parsed[1];
+    }
+
+    // Helper for Save
+    public override string ToString()
+    {
+        return string.Join("@", fullName, address);
+    }
+
+    public Address Clone()
+    {
+        return new Address(fullName, address);
+    }
+}
+
+[Serializable]
 public class Package
 {
     public string iconName;
-    public string fullName;
-    public string address;
+    public Address address;
     public int cost;
+
+    public Package(string iconName, Address address, int cost)
+    {
+        this.iconName = iconName;
+        this.address = address;
+        this.cost = cost;
+    }
 
     public Package(string iconName, string fullName, string address, int cost)
     {
         this.iconName = iconName;
-        this.fullName = fullName;
-        this.address = address;
+        this.address = new Address(fullName, address);
         this.cost = cost;
     }
 
@@ -125,19 +170,18 @@ public class Package
     {
         var parsed = attributes.Split(':');
         this.iconName = parsed[0];
-        this.fullName = parsed[1];
-        this.address = parsed[2];
-        this.cost = Convert.ToInt32(parsed[3]);
+        this.address = new Address(parsed[1]);
+        this.cost = Convert.ToInt32(parsed[2]);
     }
 
     // Helper for Save
     public override string ToString()
     {
-        return string.Join(":", iconName, fullName, address, cost);
+        return string.Join(":", iconName, address, cost);
     }
 
     public string ToDisplayString()
     {
-        return string.Join("@", fullName, address) + ", Coins: " + cost;
+        return address.ToString() + ", Coins: " + cost;
     }
 }

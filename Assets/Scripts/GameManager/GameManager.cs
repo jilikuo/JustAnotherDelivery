@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour, ISaveable
     public float packageValueMultiplier = 1f;
 
     [Header("Data for plot")]
+    public NPCCollection npcCollection;
     public RandomGameObjectGenerator packageIconGen;
-    public RandomStringGenerator packageAddressGen;
 
     private TimeSystem timeSystem;
     private Inventory inventory;
