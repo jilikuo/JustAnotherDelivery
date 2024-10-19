@@ -459,10 +459,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 772519652128072258, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_text
-      value: 'Upgrade Delivery Speed - Increase your delivery speed
+      value: 'Upgrade Travel Speed Multiplier - Increase your delivery speed
 
         Upgrade
-        Messenger Bag Level - Increase the potential value of your packages
+        Package Value Multiplier- Increase the coins earned for each package
 
         Upgrade
         Messenger Bag Size - Increase the capacity of your messenger bag
