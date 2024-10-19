@@ -97,8 +97,7 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         Time.timeScale = 1;
-        if (SceneManager.GetActiveScene().name == "UpgradeMenuScene") SaveSystem.DataManager.instance.UpdateAndSaveToFile();
-        Application.Quit();
+        GameManager.instance.ExitGame();
     }
 
     public void BackToMain()
