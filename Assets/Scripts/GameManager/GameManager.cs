@@ -123,25 +123,35 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void LoadScene(GameScene gameScene)
     {
+        if (timeSystem != null)
+        {
+            timeSystem.StopTime();
+
+            if (gameScene == GameScene.MainMenuScene)
+            {
+                EndGame();
+            }
+        }
+
         SceneManager.LoadScene((int)gameScene);
 
-        if (timeSystem == null) return;
-
-        switch (gameScene)
+        if (timeSystem != null)
         {
-            case GameScene.BootstrapScene:
-            case GameScene.MainMenuScene:
-                break;
-            case GameScene.SortingInventoryScene:
-            case GameScene.PackageDeliveryScene:
-                timeSystem.StartTime();
-                break;
-            case GameScene.UpgradeMenuScene:
-                timeSystem.StopTime();
-                break;
-            default:
-                Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
-                break;
+            switch (gameScene)
+            {
+                case GameScene.BootstrapScene:
+                case GameScene.MainMenuScene:
+                    break;
+                case GameScene.SortingInventoryScene:
+                case GameScene.PackageDeliveryScene:
+                    timeSystem.StartTime();
+                    break;
+                case GameScene.UpgradeMenuScene:
+                    break;
+                default:
+                    Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
+                    break;
+            }
         }
     }
 
@@ -162,7 +172,7 @@ public class GameManager : MonoBehaviour, ISaveable
             default:
                 Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
                 break;
-        };
+        }
     }
 
     public void SpendMovementTime()
@@ -221,6 +231,29 @@ public class GameManager : MonoBehaviour, ISaveable
         LoadScene((GameScene)SaveSystem.DataManager.instance.GetLastSceneIndex());
     }
 
+    public void EndGame()
+    {
+        switch ((GameScene)SceneManager.GetActiveScene().buildIndex)
+        {
+            case GameScene.BootstrapScene:
+            case GameScene.MainMenuScene:
+            case GameScene.SortingInventoryScene:
+            case GameScene.PackageDeliveryScene:
+                break;
+            case GameScene.UpgradeMenuScene:
+                SaveSystem.DataManager.instance.UpdateAndSaveToFile();
+                break;
+            default:
+                Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
+                break;
+        }
+    }
+
+    public void ExitGame()
+    {
+        EndGame();
+        Application.Quit();
+    }
 
     public void RewardForDelivery(Package package)
     {
