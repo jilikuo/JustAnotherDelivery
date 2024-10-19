@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
-  m_Name: JinShanHo
+  m_Name: KarimElSayed
   m_EditorClassIdentifier: 
-  fullName: Jin Shan Ho
-  title: Software Engineer
-  characterPrefab: {fileID: 4059512523856862514, guid: 618290dfdd939d447b8bf2c3379f7b94, type: 3}
-  waypoint: {fileID: 11400000, guid: 548320923f010fb40bfa256779cb573c, type: 2}
-  hasBeenAssigned: 1
+  fullName: Karim El-Sayed
+  title: Chiropractor
+  characterPrefab: {fileID: 4059512523856862514, guid: 22878ff888c58b14cb3b128d9a9582bd, type: 3}
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0

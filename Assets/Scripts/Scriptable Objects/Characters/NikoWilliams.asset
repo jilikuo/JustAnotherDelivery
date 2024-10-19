@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Niko Williams
   title: Artist
-  characterPrefab: {fileID: 4059512523856862514, guid: 46e4bfa4f13bffc47a539d8b3c814ce7, type: 3}
-  address: {fileID: 0}
+  characterPrefab: {fileID: 4059512523856862514, guid: ef49c498c8822ac4fbc6eddc3469cd84, type: 3}
+  waypoint: {fileID: 0}
   hasBeenAssigned: 1

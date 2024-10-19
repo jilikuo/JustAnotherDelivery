@@ -54,7 +54,7 @@ public class NPCCollection : ScriptableObject
         {
             if (npc.waypoint == null)
             {
-                Debug.LogError(logTag + "Character " + npc.fullName + " has no waypoint assigned");
+                Debug.LogError(logTag + "Character " + npc.fullName + " has no waypoint assigned, but is in the NPC List");
             }
         }
 
