@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISaveable
 {
-    public enum SceneIndex
+    public enum GameScene
     {
         BootstrapScene,
         MainMenuScene,
@@ -117,16 +117,16 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (timeSystem == null) return;
 
-        switch ((SceneIndex)scene.buildIndex)
+        switch ((GameScene)scene.buildIndex)
         {
-            case SceneIndex.BootstrapScene:
-            case SceneIndex.MainMenuScene:
+            case GameScene.BootstrapScene:
+            case GameScene.MainMenuScene:
                 break;
-            case SceneIndex.SortingInventoryScene:
-            case SceneIndex.PackageDeliveryScene:
+            case GameScene.SortingInventoryScene:
+            case GameScene.PackageDeliveryScene:
                 timeSystem.StartTime();
                 break;
-            case SceneIndex.UpgradeMenuScene:
+            case GameScene.UpgradeMenuScene:
                 timeSystem.StopTime();
                 break;
             default:
@@ -154,15 +154,15 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         int index = SceneManager.GetActiveScene().buildIndex;
         int next_index = index + 1;
-        switch ((SceneIndex)SceneManager.GetActiveScene().buildIndex)
+        switch ((GameScene)SceneManager.GetActiveScene().buildIndex)
         {
-            case SceneIndex.BootstrapScene:
-            case SceneIndex.MainMenuScene:
-            case SceneIndex.SortingInventoryScene:
-            case SceneIndex.PackageDeliveryScene:
+            case GameScene.BootstrapScene:
+            case GameScene.MainMenuScene:
+            case GameScene.SortingInventoryScene:
+            case GameScene.PackageDeliveryScene:
                 SceneManager.LoadScene(next_index);
                 break;
-            case SceneIndex.UpgradeMenuScene:
+            case GameScene.UpgradeMenuScene:
                 StartNextDay();
                 break;
             default:
@@ -189,14 +189,14 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         timeSystem.ResetDay();
         inventory.Reset();
-        SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
+        SceneManager.LoadScene((int)GameScene.SortingInventoryScene);
     }
 
     public void StartNextDay()
     {
         timeSystem.SetNextDay();
         inventory.Reset();
-        SceneManager.LoadScene((int)SceneIndex.SortingInventoryScene);
+        SceneManager.LoadScene((int)GameScene.SortingInventoryScene);
     }
 
     public void StartNewGame()
