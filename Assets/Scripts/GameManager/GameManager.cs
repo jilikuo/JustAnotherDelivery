@@ -91,9 +91,10 @@ public class GameManager : MonoBehaviour, ISaveable
     private void Start()
     {
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
+        timeSystem.StopTime();
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         isGamePaused.value = false;
-        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        InitGameData();
 
 #if !UNITY_EDITOR
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -103,21 +104,30 @@ public class GameManager : MonoBehaviour, ISaveable
 #endif
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+    public bool IsGamePaused()
+    { 
+        return isGamePaused.value;
     }
 
-    void OnDisable()
+    public void PauseGame()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Time.timeScale = 0;
+        isGamePaused.value = true;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void UnpauseGame()
     {
+        isGamePaused.value = false;
+        Time.timeScale = 1;
+    }
+
+    public void LoadScene(GameScene gameScene)
+    {
+        SceneManager.LoadScene((int)gameScene);
+
         if (timeSystem == null) return;
 
-        switch ((GameScene)scene.buildIndex)
+        switch (gameScene)
         {
             case GameScene.BootstrapScene:
             case GameScene.MainMenuScene:
@@ -132,41 +142,19 @@ public class GameManager : MonoBehaviour, ISaveable
             default:
                 Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
                 break;
-        };
-    }
-
-    public bool IsGamePaused()
-    { 
-        return isGamePaused.value;
-    }
-
-    public void PauseGame()
-    {
-        isGamePaused.value = true;
-    }
-
-    public void UnpauseGame()
-    {
-        isGamePaused.value = false;
-    }
-
-    public void LoadScene(GameScene sceneIndex)
-    {
-        // TODO: Reorganize scene loading
-        SceneManager.LoadScene((int)sceneIndex);
+        }
     }
 
     public void LoadNextScene()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        int next_index = index + 1;
-        switch ((GameScene)SceneManager.GetActiveScene().buildIndex)
+        GameScene gameScene = (GameScene)SceneManager.GetActiveScene().buildIndex;
+        switch (gameScene)
         {
             case GameScene.BootstrapScene:
             case GameScene.MainMenuScene:
             case GameScene.SortingInventoryScene:
             case GameScene.PackageDeliveryScene:
-                SceneManager.LoadScene(next_index);
+                LoadScene(gameScene + 1);
                 break;
             case GameScene.UpgradeMenuScene:
                 StartNextDay();
@@ -191,36 +179,48 @@ public class GameManager : MonoBehaviour, ISaveable
         timeSystem.AdvanceTime(inteTime);
     }
 
+    public void InitGameData()
+    {
+        timeSystem.SetTime(0f);
+        money = 0;
+        inventoryConfigIndex = 0;
+        speedMultiplier = 1.0f;
+        packageValueMultiplier = 1.0f;
+    }
+
+    public void ResetGameData()
+    {
+        SaveSystem.DataManager.instance.ResetGameData();
+        InitGameData();
+    }
+
     public void RestartDay()
     {
+        SaveSystem.DataManager.instance.LoadGame();
         timeSystem.ResetDay();
         inventory.Reset();
-        SceneManager.LoadScene((int)GameScene.SortingInventoryScene);
+        LoadScene(GameScene.SortingInventoryScene);
     }
 
     public void StartNextDay()
     {
         timeSystem.SetNextDay();
         inventory.Reset();
-        SceneManager.LoadScene((int)GameScene.SortingInventoryScene);
+        LoadScene(GameScene.SortingInventoryScene);
     }
 
     public void StartNewGame()
     {
-        timeSystem.SetTime(0f);
-        SaveSystem.DataManager.instance.ResetGameData();
-        money = 0;
-        inventoryConfigIndex = 0;
-        speedMultiplier = 1.0f;
-        packageValueMultiplier = 1.0f;
+        ResetGameData();
         RestartDay();
     }
 
     public void ContinueGame()
     {
         SaveSystem.DataManager.instance.LoadGame();
-        SceneManager.LoadScene(SaveSystem.DataManager.instance.GetLastSceneIndex());
+        LoadScene((GameScene)SaveSystem.DataManager.instance.GetLastSceneIndex());
     }
+
 
     public void RewardForDelivery(Package package)
     {
