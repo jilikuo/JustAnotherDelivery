@@ -5,42 +5,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HelpController : MonoBehaviour
+public class HelpController : ToggleChildOnKeyController
 {
-    private GameObject helpPanel;
     private Toggle helpToggle;
     private string alwaysShowHelpKey = "alwaysShowHelp";
 
-    private void Start()
+    protected override void OnStart()
     {
-        // It has one child - the actual panel, which is disabled.
-        helpPanel = gameObject.transform.GetChild(0).gameObject;
-        helpToggle = helpPanel.GetComponentInChildren<Toggle>();
+        keyCode = KeyCode.H;
+
+        helpToggle = childPanel.GetComponentInChildren<Toggle>();
 
         bool alwaysShowHelp = PlayerPrefs.GetInt(alwaysShowHelpKey, 1) == 1;
         helpToggle.isOn = alwaysShowHelp;
-        helpPanel.SetActive(alwaysShowHelp);
+        childPanel.SetActive(alwaysShowHelp);
     }
 
-    private void Update()
+    protected override void OnUpdate()
     {
-        if (GameManager.instance.IsGamePaused() && !helpPanel.activeSelf)
-        {
-            return;
-        }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            if (helpPanel.activeSelf)
-            {
-                helpPanel.SetActive(false);
-                PlayerPrefs.SetInt(alwaysShowHelpKey, (helpToggle.isOn) ? 1 : 0);
-                GameManager.instance.UnpauseGame();
-            }
-            else
-            {
-                GameManager.instance.PauseGame();
-                helpPanel.SetActive(true);
-            }
-        }
+        PlayerPrefs.SetInt(alwaysShowHelpKey, (helpToggle.isOn) ? 1 : 0);
     }
 }
