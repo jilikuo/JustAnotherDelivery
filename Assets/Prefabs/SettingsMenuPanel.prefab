@@ -31,7 +31,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 641673524349821991}
+  - {fileID: 4477158695049986270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff1edaecb65ce0479855c112582463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2138230127883333891
+--- !u!1001 &3128095531216360954
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -123,7 +123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_SizeDelta.y
@@ -179,15 +179,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8808884215563418611, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_Name
-      value: ClosePanelButton
+      value: CloseButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
---- !u!224 &641673524349821991 stripped
+--- !u!224 &4477158695049986270 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
-  m_PrefabInstance: {fileID: 2138230127883333891}
+  m_PrefabInstance: {fileID: 3128095531216360954}
   m_PrefabAsset: {fileID: 0}
