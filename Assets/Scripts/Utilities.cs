@@ -5,7 +5,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
-using static UnityEditor.Progress;
 
 public static class BoundsExtension
 {

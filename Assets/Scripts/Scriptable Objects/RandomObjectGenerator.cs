@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public abstract class RandomObjectGenerator<T> : ScriptableObject where T : class
 {
