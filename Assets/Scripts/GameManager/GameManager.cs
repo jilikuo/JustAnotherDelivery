@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour, ISaveable
     public NPCCollection npcCollection;
     public RandomGameObjectGenerator packageIconGen;
 
+    [Header("Menus")]
+    [SerializeField] private GameObject inGameMenu;
+
     private TimeSystem timeSystem;
     private Inventory inventory;
 
@@ -131,11 +134,24 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             escMenuStack.Remove(escMenuStack.Last());
         }
+
         if (escMenuStack.Count > 0)
         {
+            // Close the last escape menu
             var menu = escMenuStack.Last();
             menu.SetActive(false);
             escMenuStack.Remove(menu);
+        }
+        else
+        {
+            // Otherwise, toggle the current in-game menu
+            var menuParent = GameObject.FindGameObjectWithTag("InGameMenu");
+            if (menuParent != null)
+            {
+                // The menu has 1 child - the actual menu
+                var menu = menuParent.transform.GetChild(0).gameObject;
+                menu.SetActive(!menu.activeSelf);
+            }
         }
     }
 

@@ -9,8 +9,9 @@ TagManager:
   - UICamera
   - Inventory
   - TimeoutPanel
-  - NavigationManager
   - MinimapManager
+  - NavigationManager
+  - InGameMenu
   layers:
   - Default
   - TransparentFX

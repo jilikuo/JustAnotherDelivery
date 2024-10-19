@@ -7,6 +7,7 @@ using SaveSystem;
 
 public class GameMenu : MonoBehaviour
 {
+    public GameObject topPanel;
     public GameObject continueButton;
     public GameObject settingsMenuPanel;
     public GameObject creditsMenuPanel;
@@ -28,6 +29,11 @@ public class GameMenu : MonoBehaviour
         }
     }
 
+    public void Close()
+    {
+        topPanel.SetActive(false);
+    }
+
     public void NewGame()
     {
         GameManager.instance.StartNewGame();
@@ -36,6 +42,11 @@ public class GameMenu : MonoBehaviour
     public void ContinueGame()
     {
         GameManager.instance.ContinueGame();
+    }
+
+    public void MainMenu()
+    {
+        GameManager.instance.LoadScene(GameManager.GameScene.MainMenuScene);
     }
 
     public void Settings()
