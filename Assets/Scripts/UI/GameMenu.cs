@@ -5,32 +5,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SaveSystem;
 
-public class MainMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
     public GameObject continueButton;
     public GameObject settingsMenuPanel;
     public GameObject creditsMenuPanel;
 
 
-    void Awake()
-    {
-        #region NotNullChecks
-        if (continueButton == null)
-        {
-            Debug.LogError("Continue Button not found.");
-        }
-
-        if (settingsMenuPanel == null) {
-             Debug.LogError("Settings Panel not found.");
-        }
-        #endregion
-    }
-
     private void Start()
     {
-        continueButton.GetComponent<Button>().interactable = SaveSystem.DataManager.instance.HasLoadedGameData();
-        settingsMenuPanel.SetActive(false);
-        creditsMenuPanel.SetActive(false);
+        if (continueButton != null)
+        {
+            continueButton.GetComponent<Button>().interactable = SaveSystem.DataManager.instance.HasLoadedGameData();
+        }
+        if (settingsMenuPanel != null)
+        {
+            settingsMenuPanel.SetActive(false);
+        }
+        if (creditsMenuPanel != null)
+        {
+            creditsMenuPanel.SetActive(false);
+        }
     }
 
     public void NewGame()
