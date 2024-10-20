@@ -75,7 +75,7 @@ public class NPCCollection : ScriptableObject
         {   
             if (npc.waypoint == null)
             {
-                Debug.LogWarning(logTag + "Character " + npc.fullName + " has no waypoint assigned, but is already in the NPC list, their addres will be changed");
+                //Debug.LogWarning(logTag + "Character " + npc.fullName + " has no waypoint assigned, but is already in the NPC list, their addres will be updated");
                 return true;
             }
 
@@ -93,6 +93,6 @@ public class NPCCollection : ScriptableObject
     {
         npc.waypoint = wp;
         npc.hasBeenAssigned = true;
-        Debug.Log(logTag + "Assigned " + npc.fullName + " to " + wp.GetFullAddress());
+        //Debug.Log(logTag + "Assigned " + npc.fullName + " to " + wp.GetFullAddress());
     }
 }
