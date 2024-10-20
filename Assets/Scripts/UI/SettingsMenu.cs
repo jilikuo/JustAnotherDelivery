@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using SaveSystem;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public class SettingsMenu : MonoBehaviour
 {
     private GameObject child;
 
-    public void Start()
+    private void Start()
     {
         // This object should have a single child
         child = transform.GetChild(0).gameObject;
@@ -18,7 +19,6 @@ public class SettingsMenu : MonoBehaviour
 
     public void Show(bool show = true)
     {
-        // This object should have a single child
         child.SetActive(show);
     }
 }

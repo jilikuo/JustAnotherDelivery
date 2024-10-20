@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour, ISaveable
     public NPCCollection npcCollection;
     public RandomGameObjectGenerator packageIconGen;
 
+    [Header("Data for settings")]
+    public string alwaysShowHelpKey = "alwaysShowHelp";
+
     private TimeSystem timeSystem;
     private Inventory inventory;
 
@@ -341,6 +344,16 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         EndGame();
         Application.Quit();
+    }
+
+    public bool IsAlwaysShowHelp()
+    {
+        return PlayerPrefs.GetInt(alwaysShowHelpKey, 1) == 1;
+    }
+
+    public void SetAlwaysShowHelp(bool isSet)
+    {
+        PlayerPrefs.SetInt(alwaysShowHelpKey, (isSet) ? 1 : 0);
     }
 
     public void RewardForDelivery(Package package)
