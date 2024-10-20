@@ -12,6 +12,8 @@ TagManager:
   - MinimapManager
   - NavigationManager
   - InGameMenu
+  - MenuCanvas
+  - SettingsMenu
   layers:
   - Default
   - TransparentFX

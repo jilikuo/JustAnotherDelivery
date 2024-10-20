@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour, ISaveable
     public NPCCollection npcCollection;
     public RandomGameObjectGenerator packageIconGen;
 
-    [Header("Menus")]
-    [SerializeField] private GameObject inGameMenu;
-
     private TimeSystem timeSystem;
     private Inventory inventory;
+
+
+    [Header("Menus")]
+    InGameMenu inGameMenu;
+    SettingsMenu settingsMenu;
 
     private List<GameObject> escMenuStack = new List<GameObject>();
 
@@ -96,6 +98,9 @@ public class GameManager : MonoBehaviour, ISaveable
 
     private void Start()
     {
+        inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu").GetComponent<InGameMenu>();
+        settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu").GetComponent<SettingsMenu>();
+        ShowSettingsMenu(false);
         timeSystem = GameObject.FindGameObjectWithTag("TimeSystem").GetComponent<TimeSystem>();
         timeSystem.StopTime();
         inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
@@ -114,7 +119,10 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseLastEscMenu();
+            if (!CloseLastEscMenu())
+            {
+                MaybeShowInGameMenu(true);
+            }
         }
     }
 
@@ -128,7 +136,7 @@ public class GameManager : MonoBehaviour, ISaveable
         escMenuStack.Remove(menu);
     }
 
-    private void CloseLastEscMenu()
+    private bool CloseLastEscMenu()
     {
         while ((escMenuStack.Count > 0) && (!escMenuStack.Last().activeSelf))
         {
@@ -141,18 +149,47 @@ public class GameManager : MonoBehaviour, ISaveable
             var menu = escMenuStack.Last();
             menu.SetActive(false);
             escMenuStack.Remove(menu);
+            return true;
         }
-        else
+
+        if (inGameMenu.IsVisible())
         {
-            // Otherwise, toggle the current in-game menu
-            var menuParent = GameObject.FindGameObjectWithTag("InGameMenu");
-            if (menuParent != null)
-            {
-                // The menu has 1 child - the actual menu
-                var menu = menuParent.transform.GetChild(0).gameObject;
-                menu.SetActive(!menu.activeSelf);
-            }
+            inGameMenu.Show(false);
+            return true;
         }
+
+        return false;
+    }
+
+    public void MaybeShowInGameMenu(bool show = true)
+    {
+        if (!show)
+        {
+            // Always close
+            inGameMenu.Show(false);
+            return;
+        }
+
+        // Sometimes open
+        switch ((GameScene)SceneManager.GetActiveScene().buildIndex)
+        {
+            case GameScene.BootstrapScene:
+            case GameScene.MainMenuScene:
+                break;
+            case GameScene.SortingInventoryScene:
+            case GameScene.PackageDeliveryScene:
+            case GameScene.UpgradeMenuScene:
+                inGameMenu.Show(true);
+                break;
+            default:
+                Debug.LogError("Unrecognized scene: " + SceneManager.GetActiveScene().buildIndex);
+                break;
+        }
+    }
+
+    public void ShowSettingsMenu(bool show = true)
+    {
+        settingsMenu.Show(show);
     }
 
     public bool IsGamePaused()
