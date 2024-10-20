@@ -291,4 +291,9 @@ public class NavigationMenuHandler : MonoBehaviour
         Destroy(activeNpcPortrait);
         activeNPC = null;
     }
+
+    public bool IsPlayerInteracting()
+    {
+        return (activeBar == interactionBar);
+    }
 }

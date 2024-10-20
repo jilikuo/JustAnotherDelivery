@@ -96,6 +96,11 @@ public class KeyboardMovementHandler : MonoBehaviour
 
     private bool CheckCanMove(Direction direction)
     {
+        if (navigationManager.IsPlayerInteracting())
+        {
+            return false;
+        }
+
         if (!movementScript.ValidateDirection(direction) ||
             !movementScript.CheckDirection(direction))
         {
