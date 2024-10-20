@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MinimapAvatar : MonoBehaviour
 {
-    public GameObject playerObject;
     public GameObject avatarObject;
     public float horizontalFactor = -2.7f; // - means the world coordinates are opposite to UI coordinates, 2 is the relation between world space and UI space
     public float verticalFactor = -2.875f;
@@ -12,6 +11,7 @@ public class MinimapAvatar : MonoBehaviour
     public int rotationFactor = -1;
     public int rotationDifference = 90; // 90 degrees difference between world rotation and UI rotation
 
+    private GameObject playerObject;
     private Transform playerTransform;
     private RectTransform avatarRectTransform;
     private bool playerMoved = true;
