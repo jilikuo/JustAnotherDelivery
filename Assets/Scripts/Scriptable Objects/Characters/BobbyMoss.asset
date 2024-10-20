@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Bobby Moss
   title: Psychologist
-  characterPrefab: {fileID: 8599970136786983478, guid: 7305fabfae319ba43a43a45eea189db4, type: 3}
-  address: {fileID: 0}
+  characterPrefab: {fileID: 4305610374441403860, guid: 27f0a7ca0bf13ec4fa90f537ad41cef6, type: 3}
+  waypoint: {fileID: 11400000, guid: acf63a8efbb074b4a8d1dc93af84b8e6, type: 2}
   hasBeenAssigned: 1
