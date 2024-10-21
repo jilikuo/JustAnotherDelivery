@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ButtonClickSoundHandler : CloseOnEscHandler
+public class ButtonClickSoundHandler : MonoBehaviour
 {
     public string buttonClickAudioSourceTag = "ButtonClickAudioSource";
 
