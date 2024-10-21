@@ -21,7 +21,7 @@ public class ButtonClickSoundHandler : CloseOnEscHandler
 
     private void PlaySound()
     {
-        var generalAudioSource = GameObject.FindGameObjectWithTag(buttonClickAudioSourceTag).GetComponent<AudioSource>();
-        generalAudioSource.Play();
+        var audioSource = GameObject.FindGameObjectWithTag(buttonClickAudioSourceTag).GetComponent<AudioSource>();
+        audioSource.Play();
     }
 }
