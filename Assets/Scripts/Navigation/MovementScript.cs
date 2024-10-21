@@ -13,11 +13,14 @@ public enum Direction
 public class MovementScript : MonoBehaviour
 {
     public Waypoints hqWaypoint;
+    public AudioSource walkingSound;
 
     private GameObject playerObject;
     private Transform playerTransform;
     private Transform cameraTransform;
     private Waypoints currentWaypoint;
+
+
 
     void Start()
     {
@@ -41,6 +44,15 @@ public class MovementScript : MonoBehaviour
         playerTransform.position = new Vector3(currentWaypoint.position.x, 
                                                currentWaypoint.position.y, 
                                                currentWaypoint.position.z);
+
+        if (walkingSound == null)
+        {
+            walkingSound = playerObject.GetComponentInChildren<AudioSource>();
+            if (walkingSound == null)
+            {
+                Debug.LogError("No AudioSource found in Player GameObject childs.");
+            }
+        }
     }
 
     public void MovePlayer(Direction direction)
@@ -61,6 +73,11 @@ public class MovementScript : MonoBehaviour
                 break;
             default:
                 throw new System.ArgumentException("Invalid Direction received at MovePlayer method");
+        }
+
+        if (!walkingSound.isPlaying)
+        {
+            walkingSound.Play();
         }
 
         playerTransform.position = new Vector3(currentWaypoint.position.x,
