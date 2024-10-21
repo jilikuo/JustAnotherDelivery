@@ -296,4 +296,9 @@ public class NavigationMenuHandler : MonoBehaviour
     {
         return (activeBar == interactionBar);
     }
+
+    public bool IsDeliveryBoxAvailable()
+    {
+        return deliveryBox.activeSelf;
+    }
 }
