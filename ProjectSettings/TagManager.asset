@@ -14,7 +14,7 @@ TagManager:
   - InGameMenu
   - MenuCanvas
   - SettingsMenu
-  - GeneralAudioSource
+  - ButtonClickAudioSource
   layers:
   - Default
   - TransparentFX

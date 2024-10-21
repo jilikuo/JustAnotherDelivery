@@ -1042,8 +1042,8 @@ GameObject:
   - component: {fileID: 1350359588}
   - component: {fileID: 1350359587}
   m_Layer: 0
-  m_Name: GeneralAudioSource
-  m_TagString: GeneralAudioSource
+  m_Name: ButtonClickAudioSource
+  m_TagString: ButtonClickAudioSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1058,7 +1058,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 66a737fae4257f346b0714956e0ea488, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

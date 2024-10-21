@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ButtonClickSoundHandler : CloseOnEscHandler
 {
-    public AudioClip audioClip;
+    public string buttonClickAudioSourceTag = "ButtonClickAudioSource";
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class ButtonClickSoundHandler : CloseOnEscHandler
 
     private void PlaySound()
     {
-        var generalAudioSource = GameObject.FindGameObjectWithTag("GeneralAudioSource").GetComponent<AudioSource>();
-        generalAudioSource.PlayOneShot(audioClip);
+        var generalAudioSource = GameObject.FindGameObjectWithTag(buttonClickAudioSourceTag).GetComponent<AudioSource>();
+        generalAudioSource.Play();
     }
 }
