@@ -1718,6 +1718,7 @@ GameObject:
   - component: {fileID: 437133105}
   - component: {fileID: 437133104}
   - component: {fileID: 437133103}
+  - component: {fileID: 437133106}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1839,6 +1840,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437133101}
   m_CullTransparentMesh: 1
+--- !u!114 &437133106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437133101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6070c8f57a517341b421130b30aa6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickAudioSourceTag: ButtonClickAudioSource
 --- !u!1001 &509519746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2232,8 +2246,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 436771665}
   m_HandleRect: {fileID: 436771664}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.95
+  m_Value: 1.0000061
+  m_Size: 0.9499999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9655,6 +9669,7 @@ GameObject:
   - component: {fileID: 4876599680319670391}
   - component: {fileID: 4585729431530095005}
   - component: {fileID: 4256676329243354839}
+  - component: {fileID: 7197268674285752960}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -10852,6 +10867,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &7197268674285752960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153946410963732372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6070c8f57a517341b421130b30aa6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickAudioSourceTag: ButtonClickAudioSource
 --- !u!1 &7704927019207551806
 GameObject:
   m_ObjectHideFlags: 0

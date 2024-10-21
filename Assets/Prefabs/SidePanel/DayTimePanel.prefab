@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 8671330805939997801}
   - component: {fileID: 5549013860739951785}
   - component: {fileID: 8309806760158781906}
+  - component: {fileID: 7100178751106840742}
   m_Layer: 5
   m_Name: NextSceneButton
   m_TagString: Untagged
@@ -401,6 +402,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7100178751106840742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128176287793464032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6070c8f57a517341b421130b30aa6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickAudioSourceTag: ButtonClickAudioSource
 --- !u!1 &8431539088774957215
 GameObject:
   m_ObjectHideFlags: 0

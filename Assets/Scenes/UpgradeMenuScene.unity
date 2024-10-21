@@ -788,12 +788,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
       insertIndex: -1
       addedObject: {fileID: 866248369}
+    - targetCorrespondingSourceObject: {fileID: 2136421440062353615, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 379567927}
   m_SourcePrefab: {fileID: 100100000, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
 --- !u!224 &379567925 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4881899239363119035, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
   m_PrefabInstance: {fileID: 379567924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &379567926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2136421440062353615, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
+  m_PrefabInstance: {fileID: 379567924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &379567927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379567926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6070c8f57a517341b421130b30aa6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonClickAudioSourceTag: ButtonClickAudioSource
 --- !u!1 &866248368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6426518729493202318, guid: 35ffc77de10486f42b8fd8603cd48e71, type: 3}
