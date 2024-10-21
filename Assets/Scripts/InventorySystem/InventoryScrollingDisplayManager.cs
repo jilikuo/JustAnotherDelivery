@@ -13,11 +13,29 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
     [Header("Required fields")]
     [SerializeField] private GameObject scrollViewContent;
     [SerializeField] private GameObject inventoryEntryPrefab;
+    [SerializeField] private DeliveriesCompleteController deliveriesCompleteController;
     [Header("Optional fields")]
     [Header("Inventory defaults to Inventory")]
     [SerializeField] private Inventory inventory;
     [Header("Derived fields")]
     [SerializeField] private List<GameObject> inventoryEntries = new List<GameObject>();
+
+    private void Awake()
+    {
+        if (scrollViewContent == null)
+        {
+            Debug.LogError("scrollViewContent not set");
+        }
+        if (inventoryEntryPrefab == null)
+        {
+            Debug.LogError("inventoryEntryPrefab not set");
+        }
+        if (deliveriesCompleteController == null)
+        {
+            Debug.LogError("deliveriesCompleteController not set");
+        }
+
+    }
 
     // Start is called before the first frame update
     private void Start()
@@ -47,6 +65,14 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
             dragDrop.data = package;
 
             inventoryEntries.Add(entry);
+        }
+    }
+
+    public void Update()
+    {
+        if (inventoryEntries.Count == 0)
+        {
+            deliveriesCompleteController.ShowDeliveriesCompletePanel();
         }
     }
 
