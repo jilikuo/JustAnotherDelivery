@@ -16,6 +16,7 @@ public class UpgradeSizeManager : UpgradePanelManagerTextBase
     private void Start()
     {
         SetVars();
+        for (int i = 0; i < GameManager.instance.inventoryConfigIndex; ++i) initCost *= costPerLevel;
     }
     protected override string GetUpgradeLabel()
     {
