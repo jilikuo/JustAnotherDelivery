@@ -55,16 +55,14 @@ public class DeliveryHighlighter : MonoBehaviour
             return;
         }
 
-        isHighlighted = CheckHighlight();
-
-        if (isHighlighted && !deliveryBoxHighlighter.activeSelf)
-        {
-            deliveryBoxHighlighter.SetActive(isHighlighted);
-        }
-
-        if (isHighlighted)
+        if (CheckHighlight())
         {
             AnimateHighlighter();
+            deliveryBoxHighlighter.SetActive(true);
+        }
+        else
+        {
+            deliveryBoxHighlighter.SetActive(false);
         }
     }
 
