@@ -75,7 +75,7 @@ public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDropp
         }
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         HighlightIntersecting(DragDropObject.currentDragDropObject);
     }

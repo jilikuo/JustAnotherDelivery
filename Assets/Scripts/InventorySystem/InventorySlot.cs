@@ -78,6 +78,10 @@ public class InventorySlot : MonoBehaviour
 
     public void ClearHighlight()
     {
+        if (highlight == null)
+        {
+            return;
+        }
         highlight.enabled = false;
         highlight.color = Color.white;
 
