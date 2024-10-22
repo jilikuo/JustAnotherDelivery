@@ -2246,8 +2246,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 436771665}
   m_HandleRect: {fileID: 436771664}
   m_Direction: 2
-  m_Value: 1.0000076
-  m_Size: 0.95
+  m_Value: 1.0000061
+  m_Size: 0.9499999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4007,7 +4007,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1174929461}
   - {fileID: 1373279106}
   m_Father: {fileID: 1107911705}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5222,17 +5221,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174929460}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 963954313}
+  m_Father: {fileID: 1373279106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 25.000008}
-  m_SizeDelta: {x: 20, y: 59.99999}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000076293945, y: 0.0000038146973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174929462
 MonoBehaviour:
@@ -5247,7 +5246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5782,6 +5781,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 885100587}
+  - {fileID: 1174929461}
   m_Father: {fileID: 963954313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
@@ -6302,7 +6302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deliveryBoxHighlighter: {fileID: 1174929460}
-  isHighlighted: 0
   colorChangeSpeed: 2.5
   colorizationRatio: 1.5
 --- !u!1 &1572693964
