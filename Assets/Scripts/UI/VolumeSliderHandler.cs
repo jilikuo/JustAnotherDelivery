@@ -12,25 +12,17 @@ public class VolumeSliderHandler : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Slider slider;
-    [SerializeField] private AudioMixer mixer;
-    [SerializeField] private string volumeLevelKey = "volumeLevel";
 
     private void Start()
     {
-        var volumeLevel = PlayerPrefs.GetFloat(volumeLevelKey, 1);
+        var volumeLevel = GameManager.instance.GetVolumeLevel();
         slider.value = volumeLevel;
         OnChangeSlider(volumeLevel);
     }
 
     public void OnChangeSlider(float value)
     {
-        float volumeLevel = Mathf.Log10(value) * 20;
-
-        mixer.SetFloat("Volume", volumeLevel);
-
-        PlayerPrefs.SetFloat(volumeLevelKey, value); // Save the value, instead of the volume, to avoid back-conversion
-        PlayerPrefs.Save();
-
+        GameManager.instance.SetVolumeLevel(value);
         audioSource.Play();
     }
 }

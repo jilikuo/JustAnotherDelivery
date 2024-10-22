@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, ISaveable
@@ -35,6 +36,9 @@ public class GameManager : MonoBehaviour, ISaveable
 
     [Header("Data for settings")]
     public string alwaysShowHelpKey = "alwaysShowHelp";
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private string mixerVolumeKey = "Volume";
+    public string volumeLevelKey = "volumeLevel";
 
     private TimeSystem timeSystem;
     private Inventory inventory;
@@ -101,6 +105,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
     private void Start()
     {
+        SetVolumeLevel(GetVolumeLevel());
         inGameMenu = GameObject.FindGameObjectWithTag("InGameMenu").GetComponent<InGameMenu>();
         settingsMenu = GameObject.FindGameObjectWithTag("SettingsMenu").GetComponent<SettingsMenu>();
         ShowSettingsMenu(false);
@@ -354,6 +359,21 @@ public class GameManager : MonoBehaviour, ISaveable
     public void SetAlwaysShowHelp(bool isSet)
     {
         PlayerPrefs.SetInt(alwaysShowHelpKey, (isSet) ? 1 : 0);
+    }
+
+    public float GetVolumeLevel()
+    {
+        return PlayerPrefs.GetFloat(volumeLevelKey, 1);
+    }
+
+    public void SetVolumeLevel(float level)
+    {
+        float volumeLevel = Mathf.Log10(level) * 20;
+
+        mixer.SetFloat(mixerVolumeKey, volumeLevel);
+
+        PlayerPrefs.SetFloat(volumeLevelKey, level); // Save the level, instead of the volumeLevel, to avoid back-conversion
+        PlayerPrefs.Save();
     }
 
     public void RewardForDelivery(Package package)

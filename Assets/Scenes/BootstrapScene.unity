@@ -1947,6 +1947,9 @@ MonoBehaviour:
   npcCollection: {fileID: 11400000, guid: 3a1e60d8189910f489ef99c7f6f3730a, type: 2}
   packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
   alwaysShowHelpKey: alwaysShowHelp
+  mixer: {fileID: 24100000, guid: e797a3abfe2f06640992be13f8ebfa46, type: 2}
+  mixerVolumeKey: Volume
+  volumeLevelKey: volumeLevel
 --- !u!1 &2142807935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,8 +2002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1350359587}
   slider: {fileID: 1287754693}
-  mixer: {fileID: 24100000, guid: e797a3abfe2f06640992be13f8ebfa46, type: 2}
-  volumeLevelKey: volumeLevel
 --- !u!114 &187104891911767509
 MonoBehaviour:
   m_ObjectHideFlags: 0
