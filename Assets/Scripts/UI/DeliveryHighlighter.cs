@@ -39,7 +39,7 @@ public class DeliveryHighlighter : MonoBehaviour
         baseColor =  new Color(Mathf.Min(highlightColor.r * colorizationRatio, 255),
                                Mathf.Min(highlightColor.g * colorizationRatio, 255),
                                Mathf.Min(highlightColor.b * colorizationRatio, 255),
-                               100);
+                               highlightColor.a);
     }
 
     private void Update()
