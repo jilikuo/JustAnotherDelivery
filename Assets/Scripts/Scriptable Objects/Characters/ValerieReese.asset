@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Valerie Reese
   title: Bartender
-  characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
+  characterPrefab: {fileID: 4059512523856862514, guid: da8e2e1f869cf9b428c8d78faa9c3ffc, type: 3}
   waypoint: {fileID: 11400000, guid: 1a3273f4f4ffc264c87aa0dd37da71ce, type: 2}
   hasBeenAssigned: 1

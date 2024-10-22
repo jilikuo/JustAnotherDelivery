@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Mr. Jefferson
   title: Unknow
-  characterPrefab: {fileID: 4059512523856862514, guid: 618290dfdd939d447b8bf2c3379f7b94, type: 3}
+  characterPrefab: {fileID: 4059512523856862514, guid: 50431a22b6b573e4a91b6866ec016d42, type: 3}
   waypoint: {fileID: 11400000, guid: 336ef166a1742d349b809be45c189715, type: 2}
   hasBeenAssigned: 1

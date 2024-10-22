@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Ali Ming
   title: Pet Groomer
-  characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
+  characterPrefab: {fileID: 4059512523856862514, guid: 63409bdc9e3587640920aa2239df37ec, type: 3}
   waypoint: {fileID: 11400000, guid: 00d82f5bb29996745a7326ed97036ea3, type: 2}
   hasBeenAssigned: 1
