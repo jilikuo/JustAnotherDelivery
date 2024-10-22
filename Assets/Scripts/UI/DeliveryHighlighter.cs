@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class DeliveryHighlighter : MonoBehaviour
 {
     public GameObject deliveryBoxHighlighter;
-    public bool isHighlighted = false;
     public float colorChangeSpeed = 0.6f;
     public float colorizationRatio = 1.5f;
 
@@ -55,14 +54,14 @@ public class DeliveryHighlighter : MonoBehaviour
             return;
         }
 
-        if (CheckHighlight())
+        bool isHighlighted = CheckHighlight();
+        if (isHighlighted != deliveryBoxHighlighter.activeSelf)
         {
-            AnimateHighlighter();
-            deliveryBoxHighlighter.SetActive(true);
-        }
-        else
-        {
-            deliveryBoxHighlighter.SetActive(false);
+            deliveryBoxHighlighter.SetActive(isHighlighted);
+            if (isHighlighted)
+            {
+                AnimateHighlighter();
+            }
         }
     }
 
