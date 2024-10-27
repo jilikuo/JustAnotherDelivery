@@ -1944,6 +1944,7 @@ MonoBehaviour:
   inventoryConfigIndex: 0
   speedMultiplier: 1
   packageValueMultiplier: 1
+  player: {fileID: 1191497324}
   npcCollection: {fileID: 11400000, guid: 3a1e60d8189910f489ef99c7f6f3730a, type: 2}
   packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
   alwaysShowHelpKey: alwaysShowHelp

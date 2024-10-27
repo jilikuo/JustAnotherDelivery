@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public float packageValueMultiplier = 1f;
 
     [Header("Data for plot")]
+    public GameObject player;
     public NPCCollection npcCollection;
     public RandomGameObjectGenerator packageIconGen;
 
@@ -292,6 +293,7 @@ public class GameManager : MonoBehaviour, ISaveable
         inventoryConfigIndex = 0;
         speedMultiplier = 1.0f;
         packageValueMultiplier = 1.0f;
+        player.GetComponent<MovementScript>().RestartWaypoint();
     }
 
     public void ResetGameData()
@@ -305,6 +307,7 @@ public class GameManager : MonoBehaviour, ISaveable
         SaveSystem.DataManager.instance.LoadGame();
         timeSystem.ResetDay();
         inventory.Reset();
+        player.GetComponent<MovementScript>().RestartWaypoint();
         LoadScene(GameScene.SortingInventoryScene);
     }
 
@@ -312,6 +315,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         timeSystem.SetNextDay();
         inventory.Reset();
+        player.GetComponent<MovementScript>().RestartWaypoint();
         LoadScene(GameScene.SortingInventoryScene);
     }
 

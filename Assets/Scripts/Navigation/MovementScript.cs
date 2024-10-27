@@ -41,8 +41,8 @@ public class MovementScript : MonoBehaviour
             currentWaypoint = hqWaypoint;
         }
 
-        playerTransform.position = new Vector3(currentWaypoint.position.x, 
-                                               currentWaypoint.position.y, 
+        playerTransform.position = new Vector3(currentWaypoint.position.x,
+                                               currentWaypoint.position.y,
                                                currentWaypoint.position.z);
 
         if (walkingSound == null)
@@ -57,7 +57,7 @@ public class MovementScript : MonoBehaviour
 
     public void MovePlayer(Direction direction)
     {
-        switch (direction) 
+        switch (direction)
         {
             case Direction.North:
                 currentWaypoint = currentWaypoint.northWaypoint;
@@ -91,7 +91,8 @@ public class MovementScript : MonoBehaviour
         GameManager.instance.SpendMovementTime();
     }
 
-    public bool ValidateDirection(Direction direction) { 
+    public bool ValidateDirection(Direction direction)
+    {
         switch (direction)
         {
             case Direction.North:
@@ -107,7 +108,8 @@ public class MovementScript : MonoBehaviour
         }
     }
 
-    public bool CheckDirection(Direction direction) {
+    public bool CheckDirection(Direction direction)
+    {
         switch (direction)
         {
             case Direction.North:
@@ -137,5 +139,11 @@ public class MovementScript : MonoBehaviour
     public Waypoints GetCurrentWaypoint()
     {
         return currentWaypoint;
+    }
+
+    public void RestartWaypoint()
+    {
+        currentWaypoint = hqWaypoint;
+        RealignToWaypoint();
     }
 }
