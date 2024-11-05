@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29d8aff264b844b41a39df2795f7bc8b, type: 3}
-  m_Name: XianXuQiang
+  m_Name: MargarethJames
   m_EditorClassIdentifier: 
-  fullName: Xian Xu Qiang
-  title: Interior Designer
-  characterPrefab: {fileID: 4059512523856862514, guid: a702197bb6c689148b493fded198d002, type: 3}
-  waypoint: {fileID: 11400000, guid: 9ac11daac90dfa946877d02ea7a30003, type: 2}
+  fullName: Margareth James
+  title: Artist
+  characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
+  waypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
   hasBeenAssigned: 1

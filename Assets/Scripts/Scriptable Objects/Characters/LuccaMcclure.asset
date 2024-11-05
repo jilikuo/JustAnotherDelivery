@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LuccaMcclure
   m_EditorClassIdentifier: 
   fullName: Lucca Mcclure
-  title: Bus driver
+  title: Bus Driver
   characterPrefab: {fileID: 4059512523856862514, guid: 3482035459f238a4c9c49a0511f6252e, type: 3}
   waypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
   hasBeenAssigned: 1
