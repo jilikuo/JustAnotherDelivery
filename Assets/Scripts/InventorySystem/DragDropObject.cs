@@ -34,6 +34,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!eventData.button.Equals(PointerEventData.InputButton.Left))
+            return;
         //Debug.Log("OnBeginDrag: From: " + transform.position + " To: " + eventData.position);
         BeforeBeginDrag(eventData);
 
@@ -57,6 +59,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!eventData.button.Equals(PointerEventData.InputButton.Left))
+            return;
         //Debug.Log("OnDrag: From: " + transform.position + " To: " + eventData.position);
         transform.position = eventData.position + dragOffset;
     }
@@ -71,6 +75,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!eventData.button.Equals(PointerEventData.InputButton.Left))
+            return;
         //Debug.Log("OnEndDrag: From: " + transform.position + " To: " + eventData.position);
         BeforeEndDrag(eventData);
 
