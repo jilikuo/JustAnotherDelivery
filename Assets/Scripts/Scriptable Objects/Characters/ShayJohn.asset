@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Shay John
   title: Security Guard
   characterPrefab: {fileID: 4059512523856862514, guid: 2a7111863526f9f46863efcc69634835, type: 3}
-  waypoint: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: 1a3273f4f4ffc264c87aa0dd37da71ce, type: 2}
   hasBeenAssigned: 1

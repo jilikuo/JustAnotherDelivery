@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Thabo van Rensburg
   title: Mathematician
   characterPrefab: {fileID: 4059512523856862514, guid: ef49c498c8822ac4fbc6eddc3469cd84, type: 3}
-  waypoint: {fileID: 0}
-  hasBeenAssigned: 0
+  waypoint: {fileID: 11400000, guid: 9ac11daac90dfa946877d02ea7a30003, type: 2}
+  hasBeenAssigned: 1

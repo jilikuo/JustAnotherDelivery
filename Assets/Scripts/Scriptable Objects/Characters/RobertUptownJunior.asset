@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Robert Uptown Junior
   title: Audiologist
   characterPrefab: {fileID: 2921666839425887456, guid: cd9338e4affc0d249aeec422d4ff6fd2, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: 4f8a595050a83a248b4f8f67f59f8f85, type: 2}
   hasBeenAssigned: 1

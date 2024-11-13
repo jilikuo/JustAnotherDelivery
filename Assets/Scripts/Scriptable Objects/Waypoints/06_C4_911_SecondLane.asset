@@ -32,4 +32,5 @@ MonoBehaviour:
   isDirty: 1
   residents:
   - {fileID: 11400000, guid: ab85fd333d1c95e43af454455a17f840, type: 2}
+  - {fileID: 11400000, guid: a3aff2549c9d6d048a9883705c9463f9, type: 2}
   updateCoordinates: 0

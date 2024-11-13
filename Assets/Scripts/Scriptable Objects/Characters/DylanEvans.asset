@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Dylan Evans
   title: Designer
   characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: acf63a8efbb074b4a8d1dc93af84b8e6, type: 2}
   hasBeenAssigned: 1

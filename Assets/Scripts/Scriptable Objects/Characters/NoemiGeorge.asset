@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Noemi George
   title: Shoemaker
   characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
   hasBeenAssigned: 1

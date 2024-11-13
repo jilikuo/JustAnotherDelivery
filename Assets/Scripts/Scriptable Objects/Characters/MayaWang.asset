@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Maya Wang
   title: Sales Manager
   characterPrefab: {fileID: 2921666839425887456, guid: cd9338e4affc0d249aeec422d4ff6fd2, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: b22d84c2b50935d44aa84057b90ed5d1, type: 2}
   hasBeenAssigned: 1

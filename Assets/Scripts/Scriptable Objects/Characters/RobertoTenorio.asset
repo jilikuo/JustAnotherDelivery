@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Roberto Tenorio
   title: IT Consultant
   characterPrefab: {fileID: 4059512523856862514, guid: 22878ff888c58b14cb3b128d9a9582bd, type: 3}
-  waypoint: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: 9ac11daac90dfa946877d02ea7a30003, type: 2}
   hasBeenAssigned: 1

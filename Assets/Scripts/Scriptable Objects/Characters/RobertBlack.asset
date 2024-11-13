@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Robert Black
   title: Software Architect
   characterPrefab: {fileID: 283720091687621643, guid: 877bdba468dd9b74ebf56eed33fa4d86, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: c03fa9bd4c856ee4182965fca6a4c6d4, type: 2}
   hasBeenAssigned: 1

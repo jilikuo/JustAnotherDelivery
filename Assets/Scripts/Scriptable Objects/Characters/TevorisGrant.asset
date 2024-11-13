@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Tevoris Grant
   title: Actor
   characterPrefab: {fileID: 283720091687621643, guid: 877bdba468dd9b74ebf56eed33fa4d86, type: 3}
-  address: {fileID: 0}
+  waypoint: {fileID: 11400000, guid: 00d82f5bb29996745a7326ed97036ea3, type: 2}
   hasBeenAssigned: 1
