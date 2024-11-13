@@ -28,26 +28,28 @@ public class NPCCollection : ScriptableObject
     {
         foreach (var wp in Waypoints)
         {
-            if (wp.isDirty)
+            if (!wp.isDirty || !wp.isValid || wp.residents == null)
             {
-                if (wp.isValid && (wp.residents != null))
-                {
-                    foreach (var npc in wp.residents)
-                    {
-                        if (ValidateResident(npc, wp))
-                        {
-                            if (!npc.hasBeenAssigned || npc.waypoint == null)
-                            {
-                                SetUpNPCWaypoint(npc, wp);
-                            }
+                continue;
+            }
 
-                            NPCList.Add(npc);
-                        }
-                    }
+            foreach (var npc in wp.residents)
+            {
+                if (!ValidateResident(npc, wp))
+                {
+                    continue;
                 }
 
-                wp.isDirty = false;
+                if (!npc.hasBeenAssigned)
+                {
+                    SetUpNPCWaypoint(npc, wp);
+                }
+
+                NPCList.Add(npc);
             }
+
+            wp.isDirty = false;
+
         }
 
         foreach (var npc in NPCList)
@@ -65,6 +67,8 @@ public class NPCCollection : ScriptableObject
 
     private bool ValidateResident(Characters npc, Waypoints wp)
     {
+        //Debug.Log("Validating npc " + npc.fullName);
+        
         if (npc.characterPrefab == null)
         {
             Debug.LogError(logTag + "Character prefab is not set for " + npc.fullName);
@@ -73,9 +77,10 @@ public class NPCCollection : ScriptableObject
 
         if (NPCList.Contains(npc))
         {   
-            if (npc.waypoint == null)
+            if (npc.waypoint == null || npc.hasBeenAssigned == false)
             {
                 //Debug.LogWarning(logTag + "Character " + npc.fullName + " has no waypoint assigned, but is already in the NPC list, their addres will be updated");
+                npc.hasBeenAssigned = false;
                 return true;
             }
 
@@ -85,7 +90,6 @@ public class NPCCollection : ScriptableObject
             }
             return false;
         }
-
         return true;
     }
 
@@ -93,6 +97,6 @@ public class NPCCollection : ScriptableObject
     {
         npc.waypoint = wp;
         npc.hasBeenAssigned = true;
-        //Debug.Log(logTag + "Assigned " + npc.fullName + " to " + wp.GetFullAddress());
+        Debug.Log(logTag + "Assigned " + npc.fullName + " to " + wp.GetFullAddress());
     }
 }
