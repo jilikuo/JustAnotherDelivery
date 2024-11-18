@@ -24,9 +24,19 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         return gameObject.GetWorldBounds();
     }
 
+    protected virtual void BeforeBeginDrag(PointerEventData eventData)
+    {
+    }
+
+    protected virtual void AfterBeginDrag(PointerEventData eventData)
+    {
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         //Debug.Log("OnBeginDrag: From: " + transform.position + " To: " + eventData.position);
+        BeforeBeginDrag(eventData);
+
         if (currentDragDropObject != null)
         {
             OnEndDrag(eventData);
@@ -41,6 +51,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         siblingIndex = transform.GetSiblingIndex();
         transform.SetParent(transform.GetComponent<RectTransform>().root, true);
         transform.SetAsLastSibling();
+
+        AfterBeginDrag(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -49,9 +61,19 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         transform.position = eventData.position + dragOffset;
     }
 
+    protected virtual void BeforeEndDrag(PointerEventData eventData)
+    {
+    }
+
+    protected virtual void AfterEndDrag(PointerEventData eventData)
+    {
+    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("OnEndDrag: From: " + transform.position + " To: " + eventData.position);
+        BeforeEndDrag(eventData);
+
         var newParent = FindItemDroppableIntersection(eventData);
         var itemDroppableParent = (newParent != null) ? newParent.GetComponent<IItemDroppable>() : null;
         if (itemDroppableParent != null && itemDroppableParent.IsValidDropPosition(this))
@@ -78,6 +100,8 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         oldParent = null;
         siblingIndex = -1;
         currentDragDropObject = null;
+
+        AfterEndDrag(eventData);
     }
 
     protected GameObject FindItemDroppableIntersection(PointerEventData eventData)
