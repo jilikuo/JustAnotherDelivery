@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryDisplayManager : MonoBehaviour, IItemDraggable, IItemDroppable
+public class InventorySortingDisplayManager : MonoBehaviour, IItemDraggable, IItemDroppable
 {
     [Header("Required fields")]
     [SerializeField] private TextMeshProUGUI inventoryLabel;
