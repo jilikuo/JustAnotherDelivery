@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDeliveryDisplayManager : MonoBehaviour, IItemDroppable
+public class PackageDeliveryDisplayManager : MonoBehaviour, IItemDroppable
 {
     public GameObject deliveryBox;
     private Inventory inventory; 
