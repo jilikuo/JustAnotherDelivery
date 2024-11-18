@@ -12,7 +12,7 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
     [SerializeField] private TextMeshProUGUI nextItemLabel;
     [SerializeField] private GameObject nextItemBackground;
     [SerializeField] private TextMeshProUGUI addressLabel;
-    [SerializeField] private PackageGenerator packageGenerator;
+    [SerializeField] private InventorySortingPackageGenerator packageGenerator;
     [Header("Derived fields")]
     [SerializeField] private DragDropObject nextItem;
 

@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PackageGenerator : MonoBehaviour, IDragDropGenerator
+public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerator
 {
     [Header("Required Fields")]
     [SerializeField] private RandomAddressGenerator packageAddressGen;

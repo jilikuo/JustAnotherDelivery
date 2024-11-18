@@ -12,7 +12,7 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
     // TODO: Remove itemText, if it will not be used in final UI
     [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private GameObject itemBackground;
-    [SerializeField] private PackageGenerator packageGenerator;
+    [SerializeField] private InventorySortingPackageGenerator packageGenerator;
 
     private Image backgroundImage;
     private Color backgroundColor;
