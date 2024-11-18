@@ -27,14 +27,14 @@ public class InventorySortingPackage : DragDropPackage
         coll = GetComponent<Collider2D>();
         if (coll == null)
         {
-            Debug.Log("Created Collider2D of: " + gameObject.name);
+            //Debug.Log("Created Collider2D of: " + gameObject.name);
             coll = gameObject.AddComponent<PolygonCollider2D>();
         }
 
         Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         if (rigidbody2D == null)
         {
-            Debug.Log("Created RigidBody2D of: " + gameObject.name);
+            //Debug.Log("Created RigidBody2D of: " + gameObject.name);
             rigidbody2D = gameObject.AddComponent<Rigidbody2D>();
         }
         rigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -44,7 +44,7 @@ public class InventorySortingPackage : DragDropPackage
 
     protected override void BeforeBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Enable Collider Trigger of: " + gameObject.name);
+        //Debug.Log("Enable Collider Trigger of: " + gameObject.name);
 
         coll.isTrigger = true;
         base.BeforeBeginDrag(eventData);
@@ -52,7 +52,7 @@ public class InventorySortingPackage : DragDropPackage
 
     protected override void AfterEndDrag(PointerEventData eventData)
     {
-        Debug.Log("Disable Collider Trigger of: " + gameObject.name);
+        //Debug.Log("Disable Collider Trigger of: " + gameObject.name);
 
         base.AfterEndDrag(eventData);
         coll.isTrigger = false;
@@ -60,14 +60,14 @@ public class InventorySortingPackage : DragDropPackage
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Detected Trigger Enter of: " + gameObject.name);
+        //Debug.Log("Detected Trigger Enter of: " + gameObject.name);
 
         SetColliding();
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        Debug.Log("Detected Trigger Exit of: " + gameObject.name);
+        //Debug.Log("Detected Trigger Exit of: " + gameObject.name);
 
         ClearColliding();
     }
@@ -79,7 +79,7 @@ public class InventorySortingPackage : DragDropPackage
 
     public void SetColliding()
     {
-        Debug.Log("Set Colliding of: " + gameObject.name);
+        //Debug.Log("Set Colliding of: " + gameObject.name);
 
         isColliding = true;
         icon.color = highlightColor;
@@ -87,7 +87,7 @@ public class InventorySortingPackage : DragDropPackage
 
     public void ClearColliding()
     {
-        Debug.Log("Clear Colliding of: " + gameObject.name);
+        //Debug.Log("Clear Colliding of: " + gameObject.name);
 
         isColliding = false;
         icon.color = backgroundColor;
