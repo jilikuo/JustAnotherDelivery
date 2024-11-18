@@ -67,7 +67,7 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
         rect.anchorMax = centerPoint; // Top-right corner      
         icon.transform.position = parent.transform.position;
 
-        var dragDrop = icon.AddComponent<DragDropPackage>();
+        var dragDrop = icon.AddComponent<InventorySortingPackage>();
         dragDrop.data = new Package(packageIcon.name, address, CalcCost(icon));
 
         return dragDrop;
@@ -75,7 +75,7 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
 
     public void ReturnDragDrop(DragDropObject item)
     {
-        var package = item.GetComponent<DragDropPackage>();
+        var package = item.GetComponent<InventorySortingPackage>();
         if (package == null)
         {
             Debug.LogError("Failed to locate Package component");

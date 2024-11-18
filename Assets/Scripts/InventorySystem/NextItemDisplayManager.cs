@@ -43,7 +43,7 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
             nextItem = packageGenerator.CreateDragDrop(nextItemBackground);
             if (nextItem != null)
             {
-                addressLabel.text = nextItem.GetComponent<DragDropPackage>().data.ToDisplayString();
+                addressLabel.text = nextItem.GetComponent<InventorySortingPackage>().data.ToDisplayString();
 
                 // Put the address label on top
                 addressLabel.transform.SetAsLastSibling();
