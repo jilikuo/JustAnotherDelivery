@@ -15,6 +15,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     [Header("Pre-drag state")]
     protected Vector2 dragOffset = Vector2.zero;
     protected Vector3 startPosition = Vector3.zero;
+    protected Quaternion startRotation = Quaternion.identity;
     protected IItemDraggable itemDraggableParent;
     protected Transform oldParent;
     protected RectTransform rectTransform;
@@ -45,6 +46,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         }
         currentDragDropObject = this;
         startPosition = transform.position;
+        startRotation = transform.rotation;
         dragOffset = (Vector2)transform.position - eventData.position;
 
         rectTransform = transform as RectTransform;
@@ -129,6 +131,7 @@ public class DragDropObject : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
         else
         {
             transform.position = startPosition;
+            transform.rotation = startRotation;
 
             // Return the object to the previous parent
             transform.SetParent(oldParent, true);

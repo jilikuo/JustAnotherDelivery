@@ -18,6 +18,9 @@ public class InventorySortingPackage : DragDropPackage
     private bool isColliding = false;
     private Collider2D coll;
 
+    [SerializeField]
+    private float rotationSpeed = -35.0f;
+
     private void Start()
     {
         icon = gameObject.GetComponent<Image>();
@@ -39,6 +42,20 @@ public class InventorySortingPackage : DragDropPackage
         rigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
         rigidbody2D.gravityScale = 0f;
+
+        rotationSpeed = rotationSpeed * Time.fixedDeltaTime;
+    }
+    void Update()
+    {
+        // Check if the object is itself
+        if (currentDragDropObject != this || GameManager.instance.IsGamePaused()) return;
+
+        // here another option that Ignem gave me with a new change in the inventory
+        // rotate when buttons are pressed
+        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.R))
+        {
+            transform.Rotate(0, 0, rotationSpeed);
+        }
     }
 
     protected override void BeforeBeginDrag(PointerEventData eventData)
