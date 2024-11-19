@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47175b8fd7168c94bbd20578e6d6064f, type: 3}
   m_Name: Inventory Config - Messenger Bag, small
   m_EditorClassIdentifier: 
-  layoutPrefab: {fileID: 3667202316927842243, guid: 3df55a44a32a5064d8775e4111fd8aed, type: 3}
+  layoutPrefab: {fileID: 3100107786332297338, guid: 95482ee09b37980479beb3414a0a8fe9, type: 3}
   label: Small Messenger Bag
