@@ -5,11 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Would be better described as NavigationMenuManager, but changing it now would require 
-/// changing the references in the scene, and/or causing unpredicted behavior.
-/// 
-/// Handles all the UI elements related to navigation and interaction with NPCs.
-/// Probably the logic of the interactions would be better handled in a separate script.
+/// Handles all the UI elements related to navigation and interaction with NPCs in the Delivery Scene.
 /// </summary>
 public class NavigationMenuHandler : MonoBehaviour
 {
@@ -28,13 +24,9 @@ public class NavigationMenuHandler : MonoBehaviour
     public GameObject deliveryBox;
     public GameObject currentAddressLabel;
 
-    public GameObject emergencyButton;
-    public GameObject personalAnswerButton;
-    public GameObject professionalAnswerButton;
-    public GameObject doNotSpeakButton;
-    public GameObject fleeButton;
-
     public GameObject cameraWorldView;
+
+    private GameManager gameManager = GameManager.instance;
 
     private GameObject activeBar;
 
@@ -43,8 +35,6 @@ public class NavigationMenuHandler : MonoBehaviour
     private GameObject activeNpcPortrait;
     private Waypoints currentWaypoint;
 
-    private bool canCallEmergency = true;
-    private bool canFlee = true;
     private bool interactionBarIsDirty = false;
 
     private List<GameObject> movementButtons;
@@ -88,11 +78,6 @@ public class NavigationMenuHandler : MonoBehaviour
             throw new System.Exception("Message box not set");
         }
 
-        if (emergencyButton == null || personalAnswerButton == null || professionalAnswerButton == null || doNotSpeakButton == null || fleeButton == null)
-        {
-            throw new System.Exception("One or more interaction buttons not set");
-        }
-
         player = GameObject.FindGameObjectWithTag("Player");
         if (player == null )
         { 
@@ -117,15 +102,6 @@ public class NavigationMenuHandler : MonoBehaviour
             moveEastButton
         };
 
-        interactionButtons = new List<GameObject>
-        {
-            emergencyButton,
-            personalAnswerButton,
-            professionalAnswerButton,
-            doNotSpeakButton,
-            fleeButton
-        };
-
         UpdateNavMenuAfterMovement();
     }
 
@@ -137,6 +113,22 @@ public class NavigationMenuHandler : MonoBehaviour
         }
 
         ActiveBarSanitizer();
+    }
+
+    public void InteractionButtonPress()
+    {
+        switch (StorylineManager.instance.state)
+        {
+            case StorylineState.Inactive:
+                ActivateMovementBar();
+                break;
+            case StorylineState.WaitingDelivery:
+                ActivateMovementBar();
+                break;
+            case StorylineState.WaitingInput:
+                StorylineManager.instance.AdvanceInteraction();
+                break;
+        }
     }
 
     public void ActivateMovementBar()
@@ -154,7 +146,7 @@ public class NavigationMenuHandler : MonoBehaviour
         activeBar = movementBar;
     }
 
-    public void ActivateInteractionBar()
+    public void OnStartInteraction()
     {
         if (!currentWaypoint.IsNpcAvailable())
         {
@@ -171,39 +163,43 @@ public class NavigationMenuHandler : MonoBehaviour
             deliveryBox.SetActive(true);
         }
 
-        GameManager.instance.SpendInteractionTime();
+        gameManager.SpendInteractionTime();
 
         activeBar.SetActive(false);
 
-        PickRandomCharacter();
+        //TODO: VERIFY THE NEXT NPC, IF IT IS ASSOCIATED TO A SPECIFIC STORYLINE WHICH THE PLAYER HAS THE PACKAGE OF,
+        //FIRST NON REPEATABLE, THEN REPEATABLE, PLAY THE SPECIFIC STORYLINE.
+        //IF THAT'S NOT THE CASE, PLAY A RANDOM REPEATABLE ONE. (current behaviour: only plays random repeatable ones)
+        StorylineManager.instance.PlayRandomRepeatableStoryline();
 
         interactionBar.SetActive(true);
-        
-        //TODO: unhide the interaction buttons when they get implemented
-        foreach (GameObject button in interactionButtons)
-        {
-            button.SetActive(false);
-        }
 
         activeBar = interactionBar;
-
-        //TODO: if canCallEmergency or CanFlee has changed, set interactionBarIsDirty to true
-        interactionBarIsDirty = false; //if true, it will enable emergency button and flee button,
-                                       //because there is no logic to handle their states as of now
-
-        
     }
 
-    public void PickRandomCharacter()
+    public Characters GetRandomNPC()
     {
         int i = Random.Range(0, currentWaypoint.residents.Count);
-        Characters randomCharacter = currentWaypoint.residents[i];
+        return currentWaypoint.residents[i]; 
+    }
 
-        activeNPC = randomCharacter;
+    public void SetActiveCharacter(Characters NPC)
+    {
+        activeNPC = NPC;
+        UpdateActiveCharacterInfo();
+    }
+
+    public void UpdateActiveCharacterInfo()
+    {
+        Destroy(activeNpcPortrait);
+        if (activeNPC == null)
+        {
+            Debug.Log("NO NPC FOUND");
+            return;
+        }
         activeNpcPortrait = Instantiate(activeNPC.characterPrefab, cameraWorldView.transform);
-        SetActiveCharacterName(randomCharacter.fullName);
-        SetActiveCharacterTitle(randomCharacter.title);
-        SetMessage("Hello, do you happen to have my precious package?");
+        SetActiveCharacterName(activeNPC.fullName);
+        SetActiveCharacterTitle(activeNPC.title);
     }
 
     public void SetActiveCharacterName(string name)
@@ -251,10 +247,16 @@ public class NavigationMenuHandler : MonoBehaviour
         }
     }
 
-    private void UpdateInteractionButton()
+    public void UpdateInteractionButton()
     {
-        emergencyButton.SetActive(canCallEmergency);
-        fleeButton.SetActive(canFlee);
+        if (StorylineManager.instance.state == StorylineState.WaitingInput)
+        {
+            exitInteractionButton.GetComponentInChildren<TextMeshProUGUI>().text = "Continue";
+        }
+        else
+        {
+            exitInteractionButton.GetComponentInChildren<TextMeshProUGUI>().text = "Exit";
+        }
         
         interactionBarIsDirty = false;
     }
@@ -267,7 +269,6 @@ public class NavigationMenuHandler : MonoBehaviour
             if (interactionBar.activeSelf)
             {
                 EndInteraction();
-
             }
         }
 
@@ -285,8 +286,13 @@ public class NavigationMenuHandler : MonoBehaviour
         return activeNPC;
     }
 
-    private void EndInteraction()
+    public void EndInteraction()
     {
+        if (StorylineManager.instance.state != StorylineState.Inactive)
+        {
+            StorylineManager.instance.ResetCurrentChapterProgress();
+        }
+
         interactionBar.SetActive(false);
         Destroy(activeNpcPortrait);
         activeNPC = null;

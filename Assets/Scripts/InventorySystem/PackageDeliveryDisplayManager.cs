@@ -39,11 +39,11 @@ public class PackageDeliveryDisplayManager : MonoBehaviour, IItemDroppable
             return;
         }
 
-        GameManager.instance.RewardForDelivery(package.data);
+        StorylineManager.instance.FinishChapter();
+        GameManager.instance.AddMoney(package.data);
         Destroy(itemGameObject);
 
         deliveryBox.SetActive(false);
-        navigationManager.SetMessage("Thank you for the delivery!");
     }
 
     public bool IsValidDropPosition(DragDropObject item)

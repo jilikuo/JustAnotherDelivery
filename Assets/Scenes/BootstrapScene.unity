@@ -784,6 +784,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524074930}
   m_CullTransparentMesh: 1
+--- !u!1 &552349476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552349478}
+  - component: {fileID: 552349477}
+  m_Layer: 0
+  m_Name: StorylineManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &552349477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552349476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19905cee851af05439c68db7254c99d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storylineCollection: {fileID: 11400000, guid: 970c8e7afea8aea48872788f968609ac, type: 2}
+  repeatableStorylineCollection: {fileID: 11400000, guid: f8aaf1eed80e7444ea0c1b825a39725c, type: 2}
+--- !u!4 &552349478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552349476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 498.34802, y: 245.49905, z: -147.47157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &554920547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +1992,9 @@ MonoBehaviour:
   packageValueMultiplier: 1
   player: {fileID: 1191497324}
   npcCollection: {fileID: 11400000, guid: 3a1e60d8189910f489ef99c7f6f3730a, type: 2}
+  storylineManager: {fileID: 552349477}
   packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
+  storylineState: 0
   alwaysShowHelpKey: alwaysShowHelp
   mixer: {fileID: 24100000, guid: e797a3abfe2f06640992be13f8ebfa46, type: 2}
   mixerVolumeKey: Volume
@@ -3078,6 +3126,7 @@ SceneRoots:
   - {fileID: 1339423921}
   - {fileID: 1087678563}
   - {fileID: 1194416449}
+  - {fileID: 552349478}
   - {fileID: 2134136409}
   - {fileID: 1021089625}
   - {fileID: 1191497326}

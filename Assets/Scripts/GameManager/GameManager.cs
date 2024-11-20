@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour, ISaveable
     private TimeSystem timeSystem;
     private Inventory inventory;
 
-
     [Header("Menus")]
     InGameMenu inGameMenu;
     SettingsMenu settingsMenu;
@@ -293,6 +292,7 @@ public class GameManager : MonoBehaviour, ISaveable
         inventoryConfigIndex = 0;
         speedMultiplier = 1.0f;
         packageValueMultiplier = 1.0f;
+        StorylineManager.instance.ResetAllStorylines();
         player.GetComponent<MovementScript>().RestartWaypoint();
     }
 
@@ -305,6 +305,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public void RestartDay()
     {
         SaveSystem.DataManager.instance.LoadGame();
+        StorylineManager.instance.ResetDailyProgress();
         timeSystem.ResetDay();
         inventory.Reset();
         player.GetComponent<MovementScript>().RestartWaypoint();
@@ -380,7 +381,7 @@ public class GameManager : MonoBehaviour, ISaveable
         PlayerPrefs.Save();
     }
 
-    public void RewardForDelivery(Package package)
+    public void AddMoney(Package package)
     {
         money += package.cost;
     }

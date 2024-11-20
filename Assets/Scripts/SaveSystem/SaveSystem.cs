@@ -31,6 +31,9 @@ namespace SaveSystem
 
         public List<string> inventoryPackagesData = new List<string>();
 
+        public List<string> storylineManagerStorylines = new List<string>();
+
+        public List<string> storylineManagerRepeatableStorylines = new List<string>();
         // Destroyed objects
         public List<string> destroyedObjectIds = new List<string>();
     }
@@ -78,7 +81,7 @@ namespace SaveSystem
     }
     public interface IDestroyable
     {
-        // Create an unique ID for the destroyed objects list
+        // Create an unique id for the destroyed objects list
         public string GenerateDestroyedId();
 
         static public string GetGameObjectPath(GameObject gameObject)
