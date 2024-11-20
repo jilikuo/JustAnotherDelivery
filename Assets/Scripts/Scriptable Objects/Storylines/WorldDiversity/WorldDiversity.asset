@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e016043dc4f1424fa3b9723e532f86c, type: 3}
+  m_Name: WorldDiversity
+  m_EditorClassIdentifier: 
+  id: 3
+  chapterList:
+  - {fileID: 11400000, guid: bce02f6c5b6a295489b7226fc0cc096f, type: 2}
+  - {fileID: 11400000, guid: 4764d5c4b229bf34894d7a816974e0ca, type: 2}
+  - {fileID: 11400000, guid: d87377f92422d214eb157d35e2b51fe6, type: 2}
+  - {fileID: 11400000, guid: a5a73929894a03945b912298e1d19692, type: 2}
+  - {fileID: 11400000, guid: 3a5d9debe4e225242b2c2f56aa886c00, type: 2}
+  - {fileID: 11400000, guid: 57476b832a0c8ba42af38b486b427f9f, type: 2}
+  currentChapterID: 0
+  isRepeatable: 0

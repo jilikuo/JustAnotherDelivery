@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e016043dc4f1424fa3b9723e532f86c, type: 3}
+  m_Name: KindCitizen
+  m_EditorClassIdentifier: 
+  id: 0
+  chapterList:
+  - {fileID: 11400000, guid: c54a4f95e663f4b4a82d0da288c83eb5, type: 2}
+  - {fileID: 11400000, guid: ab5b5154fb98e2c4d960236937a2f2ef, type: 2}
+  - {fileID: 11400000, guid: f4469d4bbe68e0a4e8223b286962c5f3, type: 2}
+  - {fileID: 11400000, guid: fb9f4c68f4160fb4aad80d260841f099, type: 2}
+  - {fileID: 11400000, guid: c827d799a5915bf498b95a117dbd5489, type: 2}
+  currentChapterID: 0
+  isRepeatable: 1

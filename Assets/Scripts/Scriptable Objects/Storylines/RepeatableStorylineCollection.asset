@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60261fca05f5b854d9554760f4952fc8, type: 3}
+  m_Name: RepeatableStorylineCollection
+  m_EditorClassIdentifier: 
+  stories:
+  - {fileID: 11400000, guid: 5bf7a638af7c6d741b004a44cb85b6cd, type: 2}
+  - {fileID: 11400000, guid: 4a56be3ce03a9674fa71c9faa6d7d075, type: 2}
+  - {fileID: 11400000, guid: 8e3a482c6b2b647429e5ab229c8ea5dd, type: 2}
+  - {fileID: 11400000, guid: 3f9b94d1cc1eace409b1900b51f6783f, type: 2}
+  - {fileID: 11400000, guid: 4eb4dfad96c153843a777c44ba585afd, type: 2}
+  - {fileID: 11400000, guid: b5e961565dcdc8544bcd304a8d7d2ccf, type: 2}
+  - {fileID: 11400000, guid: 21f6b2fa24a9df349a4f60d11ff9f1ac, type: 2}
+  - {fileID: 11400000, guid: eec185024cc5f1f4e9642ad51681f1c4, type: 2}

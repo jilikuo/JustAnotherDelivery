@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: WD03
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: I don't know much about History, but some people say we were once a
+      land full of people that hated different people... Can you imagine that? It
+      must be so strange living in a place where everyone is identical to each other...
+      Sorry, I guess you just want to deliver my package... Can you put it inside
+      for me again?
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: I really think you are beautiful
+  recipientNPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+  package: {fileID: 1918918723373061516, guid: d3e6588b258c0f94dba90583ff1f61b8, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

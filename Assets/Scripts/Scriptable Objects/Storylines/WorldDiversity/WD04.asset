@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: WD04
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: Welcome... I'm sorry, I don't wanna talk today.
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: Thank you.
+  recipientNPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+  package: {fileID: 4538009131117113585, guid: dc891489bdbd98845a16a564fe39c806, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

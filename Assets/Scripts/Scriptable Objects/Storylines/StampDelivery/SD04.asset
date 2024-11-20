@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: SD04
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
+    Content: Why are you delivering a Silver Stamp? You're not telling me you're
+      at the same level as me already? That's... Interesting.
+  - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
+    Content: Thank you. Good Job.
+  recipientNPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
+  package: {fileID: 3574813745547162458, guid: b17e4747017bcae4d9c7e74c9656c57c, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

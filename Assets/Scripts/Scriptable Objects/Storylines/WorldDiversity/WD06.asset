@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: WD06
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: I saw people that are very different living as a couple in the Completely
+      Normal Avenue... I wish I could have someone to love me...
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: Oh... Is that... Oh my God.... Thank you very much for your work
+  recipientNPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+  package: {fileID: 5521001179614541726, guid: 417bba5299b494945ab0edea60ea0c07, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

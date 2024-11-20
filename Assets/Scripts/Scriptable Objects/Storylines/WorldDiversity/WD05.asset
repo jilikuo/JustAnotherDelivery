@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: WD05
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: Can you imagine? My neighboor said I looked weird... Do you think I
+      look weird?
+  - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+    Content: Thank you again.
+  recipientNPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
+  package: {fileID: 3574813745547162458, guid: b17e4747017bcae4d9c7e74c9656c57c, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

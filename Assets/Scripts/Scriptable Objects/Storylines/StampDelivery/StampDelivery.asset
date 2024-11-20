@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e016043dc4f1424fa3b9723e532f86c, type: 3}
+  m_Name: StampDelivery
+  m_EditorClassIdentifier: 
+  id: 2
+  chapterList:
+  - {fileID: 11400000, guid: 595f5f2db3df6cc4eb2dbf5e273ead70, type: 2}
+  - {fileID: 11400000, guid: ce71503b1facf854d8e8ac12b9119326, type: 2}
+  - {fileID: 11400000, guid: 945641dd726eee44283625003c294eb4, type: 2}
+  - {fileID: 11400000, guid: 7c2e12105d84ada4ab8119c2c8439d0d, type: 2}
+  - {fileID: 11400000, guid: 8f973a7f41b72e24d88e8c3d55ea5800, type: 2}
+  - {fileID: 11400000, guid: 4c146f91f998cc647b42cdcc0b4dbb7b, type: 2}
+  currentChapterID: 0
+  isRepeatable: 0

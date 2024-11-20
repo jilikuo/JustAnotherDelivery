@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: TalkativeCitizen 1
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 0}
+    Content: I like how you are always on time.
+  - NPC: {fileID: 0}
+    Content: I can always trust your deliveries.
+  - NPC: {fileID: 0}
+    Content: Thank you for being so quick.
+  recipientNPC: {fileID: 0}
+  package: {fileID: 0}
+  nextInteractionID: 0
+  randomNPC: 1
