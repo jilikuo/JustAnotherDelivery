@@ -69,6 +69,19 @@ namespace SaveSystem
             return gameData.sceneIndex;
         }
 
+        public bool Load(ISaveable saveable)
+        {
+            //Debugger.Log("Loading class: " + saveable.GetType().Name);
+            //Debugger.Log("instance.HasCurrentSceneData(): " + instance.HasCurrentSceneData());
+            if (!instance.HasLoadedGameData())
+            {
+                //Debugger.Log("Loading disabled for class: " + saveable.GetType().Name);
+                return false;
+            }
+
+            return saveable.Load(gameData);
+        }
+
         public void UpdateAndSaveToFile()
         {
             if (UpdateGameData())
