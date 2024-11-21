@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: Logan Jackson
   title: Cartoonist
-  characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
+  characterPrefab: {fileID: 4059512523856862514, guid: 50431a22b6b573e4a91b6866ec016d42, type: 3}
   waypoint: {fileID: 11400000, guid: 805564171113b924aac3a34b6fefd9b9, type: 2}
   hasBeenAssigned: 1

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fullName: John Williams
   title: Bookkeeper
-  characterPrefab: {fileID: 4059512523856862514, guid: a702197bb6c689148b493fded198d002, type: 3}
+  characterPrefab: {fileID: 4059512523856862514, guid: 6766511310dce274eac03336222bfc14, type: 3}
   waypoint: {fileID: 11400000, guid: faf2c210b23e79b4396abbd4711a962b, type: 2}
   hasBeenAssigned: 1
