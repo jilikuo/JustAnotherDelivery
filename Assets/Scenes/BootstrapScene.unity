@@ -815,6 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storylineCollection: {fileID: 11400000, guid: 970c8e7afea8aea48872788f968609ac, type: 2}
   repeatableStorylineCollection: {fileID: 11400000, guid: f8aaf1eed80e7444ea0c1b825a39725c, type: 2}
+  state: 0
 --- !u!4 &552349478
 Transform:
   m_ObjectHideFlags: 0
@@ -1983,18 +1984,16 @@ MonoBehaviour:
   money: 0
   baseMinutesPerMovement: 20
   baseMinutesPerInteraction: 5
-  inventoryConfigs:
-  - {fileID: 11400000, guid: 7e87a4fdda910844e91ad016e8c65d29, type: 2}
-  - {fileID: 11400000, guid: 58ba99ceb7b72e2448d4a8bc448b5a1c, type: 2}
-  - {fileID: 11400000, guid: 7ffc79ab85362454d991a6f09ae1a0de, type: 2}
-  inventoryConfigIndex: 0
+  hasFrontBasket: 0
+  hasRearBasket: 0
+  hasSaddlebags: 0
+  messengerBagLevel: 0
+  numMessengerBagLevels: 3
   speedMultiplier: 1
   packageValueMultiplier: 1
   player: {fileID: 1191497324}
   npcCollection: {fileID: 11400000, guid: 3a1e60d8189910f489ef99c7f6f3730a, type: 2}
-  storylineManager: {fileID: 552349477}
   packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
-  storylineState: 0
   alwaysShowHelpKey: alwaysShowHelp
   mixer: {fileID: 24100000, guid: e797a3abfe2f06640992be13f8ebfa46, type: 2}
   mixerVolumeKey: Volume

@@ -1,4 +1,5 @@
 using DragDrop;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -10,36 +11,48 @@ using UnityEngine.UI;
 public class InventorySortingDisplayManager : MonoBehaviour
 {
     [Header("Required fields")]
-    [SerializeField] private TextMeshProUGUI inventoryLabel;
-    [SerializeField] private GameObject inventoryBackground;
-    [Header("Derived fields")]
-    [SerializeField] private InventoryConfigObject inventoryConfig;
-    [SerializeField] private GameObject inventoryLayout;
+    [SerializeField] private List<GameObject> messengerBags;
+    [SerializeField] private GameObject frontBasket;
+    [SerializeField] private GameObject rearBasket;
+    [SerializeField] private GameObject leftSaddleBag;
+    [SerializeField] private GameObject rightSaddleBag;
 
     // Start is called before the first frame update
     private void Start()
     {
-        inventoryConfig = GameManager.instance.inventoryConfigs[GameManager.instance.inventoryConfigIndex];
-        if (inventoryConfig == null)
+        if (GameManager.instance.numMessengerBagLevels != messengerBags.Count)
         {
-            Debug.LogError("Failed to locate inventoryConfig");
-        }
-        inventoryLayout = Instantiate(inventoryConfig.layoutPrefab, inventoryBackground.transform);
-        var rect = inventoryLayout.GetComponent<RectTransform>();
-        var anchorPoint = new Vector2(0.5f, 0.5f);
-        rect.anchorMin = anchorPoint;
-        rect.anchorMax = anchorPoint;
-        rect.pivot = anchorPoint;
-        inventoryLayout.transform.position = inventoryBackground.transform.position;
-        if (inventoryLayout.GetComponentInChildren<InventorySortingContainerManager>() == null)
-        {
-            inventoryLayout.AddComponent<InventorySortingContainerManager>();
+            Debug.LogError("numMessengerBagLevels(" + GameManager.instance.numMessengerBagLevels + ") does not equal messengerBags count(" + messengerBags.Count + ")");
         }
 
-        // Update the inventory label
-        inventoryLabel.text = inventoryConfig.label;
+        UpdateDisplay();
+        Action<GameObject> AddContainerMananager = go =>
+        {
+            if (go.GetComponentInChildren<InventorySortingContainerManager>() == null)
+            {
+                go.AddComponent<InventorySortingContainerManager>();
+            }
+        };
 
-        // Put the inventory label on top
-        inventoryLabel.transform.SetAsLastSibling();
+        for (int i = 0; i < messengerBags.Count; i++)
+        {
+            AddContainerMananager(messengerBags[i]);
+        }
+        AddContainerMananager(frontBasket);
+        AddContainerMananager(rearBasket);
+        AddContainerMananager(leftSaddleBag);
+        AddContainerMananager(rightSaddleBag);
+    }
+
+    public void UpdateDisplay()
+    {
+        for (int i = 0; i < messengerBags.Count; i++)
+        {
+            messengerBags[i].SetActive(i == GameManager.instance.messengerBagLevel);
+        }
+        frontBasket.SetActive(GameManager.instance.hasFrontBasket);
+        rearBasket.SetActive(GameManager.instance.hasRearBasket);
+        leftSaddleBag.SetActive(GameManager.instance.hasSaddlebags);
+        rightSaddleBag.SetActive(GameManager.instance.hasSaddlebags);
     }
 }

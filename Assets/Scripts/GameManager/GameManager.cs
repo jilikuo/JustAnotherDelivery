@@ -25,8 +25,11 @@ public class GameManager : MonoBehaviour, ISaveable
     [SerializeField] private int baseMinutesPerInteraction = 5;
 
     [Header("Data for upgrades")]
-    public List<InventoryConfigObject> inventoryConfigs;
-    public int inventoryConfigIndex = 0;
+    public bool hasFrontBasket = false;
+    public bool hasRearBasket = false;
+    public bool hasSaddlebags = false;
+    public int messengerBagLevel = 0;
+    public int numMessengerBagLevels = 3;
     public float speedMultiplier = 1f;
     public float packageValueMultiplier = 1f;
 
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         var data = gameData.gameManagerData;
         ISaveable.AddKey(data, "money", money);
-        ISaveable.AddKey(data, "inventoryConfigIndex", inventoryConfigIndex);
+        ISaveable.AddKey(data, "messengerBagLevel", messengerBagLevel);
         ISaveable.AddKey(data, "speedMultiplier", speedMultiplier);
         ISaveable.AddKey(data, "packageValueMultiplier", packageValueMultiplier);
     }
@@ -72,8 +75,8 @@ public class GameManager : MonoBehaviour, ISaveable
                 case "money":
                     money = Convert.ToInt32(value);
                     break;
-                case "inventoryConfigIndex":
-                    inventoryConfigIndex = Convert.ToInt32(value);
+                case "messengerBagLevel":
+                    messengerBagLevel = Convert.ToInt32(value);
                     break;
                 case "speedMultiplier":
                     speedMultiplier = (float)Convert.ToDouble(value);
@@ -289,7 +292,7 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         timeSystem.SetTime(0f);
         money = 0;
-        inventoryConfigIndex = 0;
+        messengerBagLevel = 0;
         speedMultiplier = 1.0f;
         packageValueMultiplier = 1.0f;
         StorylineManager.instance.ResetAllStorylines();
@@ -399,15 +402,5 @@ public class GameManager : MonoBehaviour, ISaveable
         }
         money -= amount;
         return true;
-    }
-
-    public InventoryConfigObject GetInventoryConfig()
-    {
-        return inventoryConfigs[inventoryConfigIndex];
-    }
-
-    public InventoryConfigObject GetInventoryConfig(int index)
-    {
-        return ((index >= 0) && (index < inventoryConfigs.Count)) ? inventoryConfigs[index] : null;
     }
 }
