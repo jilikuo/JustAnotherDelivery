@@ -20,8 +20,6 @@ public class MovementScript : MonoBehaviour
     private Transform cameraTransform;
     private Waypoints currentWaypoint;
 
-
-
     void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");

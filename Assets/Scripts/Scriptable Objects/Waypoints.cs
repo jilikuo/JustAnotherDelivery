@@ -25,6 +25,8 @@ public class Waypoints : ScriptableObject
     [SerializeField]private StreetName streetName;
     [SerializeField]private int addressNumber;
 
+    public Coordinates minimapPosition;
+    public Coordinates minimapRotation;
     public Coordinates position;
     public Coordinates rotation;
 

@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 0
   addressNumber: 999
+  minimapPosition:
+    x: -281
+    y: -74
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 90
   position:
     x: 115
     y: 1

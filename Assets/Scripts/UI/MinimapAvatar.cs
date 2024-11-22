@@ -3,63 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MinimapAvatar : MonoBehaviour
-{
-    public GameObject avatarObject;
-    public float horizontalFactor = -2.7f; // - means the world coordinates are opposite to UI coordinates, 2 is the relation between world space and UI space
-    public float verticalFactor = -2.875f;
-
-    public int rotationFactor = -1;
-    public int rotationDifference = 90; // 90 degrees difference between world rotation and UI rotation
-
-    private GameObject playerObject;
-    private Transform playerTransform;
-    private RectTransform avatarRectTransform;
-    private bool playerMoved = true;
+{ 
+    [SerializeField] private RectTransform avatarRectTransform;
+    private MovementScript movementScript;
 
     private void Start()
     {
-        #region NotNullChecks
+        var playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null)
         {
-            playerObject = GameObject.FindGameObjectWithTag("Player");
-            if (playerObject == null)
-            {
-                throw new System.Exception("Minimap Avatar needs a player object to represent");
-            }
+            throw new System.Exception("No object with the tag 'Player' was found");
         }
 
-        if (avatarObject == null)
+        movementScript = playerObject.GetComponent<MovementScript>();
+        if (movementScript == null)
         {
-            avatarObject = GameObject.FindGameObjectWithTag("MinimapAvatar");
-            if (avatarObject == null)
-            {
-                throw new System.Exception("Minimap Avatar needs an avatar object to move");
-            }
+            throw new System.Exception("Player object has no component of the type 'MovementScript'");
         }
-        #endregion
-
-        playerTransform = playerObject.transform;
-        avatarRectTransform = avatarObject.GetComponent<RectTransform>();
+        UpdateMinimapAvatar();
     }
-
-    void LateUpdate()
+    public void UpdateMinimapAvatar()
     {
-        if (playerMoved)
-        {
-            MovePlayerAvatar();
-            playerMoved = false;
-        }
-    }
+        avatarRectTransform.anchoredPosition = new Vector2( movementScript.GetCurrentWaypoint().minimapPosition.x, 
+                                                            movementScript.GetCurrentWaypoint().minimapPosition.y);
 
-    public void RegisterPlayerMovement()
-    {
-        playerMoved = true;
-    }
-
-    private void MovePlayerAvatar()
-    {
-        Vector2 targetPos = new(playerTransform.position.x * horizontalFactor, playerTransform.position.z * verticalFactor);
-        avatarRectTransform.anchoredPosition = targetPos;
-        avatarRectTransform.rotation = Quaternion.Euler(0, 0, (playerTransform.eulerAngles.y + rotationDifference) * rotationFactor);
+        avatarRectTransform.localRotation = Quaternion.Euler(0, 0, movementScript.GetCurrentWaypoint().minimapRotation.z);
     }
 }

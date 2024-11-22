@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 0
   addressNumber: 1207
+  minimapPosition:
+    x: -268
+    y: 77
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 180
   position:
     x: 108
     y: 1
@@ -33,3 +41,4 @@ MonoBehaviour:
   residents:
   - {fileID: 11400000, guid: ba55b9cd38638bb42b25617cc55996bf, type: 2}
   - {fileID: 11400000, guid: 4b15e8794e7bef944a5b672cd7a4f913, type: 2}
+  updateCoordinates: 0

@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 0
   addressNumber: 1667
+  minimapPosition:
+    x: 269
+    y: 77
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 180
   position:
     x: -102.4
     y: 1
@@ -29,7 +37,7 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: c03fa9bd4c856ee4182965fca6a4c6d4, type: 2}
   isValid: 1
   isAccessible: 1
-  isDirty: 0
+  isDirty: 1
   residents:
   - {fileID: 11400000, guid: ff1a8dd6e3dc9e64fa19978e5e7a3437, type: 2}
   - {fileID: 11400000, guid: fb358730fca6cc247b21167318dd5bba, type: 2}

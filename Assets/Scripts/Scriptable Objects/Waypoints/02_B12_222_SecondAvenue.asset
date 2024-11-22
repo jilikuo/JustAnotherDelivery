@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 1
   addressNumber: 222
+  minimapPosition:
+    x: 207
+    y: -9.5
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 180
   position:
     x: -72
     y: 1
@@ -29,7 +37,8 @@ MonoBehaviour:
   westWaypoint: {fileID: 11400000, guid: faf2c210b23e79b4396abbd4711a962b, type: 2}
   isValid: 1
   isAccessible: 1
-  isDirty: 0
+  isDirty: 1
   residents:
   - {fileID: 11400000, guid: 27a2f3f6c71370a408d6883790f7a28f, type: 2}
   - {fileID: 11400000, guid: 336ccdd8687e8094a8917e403cd72a54, type: 2}
+  updateCoordinates: 0

@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 1
   addressNumber: 0
+  minimapPosition:
+    x: 17
+    y: -9.8
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 270
   position:
     x: -12
     y: 2.5
@@ -31,3 +39,4 @@ MonoBehaviour:
   isAccessible: 1
   isDirty: 1
   residents: []
+  updateCoordinates: 0
