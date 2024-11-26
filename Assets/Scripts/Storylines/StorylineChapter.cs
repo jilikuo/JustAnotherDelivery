@@ -22,6 +22,15 @@ public class StorylineChapter : ScriptableObject
         return interactions[nextInteractionID];
     }
 
+    public Characters GetRecipient()
+    {
+        if (recipientNPC == null)
+        {
+            return GetLastInteraction().GetNPC();
+        }
+        return recipientNPC;
+    }
+
     public Interaction GetLastInteraction()
     {
         return interactions[interactions.Count - 1];
@@ -45,6 +54,11 @@ public class StorylineChapter : ScriptableObject
     public bool IsLastInteraction()
     {
         return (nextInteractionID == interactions.Count - 1);
+    }
+
+    public GameObject GetPackage()
+    {
+        return package;
     }
 }
 

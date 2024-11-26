@@ -44,6 +44,21 @@ public class Storyline : ScriptableObject
         chapterList[currentChapterID].ResetChapterProgress();
     }
 
+    public bool IsFinished()
+    {
+        if (isRepeatable)
+        {
+            return false;
+        }
+
+        if (currentChapterID < chapterList.Count)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public void AdvanceProgress()
     {
         currentChapterID++;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum StorylineID
 {
-    None,
+    RandomStorylines,
     Main_Story,
     Stamp_Delivery,
     World_Diversity

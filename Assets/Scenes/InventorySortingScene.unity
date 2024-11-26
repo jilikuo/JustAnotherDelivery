@@ -1365,8 +1365,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packageAddressGen: {fileID: 11400000, guid: 13ecd03a8333df04d9371568a6e990e7, type: 2}
+  storylineGenerator: {fileID: 11400000, guid: 680aa83e853de36458c6cb6b139b930d, type: 2}
   imageScale: 75
-  packageIconGen: {fileID: 0}
+  packageIconGen: {fileID: 11400000, guid: d031bbec6f6cb78478133855908846f9, type: 2}
 --- !u!114 &7510503733266433622
 MonoBehaviour:
   m_ObjectHideFlags: 0

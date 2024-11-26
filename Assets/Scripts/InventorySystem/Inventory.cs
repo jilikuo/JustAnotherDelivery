@@ -50,9 +50,9 @@ public class Inventory : MonoBehaviour, ISaveable
         return true;
     }
 
-    public void AddItem(string iconName, string fullName, string address, int cost)
+    public void AddItem(string iconName, string fullName, string address, StorylineID storylineID, int cost)
     {
-        packages.Add(new Package(iconName, fullName, address, cost));
+        packages.Add(new Package(iconName, fullName, address, storylineID, cost));
         Debug.Log("Added item to Inventory: " + fullName + "@" + address);
     }
 
@@ -149,19 +149,23 @@ public class Package
 {
     public string iconName;
     public Address address;
+    public StorylineID storylineID;
     public int cost;
 
-    public Package(string iconName, Address address, int cost)
+
+    public Package(string iconName, Address address, StorylineID storylineID, int cost)
     {
         this.iconName = iconName;
         this.address = address;
+        this.storylineID = storylineID;
         this.cost = cost;
     }
 
-    public Package(string iconName, string fullName, string address, int cost)
+    public Package(string iconName, string fullName, string address, StorylineID storylineID, int cost)
     {
         this.iconName = iconName;
         this.address = new Address(fullName, address);
+        this.storylineID = storylineID;
         this.cost = cost;
     }
 
@@ -171,13 +175,14 @@ public class Package
         var parsed = attributes.Split(':');
         this.iconName = parsed[0];
         this.address = new Address(parsed[1]);
-        this.cost = Convert.ToInt32(parsed[2]);
+        this.storylineID = (StorylineID)Convert.ToInt32(parsed[2]);
+        this.cost = Convert.ToInt32(parsed[3]);
     }
 
     // Helper for Save
     public override string ToString()
     {
-        return string.Join(":", iconName, address, cost);
+        return string.Join(":", iconName, address, (int)storylineID, cost);
     }
 
     public string ToDisplayString()

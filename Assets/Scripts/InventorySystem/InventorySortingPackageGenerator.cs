@@ -1,19 +1,16 @@
 using DragDrop;
-using System.Collections.Generic;
-using System.Net;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerator
 {
     [Header("Required Fields")]
     [SerializeField] private RandomAddressGenerator packageAddressGen;
+    [SerializeField] private RandomStorylineGenerator storylineGenerator;
     [SerializeField] private float imageScale = 75;
+    [SerializeField] private float storylineChance = 0.5f;
     [Header("Derived Fields")]
     [SerializeField] private RandomGameObjectGenerator packageIconGen;
+
 
     private Inventory inventory;
 
@@ -33,11 +30,15 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
         {
             Debug.LogError("Failed to locate packageAddressGen");
         }
+
         packageAddressGen.Clear();
         foreach (var character in GameManager.instance.npcCollection.NPCList)
         {
             packageAddressGen.AddEntry(new Address(character));
         }
+
+        storylineGenerator.Clear();
+        storylineGenerator.Populate();
     }
 
     private int CalcCost(GameObject icon)
@@ -50,14 +51,41 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
 
     public DragDropObject CreateDragDrop(GameObject parent)
     {
+        if (!storylineGenerator.hasEntries())
+        {
+            return CreateRandomDragDrop(parent);
+        }
+
+        return Random.value < storylineChance ? CreateStorylineDragDrop(parent) : CreateRandomDragDrop(parent);
+    }
+
+    private DragDropObject CreateStorylineDragDrop(GameObject parent)
+    {
+        Storyline story = storylineGenerator.GetEntry();
+        storylineGenerator.RemoveEntry(story);
+
+        Address address = new Address(story.GetCurrentChapter().GetRecipient());
+        GameObject packageIcon = story.GetCurrentChapter().GetPackage();
+       
+        return InstantiateDragDropObject(parent, packageIcon, address, story.GetID());
+    }
+
+    private DragDropObject CreateRandomDragDrop(GameObject parent)
+    {
         Address address = packageAddressGen.GetEntry();
         if (address == null)
         {
             return null;
         }
         packageAddressGen.RemoveEntry(address);
+
         GameObject packageIcon = packageIconGen.GetEntry();
 
+        return InstantiateDragDropObject(parent, packageIcon, address, StorylineID.RandomStorylines);
+    }
+
+    private DragDropObject InstantiateDragDropObject(GameObject parent, GameObject packageIcon, Address address, StorylineID storylineID)
+    {
         var icon = Instantiate(packageIcon, parent.transform);
         var rect = icon.GetComponent<RectTransform>();
         rect.localScale = new Vector3(imageScale, imageScale, 1f);
@@ -68,8 +96,7 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
         icon.transform.position = parent.transform.position;
 
         var dragDrop = icon.AddComponent<InventorySortingPackage>();
-        dragDrop.data = new Package(packageIcon.name, address, CalcCost(icon));
-
+        dragDrop.data = new Package(packageIcon.name, address, storylineID, CalcCost(icon));
         return dragDrop;
     }
 
@@ -86,7 +113,17 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
             Debug.LogError("Failed to locate Package data");
             return;
         }
-        packageAddressGen.AddEntry(package.data.address);
+
+        if (package.data.storylineID == StorylineID.RandomStorylines)
+        {
+            packageAddressGen.AddEntry(package.data.address);
+        }
+        else
+        {
+            Storyline story = StorylineManager.instance.GetStorylineByID(package.data.storylineID);
+            storylineGenerator.AddEntry(story);
+        }
+        
         Destroy(item.gameObject);
     }
 }

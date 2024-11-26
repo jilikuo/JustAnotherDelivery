@@ -98,6 +98,11 @@ public class StorylineManager : MonoBehaviour, ISaveable
         return activeStoryline.GetID();
     }
 
+    public Storyline GetStorylineByID(StorylineID iD)
+    {
+        return storylineCollection.GetStorylineByID(iD) ?? repeatableStorylineCollection.GetStorylineByID(iD);
+    }
+
     public void ResetAllStorylines()
     {
         foreach (var story in storylineCollection.GetStorylineList())
@@ -216,4 +221,16 @@ public class StorylineManager : MonoBehaviour, ISaveable
     {
         navMenuHandler.UpdateInteractionButton();
     }
+
+    public StorylineCollection GetLinearStorylines()
+    {
+        return storylineCollection;
+    }
+
+
+    public StorylineCollection GetRepeatableStorylines()
+    {
+        return repeatableStorylineCollection;
+    }
+
 }
