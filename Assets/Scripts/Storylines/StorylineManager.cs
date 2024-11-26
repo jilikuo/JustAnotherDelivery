@@ -134,15 +134,16 @@ public class StorylineManager : MonoBehaviour, ISaveable
         StartNextChapter();
     }
 
-    public void PlayRandomRepeatableStoryline()
+    public void PlayRandomRepeatableStoryline(Characters NPC)
     {
         UpdateNavMenuHandler();
         SetActiveStoryline(repeatableStorylineCollection.GetRandomRepeatableStoryline());
         UpdateActiveChapter();
         if (activeChapter.randomNPC)
         {
-            SetupRandomNPC();
+            SetupInteractionsNPC(NPC);
         }
+
         StartNextChapter();
     }
     
@@ -189,16 +190,9 @@ public class StorylineManager : MonoBehaviour, ISaveable
         navMenuHandler.SetMessage(interaction.GetContent());
     }
 
-    private void SetupRandomNPC()
+    private void SetupInteractionsNPC(Characters NPC)
     {
         List<Interaction> interactions = activeChapter.GetInteractionList();
-        Characters NPC = navMenuHandler.GetRandomNPC();
-
-        if (NPC == null)
-        {
-            Debug.Log("No npc found to setup repeatable storyline");
-            return;
-        }
 
         foreach (var interaction in interactions)
         {

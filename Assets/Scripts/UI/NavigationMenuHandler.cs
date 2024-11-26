@@ -167,10 +167,33 @@ public class NavigationMenuHandler : MonoBehaviour
 
         activeBar.SetActive(false);
 
-        //TODO: VERIFY THE NEXT NPC, IF IT IS ASSOCIATED TO A SPECIFIC STORYLINE WHICH THE PLAYER HAS THE PACKAGE OF,
-        //FIRST NON REPEATABLE, THEN REPEATABLE, PLAY THE SPECIFIC STORYLINE.
-        //IF THAT'S NOT THE CASE, PLAY A RANDOM REPEATABLE ONE. (current behaviour: only plays random repeatable ones)
-        StorylineManager.instance.PlayRandomRepeatableStoryline();
+        Characters nextNPC = GetRandomNPC();
+
+        List<Package> packages = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>().packages;
+        bool hasStoryline = false;
+
+        foreach (var package in packages)
+        {
+            if (package.storylineID == StorylineID.RandomStorylines)
+            {
+                continue;
+            }
+
+            Characters packageRecipient = StorylineManager.instance.GetStorylineByID(package.storylineID).GetCurrentChapter().GetRecipient();
+            if (packageRecipient != nextNPC)
+            {
+                continue;
+            }
+
+            StorylineManager.instance.PlayScriptedStoryline(package.storylineID);
+            hasStoryline = true;
+            break;
+        }
+
+        if (!hasStoryline)
+        {
+            StorylineManager.instance.PlayRandomRepeatableStoryline(nextNPC);
+        }
 
         interactionBar.SetActive(true);
 
