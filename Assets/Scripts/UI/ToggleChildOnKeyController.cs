@@ -8,12 +8,15 @@ using UnityEngine.UI;
 public class ToggleChildOnKeyController : MonoBehaviour
 {
     [SerializeField] protected KeyCode keyCode;
-    protected GameObject childPanel;
+    [SerializeField] protected GameObject childPanel;
 
     private void Start()
     {
-        // It has one child - the actual panel, which is disabled.
-        childPanel = gameObject.transform.GetChild(0).gameObject;
+        if (childPanel == null)
+        {
+            // It has one child - the actual panel, which is disabled.
+            childPanel = gameObject.transform.GetChild(0).gameObject;
+        }
         OnStart();
     }
 
