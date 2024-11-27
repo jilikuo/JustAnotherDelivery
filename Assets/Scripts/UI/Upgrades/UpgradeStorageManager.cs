@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpgradeStorageManager : MonoBehaviour
+public class UpgradeStorageManager : UpgradePanelManagerBase
 {   enum UpgradeType
     {
         None,
@@ -25,18 +25,17 @@ public class UpgradeStorageManager : MonoBehaviour
             {UpgradeType.AddSaddlebags,InventoryUpgradeDisplayManager.InventoryContainer.SaddleBags }
         };
 
-    [SerializeField] private TMPro.TextMeshProUGUI upgradeCostText;
+    [SerializeField] private string upgradeLabel = "Storage Upgrades";
     [SerializeField] private TMPro.TMP_Dropdown upgradesDropDown;
     [SerializeField] private InventoryUpgradeDisplayManager inventoryUpgradeDisplayManager;
 
-    [SerializeField] private string upgradeLabel = "<Upgrade Storage>";
     [SerializeField] private int initMessengerBagCost = 10;
     [SerializeField] private int costPerMessengerBagLevel = 10;
     [SerializeField] private int frontBasketCost = 10;
     [SerializeField] private int rearBasketCost = 10;
     [SerializeField] private int saddlebagCost = 10;
     
-    [SerializeField] private int cost = -1;
+    [SerializeField] private string upgradeText = "";
     [SerializeField] private UpgradeType upgradeType = UpgradeType.None;
 
     private string TypeToLabel(UpgradeType upgradeType)
@@ -66,103 +65,96 @@ public class UpgradeStorageManager : MonoBehaviour
 
     private void Start()
     {
-        if (upgradeCostText == null)
-        {
-            Debug.LogError("upgradeCostText not set");
-        }
         if (upgradesDropDown == null)
         {
             Debug.LogError("upgradesDropDown not set");
         }
-
-        UpdateUpgrade(true);
+        SetVars();
+        UpdateSelections();
+        UpdateUpgradePanel();
     }
 
-    public void UpdateUpgrade(bool updateDropDown)
+    private void UpdateSelections()
     {
-        Debug.Log("Updating Upgrade - Current: " + upgradeType.ToString() + " to: " + upgradesDropDown.captionText.text);
-        
-        // Update the drop down list
-        if (updateDropDown)
+        int currentSelection = Math.Max(0, upgradesDropDown.value);
+
+        List<string> options = new List<string>();
+
+        if (GameManager.instance.messengerBagLevel < (GameManager.instance.numMessengerBagLevels - 1))
         {
-            int currentSelection = Math.Max(0, upgradesDropDown.value);
-
-            List<string> options = new List<string>();
-            options.Add(upgradeLabel);
-
-            if (GameManager.instance.messengerBagLevel < (GameManager.instance.numMessengerBagLevels - 1))
-            {
-                options.Add(TypeToLabel(UpgradeType.ExpandMessengerBag));
-            }
-            if (!GameManager.instance.hasFrontBasket)
-            {
-                options.Add(TypeToLabel(UpgradeType.AddFrontBasket));
-            }
-            if (!GameManager.instance.hasRearBasket)
-            {
-                options.Add(TypeToLabel(UpgradeType.AddRearBasket));
-            }
-            if (!GameManager.instance.hasSaddlebags)
-            {
-                options.Add(TypeToLabel(UpgradeType.AddSaddlebags));
-            }
-
-            upgradesDropDown.ClearOptions();
-            if (options.Count > 0) upgradesDropDown.AddOptions(options);
-
-            upgradesDropDown.value = Math.Min(currentSelection, upgradesDropDown.options.Count - 1);
+            options.Add(TypeToLabel(UpgradeType.ExpandMessengerBag));
+        }
+        if (!GameManager.instance.hasFrontBasket)
+        {
+            options.Add(TypeToLabel(UpgradeType.AddFrontBasket));
+        }
+        if (!GameManager.instance.hasRearBasket)
+        {
+            options.Add(TypeToLabel(UpgradeType.AddRearBasket));
+        }
+        if (!GameManager.instance.hasSaddlebags)
+        {
+            options.Add(TypeToLabel(UpgradeType.AddSaddlebags));
         }
 
-        // Determine the current upgrade selection
-        upgradeType = LabelToType(upgradesDropDown.captionText.text);
+        upgradesDropDown.ClearOptions();
+        if (options.Count > 0)
+        {
+            upgradesDropDown.AddOptions(options);
+            upgradesDropDown.value = Math.Min(currentSelection, upgradesDropDown.options.Count - 1);
+        }
+    }
 
-        // Determine the current upgrade cost
+    protected override void EnableUpgradePanel(bool enable)
+    {
+        base.EnableUpgradePanel(enable);
+
+        upgradesDropDown.enabled = enabled;
+    }
+
+    protected override string GetUpgradeLabel()
+    {
+        return upgradeLabel;
+    }
+
+    protected override int GetUpgradeCost()
+    {
         switch (upgradeType)
         {
             case UpgradeType.ExpandMessengerBag:
-                cost = initMessengerBagCost + GameManager.instance.numMessengerBagLevels * costPerMessengerBagLevel;
-                break;
+                return initMessengerBagCost + GameManager.instance.numMessengerBagLevels * costPerMessengerBagLevel;
             case UpgradeType.AddFrontBasket:
-                cost = frontBasketCost;
-                break;
+                return frontBasketCost;
             case UpgradeType.AddRearBasket:
-                cost = rearBasketCost;
-                break;
+                return rearBasketCost;
             case UpgradeType.AddSaddlebags:
-                cost = saddlebagCost;
-                break;
+                return saddlebagCost;
             default:
-                cost = -1;
-                break;
+                return -1;
         }
-        if (cost >= 0)
-        {
-            upgradeCostText.text = cost.ToString();
-        }
-        else
-        {
-            upgradeCostText.text = "";
-        }
+    }
 
+    protected override bool HasUpdatedValue()
+    {
+        return upgradeText != upgradesDropDown.captionText.text;
+    }
+
+    protected override void UpdateValues()
+    {
+        UpdateSelections();
+
+        upgradeText = upgradesDropDown.captionText.text;
+        upgradeType = LabelToType(upgradeText);
+    }
+
+    protected override void UpdateDisplay()
+    {
         inventoryUpgradeDisplayManager.UpdateDisplay();
         inventoryUpgradeDisplayManager.SetDimmed(upgradeTypeToContainer[upgradeType]);
     }
 
-    public void BuyUpgrade()
+    protected override void DoUpgrade()
     {
-        Debug.Log("Purchasing Upgrade: " + upgradeType.ToString() + " at Cost: " + cost + " Current funds: " + GameManager.instance.GetMoney());
-        if (cost < 0)
-        {
-            return;
-        }
-
-        if (!GameManager.instance.SpendMoney(cost))
-        {
-            Debug.Log("Failed to buy upgrade - Cost: " + cost + " Available: " + GameManager.instance.GetMoney());
-            return;
-        }
-
-        // Do the upgrade
         switch (upgradeType)
         {
             case UpgradeType.ExpandMessengerBag:
@@ -181,8 +173,5 @@ public class UpgradeStorageManager : MonoBehaviour
                 Debug.Log("Unrecognized upgrade type: " + upgradeType);
                 return;
         }
-        
-        // Update the upgrade options and current selection
-        UpdateUpgrade(true);
     }
 }

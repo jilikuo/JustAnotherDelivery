@@ -6,19 +6,10 @@ using UnityEngine.UI;
 
 public abstract class UpgradePanelManagerTextBase : UpgradePanelManagerBase
 {
-    protected override void SetVars()
-    {
-        base.SetVars();
-        currentStateBottomText.text = "";
-        currentStateBottomText.enabled = false;
-        nextStateBottomText.text = "";
-        nextStateBottomText.enabled = false;
-    }
-
     protected override void UpdateDisplay()
     {
-        currentStateCenterText.text = GetCurrentValue();
-        nextStateCenterText.text = GetNextValue();
+        currentStateText.text = GetCurrentValue();
+        nextStateText.text = "Upgrade to " + GetNextValue();
     }
 
     protected abstract string GetCurrentValue();

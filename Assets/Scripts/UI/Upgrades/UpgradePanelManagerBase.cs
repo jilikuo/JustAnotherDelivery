@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,37 +11,29 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
     [SerializeField] private int cost;
 
     [SerializeField] protected GameObject currentStateDisplayPanel;
-    [SerializeField] protected Image currentStateBackground;
-    [SerializeField] protected TMPro.TextMeshProUGUI currentStateCenterText;
-    [SerializeField] protected TMPro.TextMeshProUGUI currentStateBottomText;
+    [SerializeField] protected TMPro.TextMeshProUGUI upgradeTypeText;
+    [SerializeField] protected TMPro.TextMeshProUGUI currentStateText;
 
     [SerializeField] protected GameObject nextStateDisplayPanel;
-    [SerializeField] protected Image nextStateBackground;
-    [SerializeField] protected TMPro.TextMeshProUGUI nextStateCenterText;
-    [SerializeField] protected TMPro.TextMeshProUGUI nextStateBottomText;
+    [SerializeField] protected TMPro.TextMeshProUGUI nextStateText;
 
-    [SerializeField] protected GameObject upgradeTermsPanel;
-    [SerializeField] protected TMPro.TextMeshProUGUI upgradeLabelText;
+    [SerializeField] protected TMPro.TextMeshProUGUI upgradeBuyText;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeCostText;
     [SerializeField] protected Button upgradeButton;
 
     protected virtual void SetVars()
     {
         currentStateDisplayPanel = gameObject.transform.Find("CurrentStateDisplayPanel").gameObject;
-        currentStateBackground = currentStateDisplayPanel.GetComponent<Image>();
-        currentStateCenterText = currentStateDisplayPanel.transform.Find("CenterInfoText").GetComponent<TMPro.TextMeshProUGUI>();
-        currentStateBottomText = currentStateDisplayPanel.transform.Find("BottomInfoText").GetComponent<TMPro.TextMeshProUGUI>();
+        currentStateText = currentStateDisplayPanel.transform.Find("CurrentStateText").GetComponent<TMPro.TextMeshProUGUI>();
+        upgradeTypeText = currentStateDisplayPanel.transform.Find("TypeText").GetComponent<TMPro.TextMeshProUGUI>();
+        upgradeTypeText.text = GetUpgradeLabel() + ":";
 
         nextStateDisplayPanel = gameObject.transform.Find("NextStateDisplayPanel").gameObject;
-        nextStateBackground = nextStateDisplayPanel.GetComponent<Image>();
-        nextStateCenterText = nextStateDisplayPanel.transform.Find("CenterInfoText").GetComponent<TMPro.TextMeshProUGUI>();
-        nextStateBottomText = nextStateDisplayPanel.transform.Find("BottomInfoText").GetComponent<TMPro.TextMeshProUGUI>();
+        nextStateText = nextStateDisplayPanel.transform.Find("UpgradeLabel/NextStateText").GetComponent<TMPro.TextMeshProUGUI>();
 
-        upgradeTermsPanel = gameObject.transform.Find("UpgradeTermsPanel").gameObject;
-        upgradeLabelText = upgradeTermsPanel.transform.Find("TypeText").GetComponent<TMPro.TextMeshProUGUI>();
-        upgradeLabelText.text = GetUpgradeLabel();
-        upgradeButton = upgradeTermsPanel.transform.Find("UpgradeButton").GetComponent<Button>();
+        upgradeButton = nextStateDisplayPanel.transform.Find("UpgradeButton").GetComponent<Button>();
         upgradeButton.onClick.AddListener(BuyUpgrade);
+        upgradeBuyText = upgradeButton.transform.Find("BuyText").GetComponent<TMPro.TextMeshProUGUI>();
         upgradeCostText = upgradeButton.transform.Find("CostText").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
@@ -51,15 +45,29 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
         }
         if (cost < 0)
         {
-            upgradeLabelText.enabled = false;
+            DimText(upgradeTypeText, true);
             upgradeCostText.text = "";
-            upgradeCostText.enabled = false;
-            upgradeButton.enabled = false;
+            EnableUpgradePanel(false);
         }
         else
         {
-            upgradeButton.enabled = (cost <= GameManager.instance.GetMoney());
+            EnableUpgradePanel(cost <= GameManager.instance.GetMoney());
         }
+    }
+
+    protected virtual void EnableUpgradePanel(bool enable)
+    {
+        DimText(nextStateText, !enable);
+        DimText(upgradeBuyText, !enable);
+        DimText(upgradeCostText, !enable);
+        upgradeButton.enabled = enable;
+    }
+
+    protected void DimText(TextMeshProUGUI text, bool dim)
+    {
+        var color = text.color;
+        color.a = (dim) ? .42f : 1.0f;
+        text.color = color;
     }
 
     private void BuyUpgrade()
@@ -67,6 +75,7 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
         if (GameManager.instance.SpendMoney(cost))
         {
             DoUpgrade();
+            UpdateUpgradePanel();
         }
         else
         {
