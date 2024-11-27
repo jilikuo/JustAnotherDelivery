@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127a465144fd22f49a8371c134959cdf, type: 3}
   m_Name: RandomStorylineGenerator
   m_EditorClassIdentifier: 
-  defaultEntry: {fileID: 11400000, guid: b5e961565dcdc8544bcd304a8d7d2ccf, type: 2}
+  defaultEntry: {fileID: 0}
   entries: []
-  linearStorylines: {fileID: 11400000, guid: 970c8e7afea8aea48872788f968609ac, type: 2}
+  storylines: {fileID: 11400000, guid: 970c8e7afea8aea48872788f968609ac, type: 2}
   repeatableStorylines: {fileID: 11400000, guid: f8aaf1eed80e7444ea0c1b825a39725c, type: 2}
