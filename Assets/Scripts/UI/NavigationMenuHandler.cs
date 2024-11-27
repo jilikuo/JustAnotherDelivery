@@ -93,6 +93,7 @@ public class NavigationMenuHandler : MonoBehaviour
         movementBar.SetActive(true);
         activeBar = movementBar;
         interactionBar.SetActive(false);
+        deliveryBox.SetActive(false);
 
         movementButtons = new List<GameObject>
         {
@@ -141,6 +142,8 @@ public class NavigationMenuHandler : MonoBehaviour
         {
             activeBar.SetActive(false);
         }
+
+        deliveryBox.SetActive(false);
 
         movementBar.SetActive(true);
         activeBar = movementBar;
