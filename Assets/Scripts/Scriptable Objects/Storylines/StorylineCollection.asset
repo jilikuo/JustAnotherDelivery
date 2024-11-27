@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60261fca05f5b854d9554760f4952fc8, type: 3}
-  m_Name: LinearStorylineCollection
+  m_Name: StorylineCollection
   m_EditorClassIdentifier: 
   stories:
   - {fileID: 11400000, guid: 9ef246007d268aa4daaac0c9a0a246fc, type: 2}

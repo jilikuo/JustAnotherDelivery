@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class RandomStorylineGenerator : RandomObjectGenerator<Storyline>
 {
-    [SerializeField] private StorylineCollection linearStorylines;
+    [SerializeField] private StorylineCollection storylines;
     [SerializeField] private StorylineCollection repeatableStorylines;
 
     protected override string GetKey(Storyline entry)
@@ -27,7 +27,7 @@ public class RandomStorylineGenerator : RandomObjectGenerator<Storyline>
 
     public void Populate()
     {
-        foreach (var storyline in linearStorylines.GetStorylineList())
+        foreach (var storyline in storylines.GetStorylineList())
         {
             if (storyline.IsFinished())
             {

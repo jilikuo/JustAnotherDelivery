@@ -216,15 +216,13 @@ public class StorylineManager : MonoBehaviour, ISaveable
         navMenuHandler.UpdateInteractionButton();
     }
 
-    public StorylineCollection GetLinearStorylines()
+    public StorylineCollection GetNonRepeatableStorylines()
     {
         return storylineCollection;
     }
-
 
     public StorylineCollection GetRepeatableStorylines()
     {
         return repeatableStorylineCollection;
     }
-
 }
