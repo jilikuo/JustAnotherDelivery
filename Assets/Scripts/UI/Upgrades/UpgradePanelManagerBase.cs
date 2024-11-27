@@ -38,9 +38,9 @@ public abstract class UpgradePanelManagerBase : MonoBehaviour
         upgradeTermsPanel = gameObject.transform.Find("UpgradeTermsPanel").gameObject;
         upgradeLabelText = upgradeTermsPanel.transform.Find("TypeText").GetComponent<TMPro.TextMeshProUGUI>();
         upgradeLabelText.text = GetUpgradeLabel();
-        upgradeCostText = upgradeTermsPanel.transform.Find("Cost/CostText").GetComponent<TMPro.TextMeshProUGUI>();
         upgradeButton = upgradeTermsPanel.transform.Find("UpgradeButton").GetComponent<Button>();
         upgradeButton.onClick.AddListener(BuyUpgrade);
+        upgradeCostText = upgradeButton.transform.Find("CostText").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     private void LateUpdate()
