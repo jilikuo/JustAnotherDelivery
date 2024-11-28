@@ -11,12 +11,11 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
     [Header("Derived Fields")]
     [SerializeField] private RandomGameObjectGenerator packageIconGen;
 
-
     private Inventory inventory;
 
     private void Start()
     {
-        var inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
         if (inventory == null)
         {
             Debug.LogError("Failed to locate Inventory");
@@ -61,13 +60,18 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
 
     private DragDropObject CreateStorylineDragDrop(GameObject parent)
     {
+        
         Storyline story = storylineGenerator.GetEntry();
-        storylineGenerator.RemoveEntry(story);
-
         Address address = new Address(story.GetCurrentChapter().GetRecipient());
+        
+        if (InventoryHasPackageForNPC(address))
+        {
+            return CreateStorylineDragDrop(parent);
+        }
+
         GameObject packageIcon = story.GetCurrentChapter().GetPackage();
-       
-        return InstantiateDragDropObject(parent, packageIcon, address, story.GetID());
+        storylineGenerator.RemoveEntry(story);
+        return InstantiateDragDropObject(parent, packageIcon, address, StorylineID.RandomStorylines);
     }
 
     private DragDropObject CreateRandomDragDrop(GameObject parent)
@@ -77,10 +81,14 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
         {
             return null;
         }
+
+        if (InventoryHasPackageForNPC(address))
+        {
+            return CreateRandomDragDrop(parent);
+        }
+
         packageAddressGen.RemoveEntry(address);
-
         GameObject packageIcon = packageIconGen.GetEntry();
-
         return InstantiateDragDropObject(parent, packageIcon, address, StorylineID.RandomStorylines);
     }
 
@@ -125,5 +133,20 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
         }
         
         Destroy(item.gameObject);
+    }
+
+    private bool InventoryHasPackageForNPC(Address address)
+    {
+        if (inventory.packages == null)
+            return false;
+
+        foreach (var package in inventory.packages)
+        {
+            if (package.address.fullName == address.fullName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
