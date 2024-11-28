@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
 {
     [Header("Required fields")]
-    [SerializeField] private TextMeshProUGUI nextItemLabel;
     [SerializeField] private GameObject nextItemBackground;
     [SerializeField] private TextMeshProUGUI addressLabel;
     [SerializeField] private InventorySortingPackageGenerator packageGenerator;
@@ -18,10 +17,6 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
 
     private void Start()
     {
-        if (nextItemLabel == null)
-        {
-            Debug.LogError("nextItemLabel is not set");
-        }
         if (nextItemBackground == null)
         {
             Debug.LogError("nextItemBackground is not set");
