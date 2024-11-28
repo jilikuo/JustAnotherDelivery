@@ -1470,7 +1470,10 @@ PrefabInstance:
         Not all items may fit. Drop any unwanted
         items into RETURNS.
 
-        Click "Deliver," when you''ve filled your bag.'
+        Pull the lever, to automatically RETURN an item.
+
+        Click
+        "Deliver," when you''ve filled your bag.'
       objectReference: {fileID: 0}
     - target: {fileID: 1124030593160018838, guid: 3e66994da34661845a1f3637d3703ab0, type: 3}
       propertyPath: m_Pivot.x
