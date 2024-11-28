@@ -12,6 +12,8 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
     [SerializeField] private GameObject nextItemBackground;
     [SerializeField] private TextMeshProUGUI addressLabel;
     [SerializeField] private InventorySortingPackageGenerator packageGenerator;
+    [SerializeField] private RecycleItemDisplayManager recycleItemDisplayManager;
+    [SerializeField] private Button recycleButton;
     [Header("Derived fields")]
     [SerializeField] private DragDropObject nextItem;
 
@@ -29,6 +31,15 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
         {
             Debug.LogError("packageGenerator is not set");
         }
+        if (recycleItemDisplayManager == null)
+        {
+            Debug.LogError("recycleItemDisplayManager is not set");
+        }
+        if (recycleButton == null)
+        {
+            Debug.LogError("recycleButton is not set");
+        }
+        recycleButton.onClick.AddListener(RecycleNextItem);
     }
 
     private void Update()
@@ -65,5 +76,16 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
         {
             item.transform.SetParent(null);
         }
+    }
+
+    public void RecycleNextItem()
+    {
+        if (nextItem == null)
+        {
+            return;
+        }
+        var item = nextItem;
+        RemoveDragDropObject(item);
+        recycleItemDisplayManager.AddDragDropObject(item);
     }
 }

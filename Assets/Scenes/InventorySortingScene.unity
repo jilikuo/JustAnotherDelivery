@@ -1173,6 +1173,8 @@ MonoBehaviour:
   nextItemBackground: {fileID: 8547006763314782755}
   addressLabel: {fileID: 1363425793644416531}
   packageGenerator: {fileID: 7507391511813286115}
+  recycleItemDisplayManager: {fileID: 1047477769}
+  recycleButton: {fileID: 1609388701}
   nextItem: {fileID: 0}
 --- !u!224 &2008073790 stripped
 RectTransform:
