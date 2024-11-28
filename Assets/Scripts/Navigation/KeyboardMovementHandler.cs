@@ -50,6 +50,8 @@ public class KeyboardMovementHandler : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.IsTimeStopped()) return;
+
         ReadInputs();
 
         if (willTryMove)

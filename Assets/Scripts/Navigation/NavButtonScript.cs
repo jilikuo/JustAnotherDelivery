@@ -34,6 +34,7 @@ public class NavButtonScript : MonoBehaviour
 
     public void MovePlayer()
     {
+        if (GameManager.instance.IsTimeStopped()) return;
         movementScript.MovePlayer(movementDirection);
         Debug.Log("Player moved " + movementDirection);
     }

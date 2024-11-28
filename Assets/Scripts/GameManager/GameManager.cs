@@ -414,4 +414,9 @@ public class GameManager : MonoBehaviour, ISaveable
         money -= amount;
         return true;
     }
+
+    public bool IsTimeStopped()
+    {
+        return isGamePaused.value || timeSystem.isTimeStopped.value;
+    }
 }
