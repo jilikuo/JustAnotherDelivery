@@ -1,4 +1,5 @@
 using DragDrop;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
     [SerializeField] private TextMeshProUGUI itemText;
     [SerializeField] private GameObject itemBackground;
     [SerializeField] private InventorySortingPackageGenerator packageGenerator;
+    [SerializeField] private float recycleTime = 1f;
 
     private Image backgroundImage;
     private Color backgroundColor;
@@ -70,15 +72,30 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
         backgroundImage.color = backgroundColor;
     }
 
+    private IEnumerator OnFinishRecycle(DragDropObject item)
+    {
+        var time = recycleTime;
+
+        while (time > 0f)
+        {
+            time -= Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        item.transform.SetParent(null);
+        packageGenerator.ReturnDragDrop(item);
+    }
+
     public void AddDragDropObject(DragDropObject item)
     {
         if (item  == null)
         {
             return;
         }
-        // TODO: Add recycling effect
-        item.transform.SetParent(null);
-        packageGenerator.ReturnDragDrop(item);
+
+        item.transform.SetParent(itemBackground.transform);
+        item.transform.position = itemBackground.transform.position;
+        StartCoroutine(OnFinishRecycle(item));
     }
 
     public bool IsValidDropPosition(DragDropObject item)
