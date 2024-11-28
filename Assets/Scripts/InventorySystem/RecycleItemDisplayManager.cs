@@ -75,10 +75,14 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
     private IEnumerator OnFinishRecycle(DragDropObject item)
     {
         var time = recycleTime;
+        var icon = item.GetComponent<Image>();
+        Color color = icon.color;
 
         while (time > 0f)
         {
             time -= Time.unscaledDeltaTime;
+            color.a = time / recycleTime;
+            icon.color = color;
             yield return null;
         }
 
