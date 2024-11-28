@@ -15,7 +15,9 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
     [SerializeField] private GameObject itemBackground;
     [SerializeField] private InventorySortingPackageGenerator packageGenerator;
     [SerializeField] private float recycleTime = 1f;
+    [SerializeField] private float numRotations = 1.5f;
 
+    private float totalDegrees = 0;
     private Image backgroundImage;
     private Color backgroundColor;
 
@@ -33,6 +35,7 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
         {
             Debug.LogError("packageGenerator is not set");
         }
+        totalDegrees = numRotations * 360f;
     }
 
     private void Start()
@@ -83,6 +86,7 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
             time -= Time.unscaledDeltaTime;
             color.a = time / recycleTime;
             icon.color = color;
+            item.transform.Rotate(0, 0, totalDegrees * Time.unscaledDeltaTime / recycleTime);
             yield return null;
         }
 

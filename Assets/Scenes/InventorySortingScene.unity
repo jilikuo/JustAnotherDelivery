@@ -592,6 +592,8 @@ MonoBehaviour:
   itemText: {fileID: 1047477767}
   itemBackground: {fileID: 1620485801}
   packageGenerator: {fileID: 7507391511813286115}
+  recycleTime: 1
+  numRotations: 1.5
 --- !u!1001 &1298150141
 PrefabInstance:
   m_ObjectHideFlags: 0
