@@ -79,7 +79,7 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
 
         List<string> options = new List<string>();
 
-        if (GameManager.instance.messengerBagLevel < (GameManager.instance.numMessengerBagLevels - 1))
+        if (GameManager.instance.messengerBagLevel < (inventoryConfigDisplayManager.NumMessengerBagLevels() - 1))
         {
             options.Add(TypeToLabel(UpgradeType.ExpandMessengerBag));
         }
@@ -121,7 +121,7 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
         switch (upgradeType)
         {
             case UpgradeType.ExpandMessengerBag:
-                return initMessengerBagCost + GameManager.instance.numMessengerBagLevels * costPerMessengerBagLevel;
+                return initMessengerBagCost + GameManager.instance.messengerBagLevel * costPerMessengerBagLevel;
             case UpgradeType.AddFrontBasket:
                 return frontBasketCost;
             case UpgradeType.AddRearBasket:

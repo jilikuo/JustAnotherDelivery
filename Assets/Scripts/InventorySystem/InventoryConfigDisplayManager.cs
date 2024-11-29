@@ -38,9 +38,13 @@ public class InventoryConfigDisplayManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if (GameManager.instance.numMessengerBagLevels != messengerBags.Count)
+        if (messengerBags.Count == 0)
         {
-            Debug.LogError("numMessengerBagLevels(" + GameManager.instance.numMessengerBagLevels + ") does not equal messengerBags count(" + messengerBags.Count + ")");
+            Debug.LogError("messengerBags is empty");
+        }
+        if (GameManager.instance.messengerBagLevel >= messengerBags.Count)
+        {
+            Debug.LogError("messengerBagLevel(" + GameManager.instance.messengerBagLevel + ") invalid for messengerBags count: " + messengerBags.Count);
         }
 
         for (int i = 0; i < messengerBags.Count; i++)
@@ -142,5 +146,10 @@ public class InventoryConfigDisplayManager : MonoBehaviour
         {
             go.SetActive(true);
         }
+    }
+
+    public int NumMessengerBagLevels()
+    {
+        return messengerBags.Count;
     }
 }

@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour, ISaveable
     public bool hasRearBasket = false;
     public bool hasSaddlebags = false;
     public int messengerBagLevel = 0;
-    public int numMessengerBagLevels = 3;
     public float speedMultiplier = 1f;
     public float packageValueMultiplier = 1f;
 
