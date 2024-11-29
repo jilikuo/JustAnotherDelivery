@@ -16,18 +16,18 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
         AddSaddlebags,
         NumUpgradeTypes
     };
-    static Dictionary<UpgradeType, InventoryUpgradeDisplayManager.InventoryContainer> upgradeTypeToContainer =
-    new Dictionary<UpgradeType, InventoryUpgradeDisplayManager.InventoryContainer>() {
-            {UpgradeType.None, InventoryUpgradeDisplayManager.InventoryContainer.None},
-            {UpgradeType.ExpandMessengerBag, InventoryUpgradeDisplayManager.InventoryContainer.NextMessengerBag},
-            {UpgradeType.AddFrontBasket, InventoryUpgradeDisplayManager.InventoryContainer.FrontBasket},
-            {UpgradeType.AddRearBasket, InventoryUpgradeDisplayManager.InventoryContainer.RearBasket},
-            {UpgradeType.AddSaddlebags,InventoryUpgradeDisplayManager.InventoryContainer.SaddleBags }
+    static Dictionary<UpgradeType, InventoryConfigDisplayManager.InventoryContainer> upgradeTypeToContainer =
+    new Dictionary<UpgradeType, InventoryConfigDisplayManager.InventoryContainer>() {
+            {UpgradeType.None, InventoryConfigDisplayManager.InventoryContainer.None},
+            {UpgradeType.ExpandMessengerBag, InventoryConfigDisplayManager.InventoryContainer.NextMessengerBag},
+            {UpgradeType.AddFrontBasket, InventoryConfigDisplayManager.InventoryContainer.FrontBasket},
+            {UpgradeType.AddRearBasket, InventoryConfigDisplayManager.InventoryContainer.RearBasket},
+            {UpgradeType.AddSaddlebags,InventoryConfigDisplayManager.InventoryContainer.SaddleBags }
         };
 
     [SerializeField] private string upgradeLabel = "Storage Upgrades";
     [SerializeField] private TMPro.TMP_Dropdown upgradesDropDown;
-    [SerializeField] private InventoryUpgradeDisplayManager inventoryUpgradeDisplayManager;
+    [SerializeField] private InventoryConfigDisplayManager inventoryConfigDisplayManager;
 
     [SerializeField] private int initMessengerBagCost = 10;
     [SerializeField] private int costPerMessengerBagLevel = 10;
@@ -148,8 +148,8 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
 
     protected override void UpdateDisplay()
     {
-        inventoryUpgradeDisplayManager.SetDimmed(upgradeTypeToContainer[upgradeType]);
-        inventoryUpgradeDisplayManager.UpdateDisplay();
+        inventoryConfigDisplayManager.SetDimmed(upgradeTypeToContainer[upgradeType]);
+        inventoryConfigDisplayManager.UpdateDisplay();
     }
 
     protected override void DoUpgrade()

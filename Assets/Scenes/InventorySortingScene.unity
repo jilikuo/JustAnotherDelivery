@@ -1080,6 +1080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryLayout
       objectReference: {fileID: 0}
+    - target: {fileID: 7487790285300693094, guid: 78f650f1ed96c2943ae9ffe667631208, type: 3}
+      propertyPath: isDragDrop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
