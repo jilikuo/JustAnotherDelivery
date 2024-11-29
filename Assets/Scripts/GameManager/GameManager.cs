@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour, ISaveable
     {
         var data = gameData.gameManagerData;
         ISaveable.AddKey(data, "money", money);
+        ISaveable.AddKey(data, "hasFrontBasket", hasFrontBasket);
+        ISaveable.AddKey(data, "hasRearBasket", hasRearBasket);
+        ISaveable.AddKey(data, "hasSaddlebags", hasSaddlebags);
         ISaveable.AddKey(data, "messengerBagLevel", messengerBagLevel);
         ISaveable.AddKey(data, "speedMultiplier", speedMultiplier);
         ISaveable.AddKey(data, "packageValueMultiplier", packageValueMultiplier);
@@ -74,6 +77,15 @@ public class GameManager : MonoBehaviour, ISaveable
             {
                 case "money":
                     money = Convert.ToInt32(value);
+                    break;
+                case "hasFrontBasket":
+                    hasFrontBasket = Convert.ToBoolean(value);
+                    break;
+                case "hasRearBasket":
+                    hasRearBasket = Convert.ToBoolean(value);
+                    break;
+                case "hasSaddlebags":
+                    hasSaddlebags = Convert.ToBoolean(value);
                     break;
                 case "messengerBagLevel":
                     messengerBagLevel = Convert.ToInt32(value);
