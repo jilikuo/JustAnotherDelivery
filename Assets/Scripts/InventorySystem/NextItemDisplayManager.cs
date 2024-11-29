@@ -71,6 +71,7 @@ public class NextItemDisplayManager : MonoBehaviour, IItemDraggable
         if (nextItem == item)
         {
             nextItem = null;
+            addressLabel.text = "";
         }
         if (item.transform.parent == nextItemBackground.transform)
         {
