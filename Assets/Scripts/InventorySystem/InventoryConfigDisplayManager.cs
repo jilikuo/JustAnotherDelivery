@@ -45,7 +45,7 @@ public class InventoryConfigDisplayManager : MonoBehaviour
     {
     }
 
-    public void UpdateDisplay()
+    public virtual void UpdateDisplay()
     {
         for (int i = 0; i < messengerBags.Count; i++)
         {

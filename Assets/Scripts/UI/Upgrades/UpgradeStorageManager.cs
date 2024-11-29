@@ -71,7 +71,6 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
         }
         SetVars();
         UpdateSelections();
-        UpdateUpgradePanel();
     }
 
     private void UpdateSelections()
@@ -149,8 +148,8 @@ public class UpgradeStorageManager : UpgradePanelManagerBase
 
     protected override void UpdateDisplay()
     {
-        inventoryUpgradeDisplayManager.UpdateDisplay();
         inventoryUpgradeDisplayManager.SetDimmed(upgradeTypeToContainer[upgradeType]);
+        inventoryUpgradeDisplayManager.UpdateDisplay();
     }
 
     protected override void DoUpgrade()

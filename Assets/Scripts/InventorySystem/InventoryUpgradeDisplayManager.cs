@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class InventoryUpgradeDisplayManager : InventoryConfigDisplayManager
 {   public enum InventoryContainer
@@ -23,6 +24,7 @@ public class InventoryUpgradeDisplayManager : InventoryConfigDisplayManager
 
     protected Dictionary<GameObject, Color> backgroundColors = new Dictionary<GameObject, Color>();
     protected Dictionary<GameObject, Color> dimmedColors = new Dictionary<GameObject, Color>();
+    protected List<GameObject> dimmed = new List<GameObject>();
 
     protected override void AfterStart()
     {
@@ -43,43 +45,54 @@ public class InventoryUpgradeDisplayManager : InventoryConfigDisplayManager
 
     public void SetDimmed(InventoryContainer container)
     {
-        List<GameObject> gos = new List<GameObject>();
+        var lastDimmed = dimmed;
+        dimmed = new List<GameObject>();
         switch (container)
         {
             case InventoryContainer.None:
                 break;
             case InventoryContainer.MessengerBag:
-                gos.Add(messengerBags[GameManager.instance.messengerBagLevel]);
+                dimmed.Add(messengerBags[GameManager.instance.messengerBagLevel]);
                 break;
             case InventoryContainer.NextMessengerBag:
-                gos.Add(messengerBags[GameManager.instance.messengerBagLevel + 1]);
+                dimmed.Add(messengerBags[GameManager.instance.messengerBagLevel + 1]);
                 break;
             case InventoryContainer.FrontBasket:
-                gos.Add(frontBasket);
+                dimmed.Add(frontBasket);
                 break;
             case InventoryContainer.RearBasket:
-                gos.Add(rearBasket);
+                dimmed.Add(rearBasket);
                 break;
             case InventoryContainer.SaddleBags:
-                gos.Add(leftSaddleBag);
-                gos.Add(rightSaddleBag);
+                dimmed.Add(leftSaddleBag);
+                dimmed.Add(rightSaddleBag);
                 break;
             default:
                 Debug.LogError("Unrecognized InventoryContainer: " + container);
                 break;
         }
 
-        foreach (GameObject go in containers)
+        foreach (var go in lastDimmed)
         {
-            if (gos.Contains(go))
-            {
-                go.GetComponent<Image>().color = dimmedColors[go];
-                go.SetActive(true);
-            }
-            else
+            if (!dimmed.Contains(go))
             {
                 go.GetComponent<Image>().color = backgroundColors[go];
             }
+        }
+
+        foreach (var go in dimmed)
+        {
+            go.GetComponent<Image>().color = dimmedColors[go];
+        }
+    }
+
+    public override void UpdateDisplay()
+    {
+        base.UpdateDisplay();
+
+        foreach (GameObject go in dimmed)
+        {
+            go.SetActive(true);
         }
     }
 }
