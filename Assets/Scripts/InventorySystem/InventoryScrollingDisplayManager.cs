@@ -13,7 +13,6 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
     [Header("Required fields")]
     [SerializeField] private GameObject scrollViewContent;
     [SerializeField] private GameObject inventoryEntryPrefab;
-    [SerializeField] private DeliveriesCompleteController deliveriesCompleteController;
     [Header("Optional fields")]
     [Header("Inventory defaults to Inventory")]
     [SerializeField] private Inventory inventory;
@@ -29,10 +28,6 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
         if (inventoryEntryPrefab == null)
         {
             Debug.LogError("inventoryEntryPrefab not set");
-        }
-        if (deliveriesCompleteController == null)
-        {
-            Debug.LogError("deliveriesCompleteController not set");
         }
 
     }
@@ -65,14 +60,6 @@ public class InventoryScrollingDisplayManager : MonoBehaviour, IItemDraggable
             dragDrop.data = package;
 
             inventoryEntries.Add(entry);
-        }
-    }
-
-    public void Update()
-    {
-        if (inventoryEntries.Count == 0)
-        {
-            deliveriesCompleteController.ShowDeliveriesCompletePanel();
         }
     }
 

@@ -26,7 +26,10 @@ public class NavigationMenuHandler : MonoBehaviour
 
     public GameObject cameraWorldView;
 
+    public DeliveriesCompleteController deliveriesCompleteController;
+
     private GameManager gameManager = GameManager.instance;
+    private Inventory inventory;
 
     private GameObject activeBar;
 
@@ -77,11 +80,19 @@ public class NavigationMenuHandler : MonoBehaviour
         {
             throw new System.Exception("Message box not set");
         }
-
+        if (deliveriesCompleteController == null)
+        {
+            throw new System.Exception("deliveriesCompleteController not set");
+        }
         player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null )
-        { 
+        if (player == null)
+        {
             throw new System.Exception("Player not found");
+        }
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+        if (inventory == null)
+        {
+            throw new System.Exception("Inventory not found");
         }
 
         currentWaypoint = player.GetComponent<MovementScript>().GetCurrentWaypoint();
@@ -108,6 +119,11 @@ public class NavigationMenuHandler : MonoBehaviour
 
     private void Update()
     {
+        if ((movementBar.activeSelf) && (inventory.packages.Count == 0))
+        {
+            deliveriesCompleteController.ShowDeliveriesCompletePanel();
+        }
+
         if (activeBar == interactionBar && interactionBarIsDirty)
         {
             UpdateInteractionButton();

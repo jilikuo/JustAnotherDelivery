@@ -3968,7 +3968,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollViewContent: {fileID: 5132666310841751977}
   inventoryEntryPrefab: {fileID: 7989685343620036020, guid: 8af8bad1b0f6b4d4695a7321a193c070, type: 3}
-  deliveriesCompleteController: {fileID: 6422126056434693150}
   inventory: {fileID: 0}
   inventoryEntries: []
 --- !u!114 &1124587696
@@ -5242,6 +5241,7 @@ MonoBehaviour:
   deliveryBox: {fileID: 1373279105}
   currentAddressLabel: {fileID: 1939194806}
   cameraWorldView: {fileID: 2038429695}
+  deliveriesCompleteController: {fileID: 6422126056434693150}
 --- !u!114 &1523050661
 MonoBehaviour:
   m_ObjectHideFlags: 0
