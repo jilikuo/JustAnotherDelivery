@@ -174,7 +174,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1904329021}
+    m_TransformParent: {fileID: 1311992338}
     m_Modifications:
     - target: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_Pivot.x
@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1534366635163571492, guid: 79b8e817ca5a2ed4eaa7e02d85427687, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -377,12 +377,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1904329021}
+  - {fileID: 614917341}
   m_Father: {fileID: 1472409048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 900}
+  m_SizeDelta: {x: 640, y: 1040}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311992339
 MonoBehaviour:
@@ -742,11 +743,54 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Check us out @P1 Discord!\n\nProducer (leader) - @Azade \r\nArtist - @StarryMariArt
-    \r\nArtist - @Shangyuan Chen \r\nArtist - @mindy :3\r\nArtist - @Revelyn \r\nArtist
-    - @orbiro \r\nSound Designer - @axo\r\nGame Designer -   @ClockworkTL \r\nProgrammer
-    -  @GrimEye \r\nProgrammer - @Chicsa \r\nProgrammer - @Joethulhu (Joey)\r\nProgrammer
-    - @Ignem "
+  m_text: '@ignem - Team Lead/Programmer
+
+    @azade - Producer
+
+    @0dve - Game
+    Designer
+
+    @mr.masksalesman - Game Designer
+
+    @poshiewashie_ - UX/UI Designer
+
+    @jjeanmiller
+    - UX/UI Designer
+
+    @segawa - Marketer
+
+    @starrymariart - 2D Artist
+
+    @shangyuanchen.
+    - 2D Artist
+
+    @orbiro - 2D Artist
+
+    @r3velyn - 2D Artist
+
+    @cpt.francis
+    - 2D Artist
+
+    @jvferreira - 2D Artist
+
+    @siyin_y - 3D Artist
+
+    @aquatically404
+    - 3D Artist
+
+    @saiyaland - 2D Artist/Sound Designer
+
+    @linkydavinky - Sound
+    Designer
+
+    @marcosperretta - Sound Designer
+
+    @chicsa4854 - Programmer
+
+    @culpo_
+    - Programmer
+
+    @thumpbacker - Programmer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
   m_sharedMaterial: {fileID: 6366686997782941598, guid: 5e8cce0fb4caa804b950ab572e241825, type: 2}
@@ -773,15 +817,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1341,13 +1385,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1710381238}
-  - {fileID: 614917341}
   m_Father: {fileID: 1311992338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 800}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -40, y: -150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904329022
 MonoBehaviour:
@@ -1533,8 +1576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
-  m_SizeDelta: {x: -40, y: -140}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2088567841
 GameObject:
