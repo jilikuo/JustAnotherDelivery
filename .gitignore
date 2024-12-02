@@ -75,3 +75,4 @@ crashlytics-build.properties
 /bin/
 autosave.dat
 build_game.log
+/Assets/bak
