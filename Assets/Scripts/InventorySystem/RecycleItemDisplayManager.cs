@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
 {
+    public AudioSource audioSource;
     [SerializeField] private Color highlightColor = new Color(0f, 1f, 0f, .40f);
     // TODO: Remove itemText, if it will not be used in final UI
     [SerializeField] private TextMeshProUGUI itemText;
@@ -80,6 +81,8 @@ public class RecycleItemDisplayManager : MonoBehaviour, IItemDroppable
         var time = recycleTime;
         var icon = item.GetComponent<Image>();
         Color color = icon.color;
+        //Play the audio
+        audioSource.Play();
 
         while (time > 0f)
         {
