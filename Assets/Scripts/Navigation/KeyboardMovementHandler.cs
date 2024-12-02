@@ -93,7 +93,6 @@ public class KeyboardMovementHandler : MonoBehaviour
         navButtonScript.movementDirection = direction;
         navButtonScript.MovePlayer();
         navigationManager.UpdateNavMenuAfterMovement();
-        minimapAvatar.UpdateMinimapAvatar();
     }
 
     private bool CheckCanMove(Direction direction)

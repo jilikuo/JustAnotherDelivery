@@ -22,11 +22,32 @@ public class MinimapAvatar : MonoBehaviour
         }
         UpdateMinimapAvatar();
     }
+
+    public void LateUpdate()
+    {
+        if (PlayerMoved())
+        {
+            UpdateMinimapAvatar();
+        }
+    }
+
     public void UpdateMinimapAvatar()
     {
         avatarRectTransform.anchoredPosition = new Vector2( movementScript.GetCurrentWaypoint().minimapPosition.x, 
                                                             movementScript.GetCurrentWaypoint().minimapPosition.y);
 
         avatarRectTransform.localRotation = Quaternion.Euler(0, 0, movementScript.GetCurrentWaypoint().minimapRotation.z);
+    }
+
+    private bool PlayerMoved()
+    {
+        Vector2 waypointPos = new Vector2(movementScript.GetCurrentWaypoint().minimapPosition.x,
+                                          movementScript.GetCurrentWaypoint().minimapPosition.y);
+        if (avatarRectTransform.anchoredPosition != waypointPos) 
+        {
+            return true;
+        }
+
+        return false;
     }
 }
