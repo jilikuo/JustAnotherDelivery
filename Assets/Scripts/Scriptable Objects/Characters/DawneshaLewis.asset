@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Dawnesha Lewis
   title: Architect
   characterPrefab: {fileID: 2301725518340140131, guid: 611bef58a205cf246aa9ce8c6df85ab5, type: 3}
-  waypoint: {fileID: 11400000, guid: 58cd9fc8f559fdd468ed881db93f3d62, type: 2}
+  waypoint: {fileID: 11400000, guid: f9c0abc6523ec2f4391f141c31cde388, type: 2}
   hasBeenAssigned: 1

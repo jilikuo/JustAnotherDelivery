@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: June Osaka
   title: 'Criminal Lawyer '
   characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
-  waypoint: {fileID: 11400000, guid: 3d63f7d91b379a44e9f234893aa541d1, type: 2}
-  hasBeenAssigned: 1
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0

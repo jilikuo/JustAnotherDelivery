@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Margeritte James
   title: Mechanic
   characterPrefab: {fileID: 4059512523856862514, guid: 5a29288acb53ff14dbca2d881fd6c9ec, type: 3}
-  waypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
+  waypoint: {fileID: 11400000, guid: edf85e641cd8aaf4eb84baf77c313d43, type: 2}
   hasBeenAssigned: 1

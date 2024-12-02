@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Samuel Campbell
   title: Human Resources Assistant
   characterPrefab: {fileID: 4059512523856862514, guid: 3482035459f238a4c9c49a0511f6252e, type: 3}
-  waypoint: {fileID: 11400000, guid: 3d63f7d91b379a44e9f234893aa541d1, type: 2}
+  waypoint: {fileID: 11400000, guid: 1cd15f18b30eb0e4aaf7edb470945851, type: 2}
   hasBeenAssigned: 1

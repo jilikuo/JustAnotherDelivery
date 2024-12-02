@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: "Sof\xEDa Pardo"
   title: Tattooist
   characterPrefab: {fileID: 4059512523856862514, guid: ef5be3e73f2988f4a97ff3f2d52d5545, type: 3}
-  waypoint: {fileID: 11400000, guid: 47e6cdf05d7fa1f4c9d7fc8dc941ca43, type: 2}
+  waypoint: {fileID: 11400000, guid: 08ce50b0335a12b43a03313ef33855ed, type: 2}
   hasBeenAssigned: 1

@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Alex Armstrong
   title: Baker
   characterPrefab: {fileID: 4059512523856862514, guid: 618290dfdd939d447b8bf2c3379f7b94, type: 3}
-  waypoint: {fileID: 11400000, guid: 58cd9fc8f559fdd468ed881db93f3d62, type: 2}
+  waypoint: {fileID: 11400000, guid: 4caf3663f3342e840b33bd06638933eb, type: 2}
   hasBeenAssigned: 1

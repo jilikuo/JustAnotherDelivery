@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Robert Roberts
   title: Electrician
   characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
-  waypoint: {fileID: 11400000, guid: 6d19b072100afa548a96da808acc8449, type: 2}
+  waypoint: {fileID: 11400000, guid: 1cd15f18b30eb0e4aaf7edb470945851, type: 2}
   hasBeenAssigned: 1

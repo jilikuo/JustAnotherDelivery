@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Lucinda Moses
   title: Actress
   characterPrefab: {fileID: 4059512523856862514, guid: da8e2e1f869cf9b428c8d78faa9c3ffc, type: 3}
-  waypoint: {fileID: 11400000, guid: 4f8a595050a83a248b4f8f67f59f8f85, type: 2}
+  waypoint: {fileID: 11400000, guid: 509dac5c8644ac34eafe91f3dd9551ce, type: 2}
   hasBeenAssigned: 1

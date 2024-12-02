@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Livia Antonelli
   title: 'Flight Attendant '
   characterPrefab: {fileID: 2515547008897229922, guid: 2dc58a0f73beea4449caf997940d11bf, type: 3}
-  waypoint: {fileID: 11400000, guid: 47e6cdf05d7fa1f4c9d7fc8dc941ca43, type: 2}
-  hasBeenAssigned: 1
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0

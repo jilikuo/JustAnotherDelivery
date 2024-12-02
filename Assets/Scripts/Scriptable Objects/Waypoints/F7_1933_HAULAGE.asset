@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
+  m_Name: F7_1933_HAULAGE
+  m_EditorClassIdentifier: 
+  streetName:
+    streetId: 1
+  addressNumber: 1933
+  minimapPosition:
+    x: 160
+    y: -130
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 45
+  position:
+    x: -41.96
+    y: 1.5
+    z: 31.91
+  rotation:
+    x: -0
+    y: 199.99998
+    z: 0
+  northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 071de8dd50364a349939a23d85f0fb9a, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  westWaypoint: {fileID: 11400000, guid: 1d208b2cde003974c84e769c3110063c, type: 2}
+  isValid: 1
+  isAccessible: 1
+  isDirty: 1
+  residents:
+  - {fileID: 11400000, guid: a3aff2549c9d6d048a9883705c9463f9, type: 2}
+  - {fileID: 11400000, guid: d166451a33a45c64e9e05bc04edaac0b, type: 2}
+  updateCoordinates: 0

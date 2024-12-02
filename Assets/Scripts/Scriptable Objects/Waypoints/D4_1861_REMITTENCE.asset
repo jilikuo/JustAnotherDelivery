@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
+  m_Name: D4_1861_REMITTENCE
+  m_EditorClassIdentifier: 
+  streetName:
+    streetId: 2
+  addressNumber: 1861
+  minimapPosition:
+    x: -40
+    y: -18
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 90
+  position:
+    x: 2.4
+    y: 1.5
+    z: 0.2
+  rotation:
+    x: -0
+    y: 180
+    z: 0
+  northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 7eec8f4961457ed4da7294cb503e2787, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  westWaypoint: {fileID: 11400000, guid: fd9ce1129b32d204183b1f0e7e526555, type: 2}
+  isValid: 1
+  isAccessible: 1
+  isDirty: 1
+  residents:
+  - {fileID: 11400000, guid: 33b2e2b1f4852104ca71a635daccc8b6, type: 2}
+  - {fileID: 11400000, guid: 4f9be6d4509f4314b941cd594ee21c5a, type: 2}
+  updateCoordinates: 0

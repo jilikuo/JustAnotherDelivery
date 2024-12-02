@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Gail Shaw
   title: Singer
   characterPrefab: {fileID: 489384721989473426, guid: b273505ca83ad6544b7379ae6f5b73c6, type: 3}
-  waypoint: {fileID: 11400000, guid: a80222b86e666e54785141b640d9f262, type: 2}
-  hasBeenAssigned: 1
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0

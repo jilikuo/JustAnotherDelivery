@@ -28,7 +28,7 @@ public class NPCCollection : ScriptableObject
     {
         foreach (var wp in Waypoints)
         {
-            if (!wp.isDirty || !wp.isValid || wp.residents == null)
+            if (!wp.isValid || wp.residents == null)
             {
                 continue;
             }
@@ -49,7 +49,6 @@ public class NPCCollection : ScriptableObject
             }
 
             wp.isDirty = false;
-
         }
 
         foreach (var npc in NPCList)

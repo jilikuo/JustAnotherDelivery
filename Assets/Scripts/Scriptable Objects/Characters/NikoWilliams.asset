@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Niko Williams
   title: Artist
   characterPrefab: {fileID: 4059512523856862514, guid: ef49c498c8822ac4fbc6eddc3469cd84, type: 3}
-  waypoint: {fileID: 11400000, guid: f7e511d4bcc509c48854d593bba0d82b, type: 2}
+  waypoint: {fileID: 11400000, guid: f9c0abc6523ec2f4391f141c31cde388, type: 2}
   hasBeenAssigned: 1

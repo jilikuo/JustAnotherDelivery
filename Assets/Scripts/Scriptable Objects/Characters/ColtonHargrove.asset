@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Colton Hargrove
   title: Miner
   characterPrefab: {fileID: 4059512523856862514, guid: 618290dfdd939d447b8bf2c3379f7b94, type: 3}
-  waypoint: {fileID: 11400000, guid: a80222b86e666e54785141b640d9f262, type: 2}
+  waypoint: {fileID: 11400000, guid: 719b105b0f436c94aa7f8ce5a6d17fd6, type: 2}
   hasBeenAssigned: 1

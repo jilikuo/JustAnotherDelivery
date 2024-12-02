@@ -15,6 +15,14 @@ MonoBehaviour:
   streetName:
     streetId: 0
   addressNumber: 0
+  minimapPosition:
+    x: 0
+    y: 0
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 0
   position:
     x: 0
     y: 0
@@ -23,11 +31,12 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  northWaypoint: {fileID: 0}
-  eastWaypoint: {fileID: 0}
-  southWaypoint: {fileID: 0}
-  westWaypoint: {fileID: 0}
+  northWaypoint: {fileID: 11400000}
+  eastWaypoint: {fileID: 11400000}
+  southWaypoint: {fileID: 11400000}
+  westWaypoint: {fileID: 11400000}
   isValid: 0
   isAccessible: 0
-  isDirty: 0
+  isDirty: 1
   residents: []
+  updateCoordinates: 0

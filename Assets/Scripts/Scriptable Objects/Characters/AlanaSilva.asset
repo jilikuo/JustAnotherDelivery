@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Alana Silva
   title: Author
   characterPrefab: {fileID: 4059512523856862514, guid: da8e2e1f869cf9b428c8d78faa9c3ffc, type: 3}
-  waypoint: {fileID: 11400000, guid: 19ed1ddabe2d07344816f767c97e0a7a, type: 2}
-  hasBeenAssigned: 1
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0

@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Rafael Felipe Silva
   title: Locksmith
   characterPrefab: {fileID: 4305610374441403860, guid: 27f0a7ca0bf13ec4fa90f537ad41cef6, type: 3}
-  waypoint: {fileID: 11400000, guid: 58cd9fc8f559fdd468ed881db93f3d62, type: 2}
+  waypoint: {fileID: 11400000, guid: 08ce50b0335a12b43a03313ef33855ed, type: 2}
   hasBeenAssigned: 1

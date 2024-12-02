@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Ernesto Ferrant
   title: Psychiatrist
   characterPrefab: {fileID: 2465443489518874374, guid: 03716555eaf641646a9bc799049ff923, type: 3}
-  waypoint: {fileID: 11400000, guid: faf2c210b23e79b4396abbd4711a962b, type: 2}
+  waypoint: {fileID: 11400000, guid: 071de8dd50364a349939a23d85f0fb9a, type: 2}
   hasBeenAssigned: 1

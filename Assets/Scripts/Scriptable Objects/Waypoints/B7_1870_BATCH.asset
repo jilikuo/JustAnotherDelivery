@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2a10f36e24fae4683f3b51a5e871f6, type: 3}
+  m_Name: B7_1870_BATCH
+  m_EditorClassIdentifier: 
+  streetName:
+    streetId: 5
+  addressNumber: 1870
+  minimapPosition:
+    x: 170
+    y: 55
+    z: 0
+  minimapRotation:
+    x: 0
+    y: 0
+    z: 90
+  position:
+    x: -45.9
+    y: 1.5
+    z: -18.7
+  rotation:
+    x: -0
+    y: 180
+    z: 0
+  northWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  eastWaypoint: {fileID: 11400000, guid: 6155515393ea87e40b41e3f3ebec9fd6, type: 2}
+  southWaypoint: {fileID: 11400000, guid: 121248c6ca50e36459159aea8567e724, type: 2}
+  westWaypoint: {fileID: 11400000, guid: ea37d2b0b7c52f249aa5a2818c850332, type: 2}
+  isValid: 1
+  isAccessible: 1
+  isDirty: 1
+  residents:
+  - {fileID: 11400000, guid: ba55b9cd38638bb42b25617cc55996bf, type: 2}
+  - {fileID: 11400000, guid: 9715ff83df688314cbe18fd81c373df6, type: 2}
+  updateCoordinates: 0

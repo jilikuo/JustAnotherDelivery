@@ -15,5 +15,5 @@ MonoBehaviour:
   fullName: Karim El-Sayed
   title: Chiropractor
   characterPrefab: {fileID: 4059512523856862514, guid: 3482035459f238a4c9c49a0511f6252e, type: 3}
-  waypoint: {fileID: 11400000, guid: a80222b86e666e54785141b640d9f262, type: 2}
-  hasBeenAssigned: 1
+  waypoint: {fileID: 0}
+  hasBeenAssigned: 0
