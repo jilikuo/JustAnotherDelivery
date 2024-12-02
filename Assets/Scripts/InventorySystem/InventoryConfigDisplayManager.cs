@@ -30,7 +30,7 @@ public class InventoryConfigDisplayManager : MonoBehaviour
     [SerializeField] private float dimScale = .42f;
 
     private Dictionary<GameObject, Color> backgroundColors = new Dictionary<GameObject, Color>();
-    private Dictionary<GameObject, Color> dimmedColors = new Dictionary<GameObject, Color>();
+    private Color dimmedColor = new Color(1f, 1f, 1f, .40f);
     private List<GameObject> dimmed = new List<GameObject>();
 
     private List<GameObject> containers = new List<GameObject>();
@@ -78,7 +78,6 @@ public class InventoryConfigDisplayManager : MonoBehaviour
             Color dimmedColor = color;
             dimmedColor.a *= dimScale;
             backgroundColors.Add(go, color);
-            dimmedColors.Add(go, dimmedColor);
         };
 
         foreach (var container in containers)
@@ -127,7 +126,7 @@ public class InventoryConfigDisplayManager : MonoBehaviour
 
         foreach (var go in dimmed)
         {
-            go.GetComponent<Image>().color = dimmedColors[go];
+            go.GetComponent<Image>().color = dimmedColor;
         }
     }
 
