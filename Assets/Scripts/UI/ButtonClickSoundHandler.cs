@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ButtonClickSoundHandler : MonoBehaviour
 {
     public string buttonClickAudioSourceTag = "ButtonClickAudioSource";
+    public AudioClip audioToPlay;
 
     private void Start()
     {
@@ -22,6 +23,13 @@ public class ButtonClickSoundHandler : MonoBehaviour
     private void PlaySound()
     {
         var audioSource = GameObject.FindGameObjectWithTag(buttonClickAudioSourceTag).GetComponent<AudioSource>();
+
+        //Prevent no sound from playing
+        if (audioToPlay != null)
+        {
+            audioSource.clip = audioToPlay;
+        }
+
         audioSource.Play();
     }
 }
