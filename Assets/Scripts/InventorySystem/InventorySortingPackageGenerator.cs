@@ -71,7 +71,7 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
 
         GameObject packageIcon = story.GetCurrentChapter().GetPackage();
         storylineGenerator.RemoveEntry(story);
-        return InstantiateDragDropObject(parent, packageIcon, address, StorylineID.RandomStorylines);
+        return InstantiateDragDropObject(parent, packageIcon, address, story.GetID()); ;
     }
 
     private DragDropObject CreateRandomDragDrop(GameObject parent)
