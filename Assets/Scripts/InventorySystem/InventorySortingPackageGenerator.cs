@@ -59,14 +59,13 @@ public class InventorySortingPackageGenerator : MonoBehaviour, IDragDropGenerato
     }
 
     private DragDropObject CreateStorylineDragDrop(GameObject parent)
-    {
-        
+    { 
         Storyline story = storylineGenerator.GetEntry();
         Address address = new Address(story.GetCurrentChapter().GetRecipient());
         
         if (InventoryHasPackageForNPC(address))
         {
-            return CreateStorylineDragDrop(parent);
+            return null;
         }
 
         GameObject packageIcon = story.GetCurrentChapter().GetPackage();
