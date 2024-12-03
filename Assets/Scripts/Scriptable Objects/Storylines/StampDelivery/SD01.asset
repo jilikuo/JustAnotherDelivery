@@ -15,7 +15,7 @@ MonoBehaviour:
   interactions:
   - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
     Content: So... You're the new hire? I figured that, because you're only carrying
-      Paper Stamp packages. This one you're carrying is for me.
+      Paper Stamp packages. That one you're carrying is for me.
   - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
     Content: Make sure to never delay your deliveries, recruit.
   recipientNPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}

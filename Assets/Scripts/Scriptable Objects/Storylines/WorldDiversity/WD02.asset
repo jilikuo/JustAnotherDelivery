@@ -15,7 +15,7 @@ MonoBehaviour:
   interactions:
   - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
     Content: Can you put that inside for me? It's really hard to hold a package with
-      no hands
+      no hands.
   - NPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}
     Content: You were so helpful!
   recipientNPC: {fileID: 11400000, guid: db7792050e0efe142ba0adfaf33e19b1, type: 2}

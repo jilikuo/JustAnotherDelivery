@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactions:
   - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
-    Content: Thank you for your great work. I am sure you will be a legendary deliverer
+    Content: Thank you for your great work. I am sure you will be a legendary deliverer.
   - NPC: {fileID: 11400000, guid: 46fb416b5bc5f694ca34f768c55a1aac, type: 2}
     Content: I am sure you can handle even the legendary Platinum Deliveries. Go
       get your permit!
