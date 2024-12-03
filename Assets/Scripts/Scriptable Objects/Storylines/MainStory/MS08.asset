@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: MS08
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: 4f9be6d4509f4314b941cd594ee21c5a, type: 2}
+    Content: I really need something that you probably have...
+  - NPC: {fileID: 11400000, guid: 4f9be6d4509f4314b941cd594ee21c5a, type: 2}
+    Content: Yes! I can finally finish it!
+  recipientNPC: {fileID: 11400000, guid: 4f9be6d4509f4314b941cd594ee21c5a, type: 2}
+  package: {fileID: 7751567516028606338, guid: aa6e2d210aaae7e459d73b670407a277, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

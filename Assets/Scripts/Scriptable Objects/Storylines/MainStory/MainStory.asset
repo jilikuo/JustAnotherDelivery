@@ -13,6 +13,16 @@ MonoBehaviour:
   m_Name: MainStory
   m_EditorClassIdentifier: 
   id: 1
-  chapterList: []
+  chapterList:
+  - {fileID: 11400000, guid: 099e1c3362b4e1d4da5a82e31eeb544b, type: 2}
+  - {fileID: 11400000, guid: c5fa09168bfe0fe4792436368ac92c77, type: 2}
+  - {fileID: 11400000, guid: b1efe136ba622ef42b403cbf1a5f08ee, type: 2}
+  - {fileID: 11400000, guid: 80a2893023492c649b521e658cce735a, type: 2}
+  - {fileID: 11400000, guid: 4edb9f1c24e319d488c3d02167403d5f, type: 2}
+  - {fileID: 11400000, guid: e0734016a1c7f1b48b9e159e9b792d2a, type: 2}
+  - {fileID: 11400000, guid: 4b61a3c5726bfb94b9dabe53d0b84a2b, type: 2}
+  - {fileID: 11400000, guid: ffcc279633735c04a812aec0e46bf93f, type: 2}
+  - {fileID: 11400000, guid: 94bd4c8a1b363e74f85ea03c5ed7c804, type: 2}
+  - {fileID: 11400000, guid: 90fbdb8acf8b8804a90d3c8a36902592, type: 2}
   currentChapterID: 0
   isRepeatable: 0

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: MS03
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: You're still around. Interesting.
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: ...is that bad?
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: No, just unexpected. Kudos for sticking with the job this long.
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: Thank you? Anyway, have anything that needs to be delivered?
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: Right, yes, here you are. Careful with it.
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: I'll make sure it doesn't get damaged.
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: (... Waiting for Delivery ...)
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: Good job. You have my appreciation.
+  recipientNPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+  package: {fileID: 6140053306137259048, guid: c09a12c0ebc64ba4ca32f265c2d0c172, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0

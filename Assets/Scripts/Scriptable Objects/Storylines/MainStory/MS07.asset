@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690339d96052b0a4d8301702e1b9ff17, type: 3}
+  m_Name: MS07
+  m_EditorClassIdentifier: 
+  interactions:
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: We meet again.
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: 'Yep, seems like we do. Although... that''s a big box. I don''t know
+      if I''ll actually be able to carry that. '
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: ' Ah yes, the last one was quite heavy, wasn''t it? Well, worry not.
+      This one is far lighter.'
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: That's a relief.
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: 'It is somewhat fragile though, so please exercise the utmost caution. '
+  - NPC: {fileID: 11400000, guid: 6fa1c747640dc33498d666accbf8a352, type: 2}
+    Content: Right... sure thing. I'll do my best.
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: (... Waiting for Delivery ...)
+  - NPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+    Content: Thank you for making sure that nothing was damaged. It was quite important.
+  recipientNPC: {fileID: 11400000, guid: 194e140c7114e9d489509ae7f9245b49, type: 2}
+  package: {fileID: 7751567516028606338, guid: aa6e2d210aaae7e459d73b670407a277, type: 3}
+  nextInteractionID: 0
+  randomNPC: 0
